@@ -1,0 +1,324 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const perguntas = [
+  {
+    p: 'Quando posso começar a drenagem depois da cirurgia?',
+    r: 'Quem define é o seu cirurgião. Na maioria dos casos a liberação vem entre o segundo e o quinto dia, e quanto antes começar, melhor tende a ser a recuperação. Traga a orientação dele e nós montamos o cronograma em cima disso.',
+  },
+  {
+    p: 'Quantas sessões vou precisar?',
+    r: 'Depende do porte da cirurgia e de como o seu corpo responde. Lipoaspiração e abdominoplastia costumam pedir de 10 a 30 sessões, começando com 3 por semana e espaçando conforme o inchaço cede. Na avaliação eu falo um número realista para o seu caso, não um número para fechar pacote.',
+  },
+  {
+    p: 'Dói?',
+    r: 'A drenagem pós-operatória é feita com pressão leve — não é massagem modeladora. Nos primeiros dias a região está sensível e o toque é mais superficial ainda. A maioria das clientes descreve como alívio, não como dor.',
+  },
+  {
+    p: 'Preciso levar algum documento?',
+    r: 'A liberação ou orientação por escrito do seu cirurgião. É o que me permite ajustar a técnica ao que foi feito e às áreas operadas com segurança.',
+  },
+  {
+    p: 'Vocês atendem homem?',
+    r: 'Sim. Atendo homens e mulheres, no pós-operatório e nos demais protocolos.',
+  },
+  {
+    p: 'Tem estacionamento por perto?',
+    r: 'Sim, a rua tem vaga e a região é tranquila para estacionar. Se você estiver vindo de Uber nos primeiros dias, o acesso até a sala é curto e sem escada.',
+  },
+];
+
+const schemaFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: perguntas.map((q) => ({
+    '@type': 'Question',
+    name: q.p,
+    acceptedAnswer: { '@type': 'Answer', text: q.r },
+  })),
+};
+
+const zap = msg.posOp;
+---
+
+<Base
+  titulo="Drenagem pós-operatória na Zona Norte de SP | Fernanda Lins Estética"
+  descricao="Drenagem linfática pós-operatória em Jardim Monjolo, São Paulo. Acompanhamento de lipoaspiração, abdominoplastia e demais cirurgias, com liberação do seu cirurgião. Pacotes de 5 e 10 sessões."
+  caminho="/drenagem-pos-operatorio"
+  mensagemZap={zap}
+  schemaExtra={schemaFaq}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Drenagem pós-operatória · {site.regiao}</span>
+        <h1>A cirurgia foi o começo. O pós é o que define o resultado.</h1>
+        <p class="lead">
+          Drenagem linfática pós-cirúrgica em {site.bairro}, com liberação do seu cirurgião,
+          técnica ajustada ao que foi operado e acompanhamento até o inchaço ceder.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-posop">
+          Falar agora no WhatsApp
+        </a>
+        <a class="btn btn--linha" href="#pacotes">Ver pacotes e valores</a>
+      </div>
+      <p class="pequeno suave">
+        {enderecoLinha} · Atendimento com hora marcada
+      </p>
+    </div>
+  </section>
+
+  <!-- Urgência -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Os primeiros dias</span>
+        <h2>Começar cedo muda o resultado</h2>
+      </div>
+      <p>
+        A janela que mais importa é a das primeiras semanas. É nela que o inchaço é maior,
+        que o líquido se acumula e que a fibrose se instala com mais facilidade — e é nela que
+        a drenagem trabalha melhor. Quem começa assim que o cirurgião libera costuma precisar
+        de menos sessões no total do que quem espera passar o desconforto inicial.
+      </p>
+      <p>
+        Por isso eu deixo horário reservado para pós-operatório recente. Se você operou essa
+        semana, me chama hoje — mesmo que seja só para reservar as datas.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--ouro" href={whatsappLink(zap)} data-zap="urgencia">
+          Reservar meus horários
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que faz -->
+  <section class="secao">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">O que o acompanhamento faz</span>
+        <h2>Não é massagem relaxante. É condução da recuperação.</h2>
+      </div>
+      <div class="grade g3">
+        <div class="cartao">
+          <h4>Reduz o inchaço</h4>
+          <p class="pequeno">
+            Movimentos leves na direção dos gânglios ajudam o corpo a escoar o líquido retido,
+            que é o que dá a sensação de peso e de "não desinchar nunca".
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Trabalha a fibrose</h4>
+          <p class="pequeno">
+            Aquelas áreas endurecidas e irregulares que aparecem semanas depois respondem
+            melhor quando são tratadas desde cedo, e não depois de consolidadas.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Alivia o desconforto</h4>
+          <p class="pequeno">
+            Sensação de repuxamento, dormência e peso costumam melhorar sessão a sessão.
+            A maioria das clientes sai da primeira já sentindo diferença.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Acompanha a evolução</h4>
+          <p class="pequeno">
+            Eu registro como cada área está respondendo e ajusto a técnica. O que funciona
+            na segunda semana não é o que funciona na sexta.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Orienta o dia a dia</h4>
+          <p class="pequeno">
+            Cinta, posição para dormir, quando voltar a caminhar, o que evitar. Boa parte do
+            resultado se decide entre uma sessão e outra.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Conversa com o seu cirurgião</h4>
+          <p class="pequeno">
+            Eu sigo a orientação de quem operou você. Se algo fugir do esperado, você é
+            orientada a procurá-lo — sem enrolação.
+          </p>
+        </div>
+      </div>
+      <p class="pequeno suave">
+        A drenagem pós-operatória é um cuidado complementar e não substitui o acompanhamento
+        médico. O atendimento é feito mediante liberação do seu cirurgião.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pacotes -->
+  <section class="secao secao--creme" id="pacotes">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Pacotes e valores</span>
+        <h2>Transparente desde o começo</h2>
+        <p class="lead">
+          Sessão avulsa para quem quer conhecer, pacote para quem já sabe que vai precisar
+          de constância — que é a maioria dos casos de pós-operatório.
+        </p>
+      </div>
+      <div class="grade g3">
+        <div class="cartao">
+          <span class="olho">Avulsa</span>
+          <p class="preco tabular">R$ 110</p>
+          <p class="pequeno">Por sessão, sem compromisso de pacote.</p>
+        </div>
+        <div class="cartao cartao--destaque">
+          <span class="olho">5 sessões</span>
+          <p class="preco tabular">3× sem juros</p>
+          <ul class="marcada">
+            <li>Um detox corporal de brinde</li>
+            <li>Pump nos glúteos e massagem facial em todas as sessões</li>
+          </ul>
+        </div>
+        <div class="cartao cartao--destaque">
+          <span class="olho">10 sessões</span>
+          <p class="preco tabular">5× sem juros</p>
+          <ul class="marcada">
+            <li>Um detox e uma criolipólise de brinde</li>
+            <li>Pump nos glúteos e massagem facial em todas as sessões</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cartao">
+        <h4>As regras, ditas antes e não depois</h4>
+        <ul class="marcada">
+          <li>Pacote válido por 6 meses a partir da compra.</li>
+          <li>Confirmação de presença antes de cada sessão.</li>
+          <li>Cancelamento com no mínimo 6 horas de antecedência.</li>
+          <li>Tolerância de 10 minutos de atraso.</li>
+        </ul>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="pacotes">
+          Tirar dúvida sobre os pacotes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem conduz -->
+  <section class="secao">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Quem vai te atender</span>
+        <h2>Fernanda Lins</h2>
+      </div>
+      <p>
+        Especialista em estética corporal avançada, com atuação em gordura localizada,
+        flacidez, celulite, lipo enzimática, criolipólise e radiofrequência — e habilitada
+        para acompanhamento pós-operatório.
+      </p>
+      <p>
+        Quem te atende sou eu, do começo ao fim. Não é uma sala com equipe rotativa: é a
+        mesma pessoa acompanhando a sua evolução semana a semana, que é exatamente o que
+        o pós-operatório exige.
+      </p>
+      <blockquote class="citacao">
+        <p>Aqui você é cuidada de verdade.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Dúvidas frequentes</span>
+        <h2>O que todo mundo pergunta antes de vir</h2>
+      </div>
+      <div>
+        {
+          perguntas.map((q) => (
+            <details class="faq">
+              <summary>{q.p}</summary>
+              <div class="resposta">{q.r}</div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Onde fica + fechamento -->
+  <section class="secao" id="onde">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Onde fica</span>
+        <h2>{site.bairro}, {site.regiao}</h2>
+      </div>
+      <div class="grade g2">
+        <div class="cartao">
+          <h4>Endereço</h4>
+          <p class="pequeno">{enderecoLinha}</p>
+          <p class="pequeno suave">CEP {site.cep}</p>
+          <p class="pequeno">
+            <a href={site.mapsUrl} data-mapa target="_blank" rel="noopener">Abrir no Google Maps</a>
+          </p>
+          <p class="pequeno suave">
+            Acesso curto até a sala, sem escada — pensando em quem está em pós-operatório recente.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Horários</h4>
+          {site.horarios.map((h) => <p class="pequeno">{h.dias} · {h.horario}</p>)}
+          <p class="pequeno suave">
+            Horários reservados para pós-operatório recente. Se você acabou de operar, me avise
+            que eu encaixo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito fechamento">
+      <h2>Me conta o que você fez e quando foi</h2>
+      <p class="lead">
+        Com a data da cirurgia e a orientação do seu cirurgião eu já consigo te dizer quantas
+        sessões fazem sentido e em que ritmo. Sem compromisso.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento">
+          Falar com a Fernanda
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .preco {
+    font-family: var(--display);
+    font-size: 34px;
+    line-height: 1.1;
+    color: var(--ouro);
+  }
+  .cartao--destaque { border-color: var(--ouro-claro); }
+
+  .citacao {
+    margin: 0;
+    padding: 20px 0 20px 22px;
+    border-left: 2px solid var(--ouro-claro);
+  }
+  .citacao p {
+    font-family: var(--display);
+    font-size: clamp(21px, 3vw, 27px);
+    line-height: 1.35;
+    color: var(--tinta);
+  }
+
+  .fechamento { align-items: flex-start; }
+</style>

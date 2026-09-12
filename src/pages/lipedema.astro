@@ -1,0 +1,285 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const sinais = [
+  'As pernas doem ou ficam pesadas no fim do dia, mesmo sem esforço.',
+  'Aparece hematoma com facilidade, às vezes sem você lembrar da pancada.',
+  'Existe desproporção entre o tronco e as pernas — a calça serve na cintura e não fecha na coxa.',
+  'Quando você emagrece, afina o rosto e a barriga, e as pernas continuam iguais.',
+  'A pele das coxas tem aspecto irregular ao toque, com nódulos por baixo.',
+  'Você já ouviu que é falta de esforço, mesmo fazendo tudo certo.',
+];
+
+const protocolo = [
+  { n: '5 sessões', t: 'Radiofrequência', d: 'Trabalha a qualidade da pele e o desconforto local.' },
+  { n: '5 sessões', t: 'Ultrassom', d: 'Complementa o trabalho nas áreas de maior sensibilidade.' },
+  { n: '5 sessões', t: 'Drenagem local', d: 'Alívio do peso e do inchaço, que é a queixa número um.' },
+  { n: '2 sessões', t: 'Criolipólise', d: 'Aplicada apenas onde faz sentido, nunca como regra.' },
+  { n: '5 sessões', t: 'ILIB', d: 'Fecha o protocolo com foco em disposição e bem-estar.' },
+  { n: 'Brinde', t: 'Bandagem', d: 'Incluída no acompanhamento, sem custo adicional.' },
+];
+
+const perguntas = [
+  {
+    p: 'Estética cura lipedema?',
+    r: 'Não. Lipedema é uma condição crônica e nenhum tratamento estético cura. O que o acompanhamento faz é trabalhar os sintomas — peso nas pernas, inchaço, dor, desconforto — e a qualidade da pele. Quem promete cura está te enganando.',
+  },
+  {
+    p: 'Então por que fazer?',
+    r: 'Porque conviver melhor com a condição muda o dia. A maioria das minhas clientes chega descrevendo dor e peso constantes, e é aí que o trabalho tem mais a oferecer. O objetivo é conforto e qualidade de vida, com honestidade sobre o que é possível.',
+  },
+  {
+    p: 'Preciso de diagnóstico médico antes?',
+    r: 'O ideal é sim. Quem diagnostica lipedema é o médico, normalmente angiologista ou vascular. Se você ainda não tem o diagnóstico, pode vir conversar comigo — mas eu vou te orientar a procurar um, porque isso muda o que faz sentido fazer.',
+  },
+  {
+    p: 'Em quanto tempo eu sinto diferença?',
+    r: 'O alívio do peso e do inchaço costuma aparecer nas primeiras sessões. Mudança visível na perna leva mais tempo e depende muito do grau e do que você mantém em casa. Na avaliação eu falo o que é realista para o seu caso.',
+  },
+  {
+    p: 'Posso fazer menstruada?',
+    r: 'Pode. Só me avise antes, porque a sensibilidade costuma estar maior e eu ajusto a intensidade.',
+  },
+  {
+    p: 'Convênio cobre?',
+    r: 'Procedimento estético não é coberto por convênio. O protocolo é parcelado em 5 vezes sem juros, justamente porque eu sei que é um investimento longo.',
+  },
+];
+
+const schemaFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: perguntas.map((q) => ({
+    '@type': 'Question',
+    name: q.p,
+    acceptedAnswer: { '@type': 'Answer', text: q.r },
+  })),
+};
+
+const zap = msg.lipedema;
+---
+
+<Base
+  titulo="Protocolo para lipedema na Zona Norte de SP | Fernanda Lins Estética"
+  descricao="Acompanhamento estético para lipedema em Jardim Monjolo, São Paulo. Protocolo de 22 sessões com radiofrequência, ultrassom, drenagem, criolipólise e ILIB. Avaliação sem custo."
+  caminho="/lipedema"
+  mensagemZap={zap}
+  schemaExtra={schemaFaq}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Lipedema · {site.regiao}</span>
+        <h1>Não é gordura. E não é falta de esforço.</h1>
+        <p class="lead">
+          Acompanhamento estético para quem convive com lipedema, em {site.bairro}.
+          Foco no que mais incomoda no dia a dia: peso nas pernas, inchaço e dor.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-lipedema">
+          Agendar avaliação sem custo
+        </a>
+        <a class="btn btn--linha" href="#protocolo">Ver o protocolo</a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha}</p>
+    </div>
+  </section>
+
+  <!-- Reconhecimento -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Você se reconhece?</span>
+        <h2>Se mais de três dessas frases são suas, vale conversar</h2>
+      </div>
+      <div class="grade g2">
+        {sinais.map((s) => <div class="sinal"><p>{s}</p></div>)}
+      </div>
+      <p class="pequeno suave">
+        Esta lista não é diagnóstico — é um ponto de partida para a conversa. Quem diagnostica
+        lipedema é o médico.
+      </p>
+    </div>
+  </section>
+
+  <!-- Honestidade -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">O que eu posso e o que eu não posso</span>
+        <h2>Antes de falar de resultado, falo de limite</h2>
+      </div>
+      <div class="grade g2">
+        <div class="cartao">
+          <h4>O que o acompanhamento faz</h4>
+          <ul class="marcada">
+            <li>Alivia o peso e o inchaço nas pernas</li>
+            <li>Reduz o desconforto e a dor ao toque</li>
+            <li>Trabalha a qualidade e o aspecto da pele</li>
+            <li>Melhora a disposição no dia a dia</li>
+          </ul>
+        </div>
+        <div class="cartao cartao--limite">
+          <h4>O que ele não faz</h4>
+          <ul class="marcada">
+            <li>Não cura lipedema — é condição crônica</li>
+            <li>Não substitui acompanhamento médico</li>
+            <li>Não transforma a perna em outra perna</li>
+            <li>Não funciona sem a sua parte em casa</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Eu prefiro te perder na primeira conversa a te vender uma expectativa que não vou
+        conseguir entregar. Se o que você procura é cura, não é comigo — e eu vou te dizer isso
+        de cara.
+      </p>
+    </div>
+  </section>
+
+  <!-- Protocolo -->
+  <section class="secao" id="protocolo">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">O protocolo</span>
+        <h2>22 sessões, montadas em cima do seu caso</h2>
+        <p class="lead">
+          Esta é a estrutura base. Na avaliação eu ajusto o que faz sentido para você —
+          ninguém faz exatamente o mesmo protocolo.
+        </p>
+      </div>
+      <div class="grade g3">
+        {
+          protocolo.map((item) => (
+            <div class="cartao">
+              <span class="olho">{item.n}</span>
+              <h4>{item.t}</h4>
+              <p class="pequeno">{item.d}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="cartao cartao--valor">
+        <div>
+          <span class="olho">Protocolo completo</span>
+          <p class="preco tabular">5× de R$ 299 sem juros</p>
+          <p class="pequeno suave">Pacote válido por 6 meses. Bandagem inclusa.</p>
+        </div>
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="protocolo">
+          Falar sobre o protocolo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem conduz -->
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Quem vai te atender</span>
+        <h2>Fernanda Lins</h2>
+      </div>
+      <p>
+        Especialista em estética corporal avançada — gordura localizada, flacidez, celulite,
+        lipo enzimática, criolipólise e radiofrequência. Quem te atende sou eu, em todas as
+        sessões, com os equipamentos operados por mim.
+      </p>
+      <p>
+        Em lipedema isso importa mais que em qualquer outro protocolo: é uma condição que exige
+        ajuste constante de intensidade e de técnica, e quem acompanha precisa saber como a sua
+        perna estava na semana passada.
+      </p>
+      <blockquote class="citacao">
+        <p>Acredite, é possível conviver melhor. Só não vou te prometer o que não posso dar.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="secao">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Dúvidas frequentes</span>
+        <h2>As perguntas que chegam no meu WhatsApp</h2>
+      </div>
+      <div>
+        {
+          perguntas.map((q) => (
+            <details class="faq">
+              <summary>{q.p}</summary>
+              <div class="resposta">{q.r}</div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito fechamento">
+      <h2>A avaliação não custa nada</h2>
+      <p class="lead">
+        Você me conta há quanto tempo convive com isso, o que já tentou e o que mais incomoda.
+        Eu te digo, com honestidade, o que dá para fazer e o que não dá.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento">
+          Agendar minha avaliação
+        </a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .sinal {
+    padding: 18px 20px 18px 44px;
+    background: var(--creme);
+    border: 1px solid var(--linha-suave);
+    border-radius: var(--raio);
+    position: relative;
+    color: var(--tinta-2);
+  }
+  .sinal::before {
+    content: '';
+    position: absolute;
+    left: 18px; top: 25px;
+    width: 12px; height: 12px;
+    border: 1.5px solid var(--ouro-claro);
+    border-radius: 3px;
+  }
+
+  .cartao--limite { border-color: var(--linha); background: var(--creme-2); }
+
+  .preco {
+    font-family: var(--display);
+    font-size: clamp(30px, 4.5vw, 40px);
+    line-height: 1.1;
+    color: var(--ouro);
+  }
+  .cartao--valor {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-color: var(--ouro-claro);
+  }
+
+  .citacao { margin: 0; padding: 20px 0 20px 22px; border-left: 2px solid var(--ouro-claro); }
+  .citacao p {
+    font-family: var(--display);
+    font-size: clamp(21px, 3vw, 27px);
+    line-height: 1.35;
+  }
+
+  .fechamento { align-items: flex-start; }
+</style>

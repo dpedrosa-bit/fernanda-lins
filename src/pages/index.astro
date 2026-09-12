@@ -1,0 +1,413 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const problemas = [
+  {
+    t: 'Lipedema',
+    d: 'Peso nas pernas, dor e desproporção que não cede com dieta.',
+    href: '/lipedema',
+  },
+  {
+    t: 'Pós-operatório',
+    d: 'Drenagem depois da cirurgia, com liberação do seu cirurgião.',
+    href: '/drenagem-pos-operatorio',
+  },
+  {
+    t: 'Gordura localizada',
+    d: 'Aquela que não sai com dieta nem academia. Criolipólise, enzimas e crio de placas.',
+    href: null,
+  },
+  {
+    t: 'Celulite e flacidez',
+    d: 'Radiofrequência, ultrassom e corrente russa, em protocolo contínuo.',
+    href: null,
+  },
+  {
+    t: 'Papada',
+    d: 'Protocolo com enzimas pressurizadas, com resultado visível em poucas sessões.',
+    href: null,
+  },
+  {
+    t: 'Pele do rosto',
+    d: 'Limpeza de pele, dermaplaning e brow lamination.',
+    href: null,
+  },
+];
+
+const spa = [
+  { t: 'SPA das amigas', v: 'R$ 199' },
+  { t: 'SPA mãe e filha', v: 'R$ 199' },
+  { t: 'SPA da noiva', v: 'R$ 349' },
+  { t: 'SPA day completo', v: 'R$ 439' },
+];
+
+const zap = msg.home;
+---
+
+<Base
+  titulo="Fernanda Lins Estética | Estética avançada na Zona Norte de São Paulo"
+  descricao={site.descricao}
+  caminho="/"
+  mensagemZap={zap}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno abertura-grade">
+      <div class="abertura-texto">
+        <div class="cabeca">
+          <span class="olho">{site.regiao} · {site.bairro}</span>
+          <h1>Aqui você é cuidada de verdade.</h1>
+          <p class="lead">
+            Estética avançada facial e corporal, com atendimento individual do começo ao fim.
+            Protocolos montados no seu caso — não pacote de prateleira.
+          </p>
+        </div>
+        <div class="btn-grupo">
+          <a class="btn btn--zap" href={whatsappLink(msg.avaliacao)} data-zap="hero">
+            Agendar avaliação sem custo
+          </a>
+          <a class="btn btn--linha" href="#tratamentos">Ver tratamentos</a>
+        </div>
+        <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
+      </div>
+      <!--
+        Trocar por uma foto real da Fernanda atendendo (retrato vertical, ~900×1200).
+        Salvar em public/fernanda.jpg e substituir este bloco por:
+        <img src="/fernanda.jpg" alt="Fernanda Lins atendendo no estúdio" width="900" height="1200" />
+      -->
+      <div class="abertura-foto" role="img" aria-label="Espaço reservado para foto da Fernanda">
+        <span class="marca-fl-grande" aria-hidden="true">FL</span>
+        <span class="foto-nota">foto da Fernanda entra aqui</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- A bifurcação -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="grade g2 bifurcacao">
+        <a class="porta" href="#tratamentos">
+          <span class="olho">Tratamento</span>
+          <h2>Quero tratar meu corpo</h2>
+          <p class="pequeno">
+            Lipedema, pós-operatório, gordura localizada, celulite, flacidez e papada.
+            Começa sempre por uma avaliação sem custo.
+          </p>
+          <span class="porta-seta" aria-hidden="true">Ver tratamentos →</span>
+        </a>
+        <a class="porta porta--spa" href="#spa">
+          <span class="olho">Cuidado</span>
+          <h2>Quero um dia de SPA</h2>
+          <p class="pequeno">
+            Sozinha, com as amigas, com a sua mãe ou antes do casamento. Momento de rainha,
+            com valores fechados.
+          </p>
+          <span class="porta-seta" aria-hidden="true">Ver pacotes →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tratamentos por problema -->
+  <section class="secao" id="tratamentos">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Tratamentos</span>
+        <h2>Comece pelo que mais te incomoda</h2>
+        <p class="lead">
+          Toda cliente de protocolo começa igual: uma avaliação sem custo, onde eu falo o que
+          dá para fazer e o que não dá.
+        </p>
+      </div>
+      <div class="grade g3">
+        {
+          problemas.map((p) =>
+            p.href ? (
+              <a class="cartao cartao--link" href={p.href}>
+                <h4>{p.t}</h4>
+                <p class="pequeno">{p.d}</p>
+                <span class="seta" aria-hidden="true">Saiba mais →</span>
+              </a>
+            ) : (
+              <div class="cartao">
+                <h4>{p.t}</h4>
+                <p class="pequeno">{p.d}</p>
+                <a class="seta" href={whatsappLink(`Oi Fernanda! Vim pelo site e queria saber sobre ${p.t.toLowerCase()}.`)} data-zap={`problema-${p.t}`}>
+                  Perguntar no WhatsApp →
+                </a>
+              </div>
+            )
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem é -->
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Quem vai te atender</span>
+        <h2>Fernanda Lins</h2>
+      </div>
+      <p>
+        Especialista em gordura localizada, flacidez, celulite, lipo enzimática, criolipólise,
+        radiofrequência e limpeza de pele — e habilitada para acompanhamento pós-operatório.
+      </p>
+      <p>
+        Não é uma sala com equipe rotativa. Quem te recebe, monta o protocolo e conduz cada
+        sessão sou eu. É por isso que eu consigo ajustar o que precisa ser ajustado de uma
+        semana para a outra, em vez de repetir o mesmo pacote para todo mundo.
+      </p>
+      <blockquote class="citacao">
+        <p>
+          Confesso que por muitas vezes achei que não conseguiria corresponder às suas
+          expectativas. Mas ela sempre focada, ouvindo o que era indicado — e assim seguimos
+          até chegar nesse resultado.
+        </p>
+      </blockquote>
+      <p class="pequeno suave">
+        Sobre uma cliente que concluiu o protocolo corporal completo.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPA -->
+  <section class="secao" id="spa">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">SPA</span>
+        <h2>Momento de rainha. Não dá para aceitar menos que isso.</h2>
+        <p class="lead">
+          Escolha o período — matinal, da tarde ou noturno — e a companhia. Todos incluem
+          cuidado completo e uma pausa de verdade.
+        </p>
+      </div>
+      <div class="grade g2">
+        <div class="grade spa-lista">
+          {
+            spa.map((s) => (
+              <div class="spa-item">
+                <span>{s.t}</span>
+                <span class="tabular spa-valor">{s.v}</span>
+              </div>
+            ))
+          }
+          <div class="spa-item spa-item--nota">
+            <span class="pequeno suave">
+              Também: SPA matinal, da tarde e noturno a R$ 149, das madrinhas, e opções com
+              massagem relaxante.
+            </span>
+          </div>
+        </div>
+        <div class="cartao cartao--presente">
+          <span class="olho">Para presentear</span>
+          <h3>Um SPA é um presente que a pessoa lembra</h3>
+          <p class="pequeno">
+            Aniversário, Dia das Mães, noivado ou só porque ela merece. Me chame que eu monto
+            o presente do jeito que você quer entregar.
+          </p>
+          <a class="btn btn--zap" href={whatsappLink('Oi Fernanda! Vim pelo site e queria presentear alguém com um SPA.')} data-zap="spa-presente">
+            Quero presentear
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="secao secao--ouro">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Como funciona</span>
+        <h2>Três passos, sem surpresa no meio do caminho</h2>
+      </div>
+      <ol class="passos">
+        <li>
+          <span class="passo-n">1</span>
+          <div>
+            <h4>Avaliação sem custo</h4>
+            <p class="pequeno">
+              Você me conta o que incomoda e o que já tentou. Eu digo o que é possível — com
+              honestidade, mesmo quando a resposta não é a que você queria ouvir.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="passo-n">2</span>
+          <div>
+            <h4>Protocolo desenhado</h4>
+            <p class="pequeno">
+              Quantas sessões, de quê, em que ritmo e por quanto. Tudo dito antes, incluindo as
+              regras de pacote.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="passo-n">3</span>
+          <div>
+            <h4>Acompanhamento até o fim</h4>
+            <p class="pequeno">
+              Eu registro a evolução e ajusto o que precisa ser ajustado. E te oriento sobre o
+              que fazer em casa, porque boa parte do resultado se decide entre as sessões.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <div class="cartao">
+        <h4>As regras de pacote, ditas antes</h4>
+        <ul class="marcada">
+          <li>Validade de 6 meses a partir da compra.</li>
+          <li>Confirmação de presença antes de cada sessão.</li>
+          <li>Cancelamento com no mínimo 6 horas de antecedência.</li>
+          <li>Tolerância de 10 minutos de atraso.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onde fica -->
+  <section class="secao" id="onde">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Onde fica</span>
+        <h2>{site.bairro}, {site.regiao}</h2>
+      </div>
+      <div class="grade g2">
+        <div class="cartao">
+          <h4>Endereço</h4>
+          <p class="pequeno">{enderecoLinha}</p>
+          <p class="pequeno suave">CEP {site.cep}</p>
+          <p class="pequeno">
+            <a href={site.mapsUrl} data-mapa target="_blank" rel="noopener">Abrir no Google Maps</a>
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Horários</h4>
+          {site.horarios.map((h) => <p class="pequeno">{h.dias} · {h.horario}</p>)}
+          <p class="pequeno suave">Atendimento com hora marcada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito fechamento">
+      <h2>Vamos conversar?</h2>
+      <p class="lead">
+        Me conta o que está te incomodando. Eu respondo pessoalmente, e a avaliação de
+        protocolo não custa nada.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(msg.avaliacao)} data-zap="fechamento">
+          Falar com a Fernanda
+        </a>
+        <a class="btn btn--linha" href={site.instagramUrl} target="_blank" rel="noopener">
+          Ver o Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 6vw, 72px); padding-bottom: clamp(36px, 5vw, 60px); }
+  .abertura-grade {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: clamp(28px, 5vw, 56px);
+    align-items: center;
+  }
+  .abertura-texto { display: flex; flex-direction: column; gap: 26px; }
+  .abertura-foto {
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    background: linear-gradient(150deg, var(--ouro-lavado), var(--creme-2));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .abertura-foto :global(img) { width: 100%; height: 100%; object-fit: cover; border-radius: var(--raio); }
+  .marca-fl-grande {
+    font-family: var(--display);
+    font-size: 34px;
+    letter-spacing: .07em;
+    color: var(--ouro);
+    border: 1px solid var(--ouro-claro);
+    border-radius: 50%;
+    width: 92px; height: 92px;
+    display: grid; place-items: center;
+  }
+  .foto-nota { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-3); }
+  @media (max-width: 860px) {
+    .abertura-grade { grid-template-columns: 1fr; }
+    .abertura-foto { aspect-ratio: 3 / 2; max-height: 320px; }
+  }
+
+  /* A bifurcação — o bloco mais importante da página */
+  .bifurcacao { gap: 20px; }
+  .porta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(28px, 4vw, 40px);
+    background: var(--creme);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    text-decoration: none;
+    color: var(--tinta);
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .porta:hover { border-color: var(--ouro-claro); transform: translateY(-2px); }
+  .porta--spa { background: var(--ouro-lavado); }
+  .porta h2 { font-size: clamp(25px, 3.6vw, 34px); }
+  .porta-seta { color: var(--ouro); font-size: 15px; margin-top: 4px; }
+
+  .cartao--link { text-decoration: none; color: var(--tinta); transition: border-color .18s ease; }
+  .cartao--link:hover { border-color: var(--ouro-claro); }
+  .seta { color: var(--ouro); font-size: 14.5px; margin-top: auto; padding-top: 6px; text-decoration: none; }
+
+  .citacao { margin: 0; padding: 20px 0 20px 22px; border-left: 2px solid var(--ouro-claro); }
+  .citacao p {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.9vw, 26px);
+    line-height: 1.38;
+  }
+
+  /* SPA */
+  .spa-lista { gap: 0; align-content: start; }
+  .spa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--linha);
+  }
+  .spa-item--nota { border-bottom: 0; padding-top: 18px; }
+  .spa-valor { font-family: var(--display); font-size: 21px; color: var(--ouro); }
+  .cartao--presente { justify-content: center; gap: 14px; align-items: flex-start; border-color: var(--ouro-claro); }
+  .cartao--presente .btn { margin-top: 6px; }
+
+  /* Passos */
+  .passos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+  .passos li { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+  .passo-n {
+    font-family: var(--display);
+    font-size: 18px;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    border: 1px solid var(--ouro-claro);
+    border-radius: 50%;
+    color: var(--ouro);
+    flex: none;
+  }
+  .passos h4 { margin-bottom: 5px; }
+
+  .fechamento { align-items: flex-start; }
+</style>

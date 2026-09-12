@@ -1,0 +1,254 @@
+---
+import '../styles/global.css';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+  /** Caminho canônico, ex.: "/lipedema". Use "/" na home. */
+  caminho: string;
+  /** Mensagem pré-escrita do WhatsApp desta página (atribuição). */
+  mensagemZap?: string;
+  /** JSON-LD extra desta página (FAQPage, Service…). */
+  schemaExtra?: unknown;
+}
+
+const { titulo, descricao, caminho, mensagemZap = msg.home, schemaExtra } = Astro.props;
+
+const canonical = new URL(caminho, Astro.site).href;
+
+// IDs de rastreamento — definidos como variáveis de ambiente no deploy.
+// Sem eles, nenhum script de terceiro é carregado (útil em desenvolvimento).
+const GA4 = import.meta.env.PUBLIC_GA4_ID;
+const ADS = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
+const PIXEL = import.meta.env.PUBLIC_META_PIXEL_ID;
+
+const negocio = {
+  '@context': 'https://schema.org',
+  '@type': 'HealthAndBeautyBusiness',
+  name: site.nomeCompleto,
+  description: site.descricao,
+  url: Astro.site?.href,
+  telephone: `+${site.whatsapp}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.rua,
+    addressLocality: site.cidade,
+    addressRegion: site.uf,
+    postalCode: site.cep,
+    addressCountry: 'BR',
+  },
+  sameAs: [site.instagramUrl],
+  priceRange: '$$',
+};
+
+const links = [
+  { href: '/drenagem-pos-operatorio', texto: 'Pós-operatório' },
+  { href: '/lipedema', texto: 'Lipedema' },
+  { href: '/#tratamentos', texto: 'Tratamentos' },
+  { href: '/#onde', texto: 'Onde fica' },
+];
+---
+
+<!-- Head -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{titulo}</title>
+<meta name="description" content={descricao} />
+<link rel="canonical" href={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={titulo} />
+<meta property="og:description" content={descricao} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content="pt_BR" />
+<meta name="theme-color" content="#FBF8F3" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"
+/>
+
+<script type="application/ld+json" set:html={JSON.stringify(negocio)} />
+{schemaExtra && <script type="application/ld+json" set:html={JSON.stringify(schemaExtra)} />}
+
+{
+  GA4 && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4}`} />
+      <script is:inline define:vars={{ GA4, ADS }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA4);
+        if (ADS) gtag('config', ADS);
+      </script>
+    </>
+  )
+}
+
+{
+  PIXEL && (
+    <script is:inline define:vars={{ PIXEL }}>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL);
+      fbq('track', 'PageView');
+    </script>
+  )
+}
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="/" aria-label={`${site.nome} — início`}>
+      <span class="marca-fl" aria-hidden="true">FL</span>
+      <span class="marca-nome">
+        <b>Fernanda Lins</b>
+        <span>Estética facial e corporal</span>
+      </span>
+    </a>
+    <nav aria-label="Principal">
+      {links.map((l) => <a href={l.href}>{l.texto}</a>)}
+    </nav>
+    <a class="btn btn--zap topo-zap" href={whatsappLink(mensagemZap)} data-zap="topo">
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main id="conteudo">
+  <slot />
+</main>
+
+<footer class="rodape">
+  <div class="rodape-interno">
+    <div class="rodape-bloco">
+      <span class="marca-fl" aria-hidden="true">FL</span>
+      <p class="pequeno">{site.nomeCompleto}</p>
+      <p class="pequeno suave">{site.tagline}</p>
+    </div>
+    <div class="rodape-bloco">
+      <h4>Onde fica</h4>
+      <p class="pequeno">{enderecoLinha}</p>
+      <p class="pequeno suave">CEP {site.cep} · {site.regiao}</p>
+      <a class="pequeno" href={site.mapsUrl} data-mapa target="_blank" rel="noopener">Ver no mapa</a>
+    </div>
+    <div class="rodape-bloco">
+      <h4>Horários</h4>
+      {site.horarios.map((h) => <p class="pequeno">{h.dias} · {h.horario}</p>)}
+      <p class="pequeno suave">Atendimento com hora marcada.</p>
+    </div>
+    <div class="rodape-bloco">
+      <h4>Contato</h4>
+      <a class="pequeno" href={whatsappLink(mensagemZap)} data-zap="rodape">{site.telefoneExibicao}</a>
+      <a class="pequeno" href={site.instagramUrl} target="_blank" rel="noopener">@{site.instagram}</a>
+    </div>
+  </div>
+  <div class="rodape-fim">
+    <p class="pequeno suave">
+      © {new Date().getFullYear()} {site.nomeCompleto}. Os resultados mostrados são de
+      clientes reais, publicados com autorização, e variam de pessoa para pessoa.
+    </p>
+  </div>
+</footer>
+
+<div class="zap-fixo">
+  <a class="btn btn--zap" href={whatsappLink(mensagemZap)} data-zap="barra-fixa">
+    Falar no WhatsApp
+  </a>
+</div>
+
+<script is:inline>
+  // Rastreamento de conversão. Cada clique registra de qual página saiu —
+  // é o que permite saber qual campanha gerou conversa.
+  (function () {
+    function evento(nome, extra) {
+      var dados = Object.assign({ pagina: location.pathname }, extra || {});
+      if (window.gtag) window.gtag('event', nome, dados);
+      if (window.fbq) window.fbq('trackCustom', nome, dados);
+    }
+    document.addEventListener('click', function (e) {
+      var alvo = e.target.closest('[data-zap], [data-mapa], [data-form]');
+      if (!alvo) return;
+      if (alvo.hasAttribute('data-zap')) {
+        evento('clique_whatsapp', { origem: alvo.getAttribute('data-zap') });
+      } else if (alvo.hasAttribute('data-mapa')) {
+        evento('clique_mapa');
+      }
+    });
+  })();
+</script>
+
+<style>
+  .topo {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(251, 248, 243, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--linha);
+  }
+  .topo-interno {
+    width: var(--largo);
+    margin: 0 auto;
+    padding: 12px var(--pad);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .marca { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--tinta); }
+  .marca-fl {
+    font-family: var(--display);
+    font-size: 17px;
+    letter-spacing: .06em;
+    color: var(--ouro);
+    border: 1px solid var(--ouro-claro);
+    border-radius: 50%;
+    width: 42px; height: 42px;
+    display: grid; place-items: center;
+    flex: none;
+  }
+  .marca-nome { display: flex; flex-direction: column; line-height: 1.25; }
+  .marca-nome b { font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: .03em; }
+  .marca-nome span { font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--tinta-3); }
+
+  .topo nav { display: flex; gap: 22px; margin-left: auto; }
+  .topo nav a {
+    color: var(--tinta-2);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .topo nav a:hover { color: var(--ouro); }
+  .topo-zap { padding: 10px 20px; font-size: 15px; }
+
+  @media (max-width: 900px) { .topo nav { display: none; } .topo-zap { margin-left: auto; } }
+  @media (max-width: 760px) { .topo-zap { display: none; } .marca-nome span { display: none; } }
+
+  .rodape { background: var(--creme-2); border-top: 1px solid var(--linha); }
+  .rodape-interno {
+    width: var(--largo);
+    margin: 0 auto;
+    padding: clamp(40px, 6vw, 64px) var(--pad) 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 860px) { .rodape-interno { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .rodape-interno { grid-template-columns: 1fr; } }
+  .rodape-bloco { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+  .rodape-bloco h4 { color: var(--tinta); margin-bottom: 3px; }
+  .rodape-fim {
+    width: var(--largo);
+    margin: 0 auto;
+    padding: 20px var(--pad) 32px;
+    border-top: 1px solid var(--linha);
+    max-width: 100%;
+  }
+</style>

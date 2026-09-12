@@ -1,0 +1,200 @@
+/*
+  Sistema visual — Fernanda Lins Estética
+  Deriva da identidade dela: creme, folha de ouro, serifada de alto contraste.
+  Tema único e claro, de propósito: a marca é o creme dourado. Todas as cores
+  são pintadas explicitamente para a página não herdar fundo de lugar nenhum.
+*/
+
+:root {
+  --creme: #FBF8F3;
+  --creme-2: #F4EDE1;
+  --creme-3: #EAE0CE;
+  --tinta: #1A1611;
+  --tinta-2: #4B4338;
+  --tinta-3: #7D7264;
+  --ouro: #9A7433;
+  --ouro-claro: #C4A265;
+  --ouro-lavado: #F2E7D0;
+  --linha: #E2D8C6;
+  --linha-suave: #EFE8DA;
+  --verde-zap: #25D366;
+  --alerta: #8B4A2F;
+
+  --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --corpo: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --col: min(70ch, 100%);
+  --largo: min(1140px, 100%);
+  --pad: clamp(20px, 5vw, 48px);
+  --raio: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--tinta);
+  font-family: var(--corpo);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  /* espaço para a barra fixa de WhatsApp no celular */
+  padding-bottom: 0;
+}
+@media (max-width: 760px) {
+  body { padding-bottom: 72px; }
+}
+
+:focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0;
+  color: var(--tinta);
+}
+h1 { font-size: clamp(34px, 6.5vw, 58px); letter-spacing: -.005em; }
+h2 { font-size: clamp(27px, 4.4vw, 40px); }
+h3 { font-size: clamp(20px, 2.8vw, 26px); }
+h4 { font-family: var(--corpo); font-weight: 500; font-size: 17px; line-height: 1.4; margin: 0; }
+p { margin: 0; }
+
+a { color: var(--ouro); text-underline-offset: 3px; }
+strong { font-weight: 500; color: var(--tinta); }
+img { max-width: 100%; height: auto; display: block; }
+
+.olho {
+  font-family: var(--corpo);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ouro);
+}
+.lead { font-size: clamp(18px, 2.4vw, 21px); line-height: 1.6; color: var(--tinta-2); }
+.pequeno { font-size: 15px; line-height: 1.6; color: var(--tinta-2); }
+.suave { color: var(--tinta-3); }
+
+/* ---------- estrutura ---------- */
+.secao { padding: clamp(52px, 8vw, 92px) var(--pad); display: flex; justify-content: center; }
+.secao--creme { background: var(--creme-2); }
+.secao--ouro { background: var(--ouro-lavado); }
+.secao > .interno { width: var(--largo); display: flex; flex-direction: column; gap: clamp(24px, 3.5vw, 36px); }
+.secao > .interno--estreito { width: var(--col); }
+.cabeca { display: flex; flex-direction: column; gap: 12px; max-width: 62ch; }
+
+.grade { display: grid; gap: 18px; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) { .g3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } }
+
+.cartao {
+  background: var(--creme);
+  border: 1px solid var(--linha-suave);
+  border-radius: var(--raio);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.secao--creme .cartao { background: var(--creme); }
+
+/* ---------- botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-family: var(--corpo);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn--zap { background: var(--verde-zap); color: #06331A; }
+.btn--zap:hover { background: #1FBE5A; }
+.btn--ouro { background: var(--tinta); color: var(--creme); }
+.btn--ouro:hover { background: #322A1E; }
+.btn--linha { background: transparent; color: var(--tinta); border-color: var(--linha); }
+.btn--linha:hover { background: var(--creme-2); }
+.btn-grupo { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- lista de marcadores ---------- */
+ul.marcada { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+ul.marcada li { position: relative; padding-left: 26px; color: var(--tinta-2); }
+ul.marcada li::before {
+  content: '';
+  position: absolute;
+  left: 4px; top: .68em;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ouro-claro);
+}
+
+/* ---------- FAQ ---------- */
+details.faq {
+  border-bottom: 1px solid var(--linha);
+  padding: 4px 0;
+}
+details.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 34px 18px 0;
+  font-weight: 400;
+  font-size: 17.5px;
+  position: relative;
+  color: var(--tinta);
+}
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 6px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: var(--ouro);
+  line-height: 1;
+}
+details.faq[open] summary::after { content: '−'; }
+details.faq .resposta { padding: 0 34px 20px 0; color: var(--tinta-2); font-size: 16px; }
+
+/* ---------- barra fixa de WhatsApp no celular ---------- */
+.zap-fixo {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom));
+  background: rgba(251, 248, 243, .94);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--linha);
+  display: none;
+}
+.zap-fixo .btn { width: 100%; }
+@media (max-width: 760px) { .zap-fixo { display: block; } }
+
+/* ---------- utilitários ---------- */
+.tabular { font-variant-numeric: tabular-nums; }
+.rolavel { overflow-x: auto; }
+.pular {
+  position: absolute; left: -9999px;
+  background: var(--tinta); color: var(--creme);
+  padding: 10px 16px; z-index: 100;
+}
+.pular:focus { left: 12px; top: 12px; }
