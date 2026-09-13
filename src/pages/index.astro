@@ -72,13 +72,24 @@ const zap = msg.home;
         <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
       </div>
       <!--
-        Trocar por uma foto real da Fernanda atendendo (retrato vertical, ~900×1200).
-        Salvar em public/fernanda.jpg e substituir este bloco por:
-        <img src="/fernanda.jpg" alt="Fernanda Lins atendendo no estúdio" width="900" height="1200" />
+        A foto fica em public/fernanda.jpg (retrato vertical).
+        Enquanto o arquivo nao existir, o onerror remove a imagem e aparece o
+        espaco reservado que esta por baixo — o site nunca mostra icone quebrado.
       -->
-      <div class="abertura-foto" role="img" aria-label="Espaço reservado para foto da Fernanda">
-        <span class="marca-fl-grande" aria-hidden="true">FL</span>
-        <span class="foto-nota">foto da Fernanda entra aqui</span>
+      <div class="abertura-foto">
+        <div class="foto-reserva" aria-hidden="true">
+          <span class="marca-fl-grande">FL</span>
+          <span class="foto-nota">foto da Fernanda entra aqui</span>
+        </div>
+        <img
+          src="/fernanda.jpg"
+          alt="Fernanda Lins no estudio, em Jardim Monjolo"
+          width="960"
+          height="1650"
+          loading="eager"
+          fetchpriority="high"
+          onerror="this.remove()"
+        />
       </div>
     </div>
   </section>
@@ -322,17 +333,30 @@ const zap = msg.home;
   }
   .abertura-texto { display: flex; flex-direction: column; gap: 26px; }
   .abertura-foto {
-    aspect-ratio: 4 / 5;
+    position: relative;
+    aspect-ratio: 3 / 4;
     border: 1px solid var(--linha);
     border-radius: var(--raio);
+    overflow: hidden;
     background: linear-gradient(150deg, var(--ouro-lavado), var(--creme-2));
+  }
+  .foto-reserva {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 14px;
   }
-  .abertura-foto :global(img) { width: 100%; height: 100%; object-fit: cover; border-radius: var(--raio); }
+  .abertura-foto img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* o retrato e alto: ancorar perto do topo mantem o rosto no enquadramento */
+    object-position: 50% 12%;
+  }
   .marca-fl-grande {
     font-family: var(--display);
     font-size: 34px;
@@ -346,7 +370,8 @@ const zap = msg.home;
   .foto-nota { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-3); }
   @media (max-width: 860px) {
     .abertura-grade { grid-template-columns: 1fr; }
-    .abertura-foto { aspect-ratio: 3 / 2; max-height: 320px; }
+    .abertura-foto { aspect-ratio: 4 / 3; max-height: 380px; }
+    .abertura-foto img { object-position: 50% 10%; }
   }
 
   /* A bifurcação — o bloco mais importante da página */
