@@ -15,6 +15,15 @@ npm run build    # gera dist/
 npm run preview  # serve o dist/
 ```
 
+## Contexto do projeto
+
+- **`CLAUDE.md`** — leia primeiro: a tese do site, as regras que não se quebram,
+  a estrutura técnica e o plano de campanhas.
+- **`STATUS.md`** — em que ponto o trabalho parou, o que vem a seguir, o que está travado.
+- **`docs/plano-captacao.html`** — a estratégia completa, aprovada. Abra no navegador.
+- **`docs/hospedagem.md`** — onde publicar e como. Recomendação: Cloudflare Pages.
+- **`docs/previa-navegavel.html`** — prévia estática das três páginas (não reflete o código atual).
+
 ## Estrutura
 
 ```
@@ -35,6 +44,9 @@ todas as páginas, para o rodapé e para o JSON-LD.
 | `/` | Bifurca entre tratamento corporal e SPA |
 | `/drenagem-pos-operatorio` | Campanha principal do Google Ads — maior valor por cliente |
 | `/lipedema` | Segunda campanha — menor concorrência, alta intenção |
+
+Faltam `/resultados` (antes-e-depois — prioridade), `/papada`, `/celulite-flacidez`,
+`/limpeza-de-pele` e `/vale-presente`.
 
 ## Rastreamento
 

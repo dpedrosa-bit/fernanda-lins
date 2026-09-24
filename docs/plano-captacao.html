@@ -1,0 +1,834 @@
+<title>Fernanda Lins Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Karla:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --paper:#FBF9F5;
+  --surface:#F3EDE2;
+  --surface-2:#E9E0CF;
+  --ink:#17130F;
+  --ink-2:#4E463C;
+  --ink-3:#7C7265;
+  --gold:#9A6E2E;
+  --gold-soft:#C9A55E;
+  --gold-wash:#F0E4CB;
+  --line:#DFD5C3;
+  --line-soft:#EBE3D5;
+  --clay:#8E4429;
+  --clay-wash:#F4E2DA;
+  --sage:#3B5A46;
+  --sage-wash:#E1EADF;
+  --shadow:0 1px 2px rgba(23,19,15,.05);
+
+  --f-display:"Bodoni Moda","Didot","Times New Roman",serif;
+  --f-body:"Karla","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --col:min(68ch,100%);
+  --wide:min(1080px,100%);
+  --pad:clamp(20px,5vw,40px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131009;
+    --surface:#1C1811;
+    --surface-2:#262017;
+    --ink:#F0E9DC;
+    --ink-2:#BCB0A0;
+    --ink-3:#8B8071;
+    --gold:#CDA862;
+    --gold-soft:#9A7738;
+    --gold-wash:#2A2114;
+    --line:#332C21;
+    --line-soft:#26211a;
+    --clay:#D08A6C;
+    --clay-wash:#2E1D15;
+    --sage:#8FB79A;
+    --sage-wash:#182319;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131009;
+  --surface:#1C1811;
+  --surface-2:#262017;
+  --ink:#F0E9DC;
+  --ink-2:#BCB0A0;
+  --ink-3:#8B8071;
+  --gold:#CDA862;
+  --gold-soft:#9A7738;
+  --gold-wash:#2A2114;
+  --line:#332C21;
+  --line-soft:#26211a;
+  --clay:#D08A6C;
+  --clay-wash:#2E1D15;
+  --sage:#8FB79A;
+  --sage-wash:#182319;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- layout ---------- */
+.wrap{display:flex;flex-direction:column;align-items:center;padding:0 var(--pad)}
+section{width:var(--col);display:flex;flex-direction:column;gap:20px}
+section.wide{width:var(--wide)}
+.wrap > section{margin-top:0}
+.stack{display:flex;flex-direction:column;align-items:center;gap:clamp(52px,7vw,84px);width:100%;padding-bottom:96px}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:500;text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(38px,7vw,64px);letter-spacing:-.01em}
+h2{font-size:clamp(27px,4.2vw,38px)}
+h3{font-size:clamp(20px,2.6vw,24px);line-height:1.25}
+h4{font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.4}
+p{margin:0}
+a{color:var(--gold);text-underline-offset:3px;text-decoration-thickness:1px}
+strong{font-weight:700;color:var(--ink)}
+.lead{font-size:clamp(18px,2.3vw,20px);line-height:1.6;color:var(--ink-2)}
+.eyebrow{
+  font-family:var(--f-body);font-size:11.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+}
+.muted{color:var(--ink-3)}
+.small{font-size:14.5px;line-height:1.55}
+.mono{font-family:var(--f-mono);font-size:.88em;letter-spacing:-.01em}
+.num{font-variant-numeric:tabular-nums}
+
+.rule{height:1px;background:var(--line);border:0;width:100%}
+.rule-gold{height:1px;background:linear-gradient(90deg,var(--gold),transparent);border:0;width:120px}
+
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:9px}
+ul.plain li::marker{color:var(--gold-soft)}
+ul.tight{gap:5px}
+
+/* ---------- hero ---------- */
+.hero{
+  width:100%;display:flex;justify-content:center;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(120% 80% at 78% 0%, var(--gold-wash) 0%, transparent 62%),
+    var(--surface);
+  padding:clamp(48px,9vw,84px) var(--pad) clamp(40px,6vw,56px);
+  margin-bottom:clamp(52px,7vw,84px);
+}
+.hero-inner{width:var(--wide);display:flex;flex-direction:column;gap:26px}
+.monogram{
+  display:flex;align-items:center;gap:14px;
+}
+.monogram .fl{
+  font-family:var(--f-display);font-size:19px;letter-spacing:.06em;color:var(--gold);
+  border:1px solid var(--gold-soft);border-radius:50%;
+  width:46px;height:46px;display:grid;place-items:center;flex:none;
+}
+.monogram .who{display:flex;flex-direction:column;line-height:1.25}
+.monogram .who b{font-family:var(--f-display);font-weight:500;font-size:17px;letter-spacing:.04em}
+.monogram .who span{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.hero h1{max-width:16ch}
+.hero .lead{max-width:56ch}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:6px;
+}
+.chip{
+  font-size:12.5px;padding:5px 11px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper);color:var(--ink-2);
+}
+.chip b{color:var(--ink);font-weight:600}
+
+/* ---------- section head ---------- */
+.shead{display:flex;flex-direction:column;gap:9px}
+
+/* ---------- cards / grids ---------- */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+
+.card{
+  background:var(--surface);border:1px solid var(--line-soft);
+  border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:10px;
+}
+.card h4{font-size:15px}
+.card .small{color:var(--ink-2)}
+
+/* funil columns */
+.funil{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+@media(max-width:820px){.funil{grid-template-columns:1fr}}
+.funil > div{padding:22px;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+.funil > div + div{border-left:1px solid var(--line)}
+@media(max-width:820px){.funil > div + div{border-left:0;border-top:1px solid var(--line)}}
+.funil .cap{font-family:var(--f-display);font-size:21px}
+.funil dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:13.5px}
+.funil dt{color:var(--ink-3);white-space:nowrap}
+.funil dd{margin:0;color:var(--ink-2)}
+.funil .ticket{
+  font-family:var(--f-mono);font-size:13px;color:var(--gold);
+  padding-top:10px;border-top:1px dashed var(--line);margin-top:auto;
+}
+
+/* sitemap */
+.sitemap{display:flex;flex-direction:column;gap:10px}
+.node{
+  display:grid;grid-template-columns:minmax(150px,190px) 1fr auto;
+  gap:14px;align-items:baseline;
+  padding:13px 15px;border:1px solid var(--line-soft);border-radius:3px;
+  background:var(--surface);
+}
+.node.p1{border-left:3px solid var(--gold);background:var(--gold-wash)}
+.node.p2{border-left:3px solid var(--line)}
+.node.p3{border-left:3px solid transparent;background:transparent}
+.node .path{font-family:var(--f-mono);font-size:13.5px;color:var(--ink);font-weight:500}
+.node .why{font-size:14px;color:var(--ink-2);line-height:1.5}
+.node .tag{
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);white-space:nowrap;padding-top:2px;
+}
+.node.p1 .tag{color:var(--gold)}
+@media(max-width:720px){
+  .node{grid-template-columns:1fr;gap:5px}
+  .node .tag{order:-1}
+}
+
+/* wireframe */
+.wf{
+  border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--paper);
+}
+.wf-top{
+  padding:10px 15px;background:var(--surface-2);border-bottom:1px solid var(--line);
+  font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.wf-row{
+  display:grid;grid-template-columns:1fr minmax(190px,240px);gap:18px;
+  padding:15px 18px;border-bottom:1px dashed var(--line);
+}
+.wf-row:last-child{border-bottom:0}
+@media(max-width:720px){.wf-row{grid-template-columns:1fr;gap:7px}}
+.wf-block{display:flex;flex-direction:column;gap:5px}
+.wf-block .t{font-family:var(--f-display);font-size:18px;line-height:1.25}
+.wf-block .d{font-size:14px;color:var(--ink-2);line-height:1.5}
+.wf-note{
+  font-size:12.5px;color:var(--ink-3);line-height:1.5;
+  border-left:2px solid var(--gold-soft);padding-left:11px;
+}
+.wf-cta .t{color:var(--gold)}
+
+/* callout */
+.call{
+  border:1px solid var(--line);border-left:3px solid var(--sage);
+  background:var(--sage-wash);border-radius:3px;padding:18px 20px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.call.warn{border-left-color:var(--clay);background:var(--clay-wash)}
+.call .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sage)}
+.call.warn .lbl{color:var(--clay)}
+.call p{font-size:15px;line-height:1.6;color:var(--ink-2)}
+.call strong{color:var(--ink)}
+
+/* table */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+thead th{
+  text-align:left;padding:11px 14px;background:var(--surface-2);
+  font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-2);font-weight:700;
+  border-bottom:1px solid var(--line);white-space:nowrap;
+}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink-2)}
+tbody tr:last-child td{border-bottom:0}
+tbody td:first-child{color:var(--ink);font-weight:500}
+td .kw{font-family:var(--f-mono);font-size:12.5px;color:var(--ink);display:block}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* phases */
+.phase{display:grid;grid-template-columns:auto 1fr;gap:0 20px}
+.phase-mark{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.phase-mark .dot{
+  width:30px;height:30px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  font-family:var(--f-mono);font-size:13px;font-weight:500;
+  background:var(--gold-wash);color:var(--gold);border:1px solid var(--gold-soft);
+}
+.phase-mark .line{width:1px;flex:1;background:var(--line);min-height:12px}
+.phase-body{padding-bottom:26px;display:flex;flex-direction:column;gap:8px}
+.phase:last-child .phase-body{padding-bottom:0}
+.phase-body .when{font-family:var(--f-mono);font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+
+/* decisions */
+.q{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
+.q:last-child{border-bottom:0}
+.q .ask{font-weight:600;font-size:16px}
+.q .why{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.q .rec{font-size:13.5px;color:var(--gold);font-weight:500}
+
+footer{
+  width:100%;border-top:1px solid var(--line);background:var(--surface);
+  padding:26px var(--pad);display:flex;justify-content:center;
+}
+footer div{width:var(--wide);font-size:13px;color:var(--ink-3);line-height:1.6}
+</style>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="monogram">
+      <span class="fl">FL</span>
+      <span class="who">
+        <b>Fernanda Lins</b>
+        <span>Estética facial e corporal</span>
+      </span>
+    </div>
+    <h1>Um site que traz cliente, não um cartão de visita.</h1>
+    <p class="lead">O template oferecido lista serviços. Isso não capta ninguém e não dá para anunciar em cima. Esta é a proposta de um site montado ao redor de três funis distintos, de cinco oportunidades paradas no catálogo dela — e de uma decisão sobre onde os antes-e-depois podem aparecer sem pôr a conta de anúncios em risco.</p>
+    <div class="hero-facts">
+      <span class="chip">Rua Monjolo, 284 — <b>Zona Norte, SP</b></span>
+      <span class="chip">Ticket de protocolo até <b>R$ 2.290</b></span>
+      <span class="chip">Google: <b>5,0</b> com apenas <b>8</b> avaliações</span>
+      <span class="chip">Verba de teste <b>R$ 400–500/mês</b> por 3 meses</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="stack">
+
+<!-- ============ DIAGNÓSTICO ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">O problema do template</span>
+    <h2>Por que aquele site não funcionaria</h2>
+  </div>
+  <p>Não é questão de gosto. Um site de estética falha em captação por quatro motivos técnicos, e o modelo da Netlify tem os quatro:</p>
+  <div class="grid g2">
+    <div class="card">
+      <h4>Uma página só, para todos os serviços</h4>
+      <p class="small">Quem busca "tratamento para lipedema" cai numa lista genérica com limpeza de pele e brow lamination. O Google entende que a página não responde à busca, cobra mais caro pelo clique e mostra menos. Cada problema precisa da sua própria página.</p>
+    </div>
+    <div class="card">
+      <h4>Sem rastreamento de conversão</h4>
+      <p class="small">Se todo mundo é jogado num botão de WhatsApp sem evento configurado, nem o Google nem o Meta sabem quais anúncios geraram cliente. Sem isso, o algoritmo não otimiza e a verba queima por igual em tudo.</p>
+    </div>
+    <div class="card">
+      <h4>Sem captura de quem não decide na hora</h4>
+      <p class="small">Protocolo de R$ 1.495 raramente se fecha na primeira visita. Sem pixel, sem lista e sem remarketing, quem entrou e saiu está perdido — e ele foi pago.</p>
+    </div>
+    <div class="card">
+      <h4>Não vende a Fernanda</h4>
+      <p class="small">Ela aparece em todas as artes do Instagram, opera os equipamentos, tem 4.752 seguidores que a conhecem pelo rosto. O ativo da marca é ela. Template genérico apaga exatamente isso e a coloca para competir por preço.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESE ============ -->
+<section class="wide">
+  <div class="shead" style="width:var(--col);max-width:100%">
+    <span class="eyebrow">A tese</span>
+    <h2>Não é um negócio. São três.</h2>
+    <p class="lead">Do catálogo dela saem três públicos com jornadas de compra completamente diferentes. Tratar os três com a mesma página e a mesma campanha é o que faz a verba render pouco.</p>
+  </div>
+  <div class="funil">
+    <div>
+      <span class="eyebrow">Porta 1</span>
+      <span class="cap">Corpo &amp; protocolo</span>
+      <dl>
+        <dt>Serviços</dt><dd>Lipedema, criolipólise, enzimas, radiofrequência, corrente russa</dd>
+        <dt>Decisão</dt><dd>Longa, comparada, pesquisada</dd>
+        <dt>Canal</dt><dd>Google Search (intenção)</dd>
+        <dt>Conversão</dt><dd>Avaliação sem custo — nunca preço na primeira tela</dd>
+      </dl>
+      <span class="ticket">R$ 1.145 – R$ 2.290 · maior margem</span>
+    </div>
+    <div>
+      <span class="eyebrow">Porta 2</span>
+      <span class="cap">SPA &amp; presente</span>
+      <dl>
+        <dt>Serviços</dt><dd>SPA das amigas, mãe e filha, noiva, madrinhas, day completo</dd>
+        <dt>Decisão</dt><dd>Impulso, emocional, com data</dd>
+        <dt>Canal</dt><dd>Meta Ads + datas comemorativas</dd>
+        <dt>Conversão</dt><dd>Preço na cara e compra do vale-presente</dd>
+      </dl>
+      <span class="ticket">R$ 149 – R$ 439 · giro e volume</span>
+    </div>
+    <div>
+      <span class="eyebrow">Porta 3</span>
+      <span class="cap">Facial &amp; manutenção</span>
+      <dl>
+        <dt>Serviços</dt><dd>Limpeza de pele, dermaplaning, brow lamination, drenagem</dd>
+        <dt>Decisão</dt><dd>Rápida, recorrente, por proximidade</dd>
+        <dt>Canal</dt><dd>Google Maps, busca "perto de mim"</dd>
+        <dt>Conversão</dt><dd>Agendamento direto</dd>
+      </dl>
+      <span class="ticket">R$ 50 – R$ 160 · porta de entrada</span>
+    </div>
+  </div>
+  <p class="small muted" style="width:var(--col);max-width:100%">A Porta 3 não é onde está o dinheiro — é onde está a <strong>primeira visita</strong>. Uma limpeza de pele de R$ 99 coloca a cliente na maca por 60 minutos com a Fernanda, e é ali que o protocolo de corpo é apresentado. O site precisa refletir essa escada, não uma lista de preços plana.</p>
+</section>
+
+<!-- ============ OPORTUNIDADES ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">O que está parado no catálogo</span>
+    <h2>Duas oportunidades subaproveitadas</h2>
+    <p class="lead">Estas duas justificam o site sozinhas. Ambas já são serviços que ela presta — só não estão posicionadas em lugar nenhum onde alguém procure.</p>
+  </div>
+
+  <div class="call">
+    <span class="lbl">Oportunidade 1 · maior potencial</span>
+    <h3>Lipedema</h3>
+    <p>Ela tem um protocolo pronto e precificado — 5 radiofrequência, 5 ultrassom, 5 drenagem local, 2 crio, 5 ILIB, <strong>5× R$ 299</strong> — e ele está enterrado num story. Lipedema não é uma busca de estética: é uma busca de <strong>alguém procurando resposta para um problema</strong>. Quem digita isso no Google já foi chamada de preguiçosa a vida inteira, já tentou dieta, e está tentando entender o que tem. A concorrência local por essa palavra é baixíssima, o clique é barato e a intenção é altíssima. Uma página dedicada a lipedema, com linguagem de acolhimento em vez de linguagem de emagrecimento, é o melhor investimento único do projeto.</p>
+  </div>
+
+  <div class="call warn">
+    <span class="lbl">Cuidado obrigatório nessa página</span>
+    <p>Lipedema é condição de saúde. A página <strong>não pode prometer cura, nem se apresentar como tratamento médico</strong> — o posicionamento correto é manejo de sintomas, conforto, drenagem e qualidade de vida, com recomendação explícita de acompanhamento médico (angiologista). Isso não é só ética: promessa de cura derruba a conta de anúncios e cria exposição jurídica. Bem escrito, o acolhimento vende <em>mais</em> que a promessa.</p>
+  </div>
+
+  <div class="call">
+    <span class="lbl">Oportunidade 2 · maior recorrência</span>
+    <h3>Drenagem pós-operatória</h3>
+    <p><strong>Confirmado: ela está habilitada para atender pós-operatório.</strong> Já cobra R$ 110 na drenagem linfática e monta pacote de 5 e 10 sessões — o que não está dito em lugar nenhum é justamente o pós-operatório. É o segmento de maior valor por cliente do negócio: quem fez lipo ou abdominoplastia volta 3× por semana durante um mês ou mais — 20 a 30 sessões numa única cliente, contra 1 ou 2 de uma limpeza de pele. E a busca é a mais quente que existe: a pessoa acabou de sair da cirurgia e <em>precisa</em> começar em dias. Some a isso a via de indicação: cirurgião plástico que confia manda paciente todo mês, sem custo de anúncio.</p>
+  </div>
+
+  <div class="card">
+    <h4>Terceira, menor, mas fácil: vale-presente digital</h4>
+    <p class="small">SPA das amigas, mãe e filha, da noiva, das madrinhas — metade do catálogo de SPA <em>já é presente</em>, e não existe forma de comprar. Um vale-presente digital com valor fechado e validade de 6 meses (a mesma regra que ela já usa nos pacotes) transforma Dia das Mães, Dia dos Namorados e Natal em campanha de Meta com público frio, que é onde o SPA converte barato: produto tangível, preço claro, ninguém precisa se convencer de nada sobre o próprio corpo.</p>
+  </div>
+  <div class="grid g2">
+    <div class="card">
+      <h4>Quarta: papada</h4>
+      <p class="small">O "protocolo papada com enzimas pressurizadas" já existe e já foi publicado. É busca de volume alto, concorrência baixa, resultado visível rápido e ticket médio — e não aparece em nenhum lugar do catálogo formal. Merece página própria e campanha própria. "Papada" é das palavras mais buscadas em estética, e quase ninguém compra.</p>
+    </div>
+    <div class="card">
+      <h4>Quinta: homens</h4>
+      <p class="small">Tem homem nos resultados dela. A marca inteira é codificada no feminino — dourado, "momento de rainha", SPA das amigas — e isso está certo para o público principal, mas fecha a porta para um segmento mal atendido, com pouca concorrência e clique barato. Não precisa mudar a marca: precisa de um bloco na página de corpo e um conjunto de anúncios separado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANTES E DEPOIS ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">O ativo principal</span>
+    <h2>Os antes-e-depois: onde eles podem e onde não podem estar</h2>
+    <p class="lead">Ela tem o material que a maioria das clínicas não tem — resultados reais, fotografados na mesma parede, mesmo ângulo, mesma luz, com o protocolo descrito. Isso é a prova que fecha protocolo de R$ 1.495. E é exatamente o material que não pode entrar num anúncio.</p>
+  </div>
+
+  <div class="call warn">
+    <span class="lbl">Urgente · antes de turbinar qualquer post</span>
+    <p>A política de publicidade do Meta <strong>proíbe antes-e-depois em anúncios</strong> de saúde, estética e peso. O botão "Turbinar publicação" transforma um post orgânico em anúncio e o submete a essa política. Turbinar um post de antes-e-depois é reprovação quase certa, e reprovações repetidas escalam para <strong>restrição da conta de anúncios</strong> — que é lenta e incerta de reverter. Se ela já turbinou posts assim, essa é a primeira conversa a ter, antes de qualquer verba.</p>
+  </div>
+
+  <div class="call">
+    <span class="lbl">A solução é arquitetural, não é abrir mão da prova</span>
+    <p>O site é propriedade dela e <strong>não está sujeito à política de anúncios do Meta</strong>. Então a divisão é limpa: o <strong>anúncio</strong> usa criativo que passa — ela falando, o estúdio, o equipamento, educação sobre lipedema — e leva para o site. O <strong>site</strong> mostra os antes-e-depois com contexto completo e fecha a venda. Isso não é um contorno: funciona melhor, porque o anúncio compra alcance barato e aprovado, e a prova pesada aparece para quem já demonstrou interesse.</p>
+  </div>
+
+  <div class="call warn">
+    <span class="lbl">Correção do que eu disse antes</span>
+    <p>Na primeira versão desta proposta eu escrevi que a página de resultados não deveria ter antes-e-depois. <strong>Isso estava errado e restritivo demais.</strong> A restrição é do anúncio, não do site. No site eles devem estar — são o ativo mais forte que ela tem.</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>As regras para usar no site</h4>
+      <ul class="plain tight small">
+        <li>Mesma luz, mesmo ângulo, mesma pose, mesma roupa — ela já faz isso, é o que separa prova de propaganda.</li>
+        <li>Dizer o protocolo e o tempo: quantas sessões, de quê, em quantos meses.</li>
+        <li>Dizer o que a cliente fez em casa. A legenda dela já diz "e em casa, fazendo a sua parte" — essa honestidade é o que dá credibilidade.</li>
+        <li>Aviso visível de que resultados variam de pessoa para pessoa.</li>
+        <li>Autorização de uso de imagem assinada para cada foto. Sem exceção.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>O que vai no anúncio, então</h4>
+      <ul class="plain tight small">
+        <li>Ela falando em vídeo — sobre lipedema, sobre papada, sobre o que esperar.</li>
+        <li>O estúdio, os equipamentos, o processo, as mãos trabalhando.</li>
+        <li>Depoimento em vídeo da cliente falando como se sente, sem exibir o corpo.</li>
+        <li>SPA e vale-presente com preço — produto, não corpo.</li>
+        <li>Nunca: seta apontando barriga, close em parte do corpo, "elimine", "perca X cm".</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="call">
+    <span class="lbl">E uma observação sobre a legenda dela</span>
+    <p>"Confesso que por muitas vezes achei que não conseguiria corresponder às suas expectativas." Isso é copy que agência nenhuma escreve — é vulnerável, específica e verdadeira, e vale mais que qualquer headline. <strong>A voz do site tem que ser a voz dela</strong>, não linguagem corporativa de clínica. "Acredite, é possível", "momento de rainha", "proporcionar felicidade e acolhimento": esse é o tom. Eu escreveria o site a partir das legendas que ela já publicou.</p>
+  </div>
+</section>
+
+<!-- ============ SITEMAP ============ -->
+<section class="wide">
+  <div class="shead" style="width:var(--col);max-width:100%">
+    <span class="eyebrow">Arquitetura</span>
+    <h2>O mapa do site</h2>
+    <p class="lead">Uma página por problema que a cliente tem — não uma página por equipamento que ela possui. Ninguém busca "corrente russa"; buscam "flacidez na barriga".</p>
+  </div>
+  <div class="sitemap">
+    <div class="node p1"><span class="path">/</span><span class="why">Home. Bifurca em Corpo e SPA já na primeira tela, apresenta a Fernanda e puxa prova social.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/lipedema</span><span class="why">Landing dedicada. O carro-chefe de aquisição por Google Search.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/drenagem-pos-operatorio</span><span class="why">Segunda landing de Search. Maior valor por cliente, busca urgente.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/gordura-localizada</span><span class="why">Criolipólise, enzimas sem agulha, crio de placas, protocolo redutor intensivo.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/spa-day</span><span class="why">Os 13 pacotes com preço aberto. Página de conversão do Meta.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/sobre</span><span class="why">A Fernanda: formação, equipamentos, o estúdio. Constrói a confiança que fecha protocolo caro.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/contato</span><span class="why">Mapa, como chegar de carro e de ônibus, estacionamento, horários, WhatsApp.</span><span class="tag">Fase 1</span></div>
+    <div class="node p1"><span class="path">/resultados</span><span class="why">Os antes-e-depois com protocolo, tempo e aviso de variação. O ativo mais forte que ela tem — sobe na fase 1.</span><span class="tag">Fase 1</span></div>
+    <div class="node p2"><span class="path">/papada</span><span class="why">Protocolo com enzimas pressurizadas. Busca alta, concorrência baixa, resultado rápido.</span><span class="tag">Fase 2</span></div>
+    <div class="node p2"><span class="path">/celulite-flacidez</span><span class="why">Radiofrequência, ultrassom, corrente russa. Volume alto de busca, concorrência média.</span><span class="tag">Fase 2</span></div>
+    <div class="node p2"><span class="path">/limpeza-de-pele</span><span class="why">Porta de entrada barata. Simples, Adcos, com extração de milium, dermaplaning.</span><span class="tag">Fase 2</span></div>
+    <div class="node p2"><span class="path">/vale-presente</span><span class="why">Compra do presente com envio digital. Ligada às datas comemorativas.</span><span class="tag">Fase 2</span></div>
+    <div class="node p3"><span class="path">/spa-da-noiva</span><span class="why">Nicho sazonal com busca própria e parceria com ateliês, buffets e fotógrafos.</span><span class="tag">Fase 3</span></div>
+    <div class="node p3"><span class="path">/blog/…</span><span class="why">SEO orgânico de longo prazo. Uma pauta por dúvida real que chega no WhatsApp dela.</span><span class="tag">Fase 3</span></div>
+  </div>
+</section>
+
+<!-- ============ WIREFRAME HOME ============ -->
+<section class="wide">
+  <div class="shead" style="width:var(--col);max-width:100%">
+    <span class="eyebrow">Wireframe</span>
+    <h2>A home, seção por seção</h2>
+    <p class="lead">A regra é uma só: cada bloco tem um trabalho. Se não tiver, sai.</p>
+  </div>
+  <div class="wf">
+    <div class="wf-top"><span>/ — Home</span><span>objetivo: bifurcar e qualificar</span></div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Barra fixa</span><span class="d">Logo FL · Corpo · SPA · Sobre · Contato · botão de WhatsApp sempre visível</span></div>
+      <div class="wf-note">No celular o botão vira barra fixa no rodapé. É de onde vem a maioria absoluta das conversões.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Abertura</span><span class="d">Foto da Fernanda atendendo (a do atendimento facial, não a posada). Título que nomeia o problema, não o serviço. Localização visível: "Zona Norte, São Paulo".</span></div>
+      <div class="wf-note">Bairro na primeira tela derruba a taxa de rejeição de tráfego pago. A pessoa precisa saber em 2 segundos que é perto.</div>
+    </div>
+    <div class="wf-row wf-cta">
+      <div class="wf-block"><span class="t">A bifurcação</span><span class="d">Dois cartões grandes, lado a lado: <strong>"Quero tratar meu corpo"</strong> e <strong>"Quero um dia de SPA"</strong>. Nada mais compete com eles.</span></div>
+      <div class="wf-note">É o bloco mais importante da página. Manda cada público para o funil certo antes de qualquer scroll.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Por problema</span><span class="d">Seis cartões: lipedema · gordura localizada · celulite · flacidez · pós-operatório · pele. Cada um leva à sua página.</span></div>
+      <div class="wf-note">Escrito na língua da cliente. "Aquela gordurinha que não sai com dieta", não "protocolo lipolítico".</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Quem é a Fernanda</span><span class="d">Foto, formação, anos de atuação, os equipamentos que opera. Link para /sobre.</span></div>
+      <div class="wf-note">Protocolo de R$ 1.495 se fecha na confiança na pessoa. Este bloco é o que o template genérico não tem.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Prova</span><span class="d">Três depoimentos com nome e primeira letra do sobrenome + nota e contagem do Google.</span></div>
+      <div class="wf-note">A nota do Google puxada do perfil vale mais que qualquer depoimento escrito por nós.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Como funciona</span><span class="d">Três passos: avaliação sem custo → protocolo desenhado → sessões acompanhadas. Regras de pacote ditas com transparência.</span></div>
+      <div class="wf-note">As "regrinhas" dela (validade 6 meses, cancelar com 6h) viram sinal de organização em vez de letra miúda.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Onde fica</span><span class="d">Mapa, endereço, referência de bairro, estacionamento, horários.</span></div>
+      <div class="wf-note">Alimenta o SEO local e responde a objeção nº 1 de quem vem de anúncio.</div>
+    </div>
+    <div class="wf-row wf-cta">
+      <div class="wf-block"><span class="t">Fechamento</span><span class="d">"Agende sua avaliação" com formulário curto — nome, WhatsApp, o que incomoda, melhor período.</span></div>
+      <div class="wf-note">Quatro campos, no máximo. Cada campo extra derruba a conversão.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WIREFRAME LIPEDEMA ============ -->
+<section class="wide">
+  <div class="shead" style="width:var(--col);max-width:100%">
+    <span class="eyebrow">Wireframe</span>
+    <h2>A landing de lipedema</h2>
+    <p class="lead">Estrutura diferente da home, de propósito: quem chega aqui veio de um anúncio, com uma dúvida específica e nenhuma paciência.</p>
+  </div>
+  <div class="wf">
+    <div class="wf-top"><span>/lipedema</span><span>objetivo: acolher, explicar, agendar avaliação</span></div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">"Não é gordura. E não é falta de esforço."</span><span class="d">Título que faz a pessoa se sentir vista na primeira linha. Subtítulo nomeia o serviço e o bairro.</span></div>
+      <div class="wf-note">Este é o momento inteiro da página. Se a primeira frase não acertar, o resto não é lido.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Você se reconhece?</span><span class="d">Lista de sintomas em linguagem cotidiana: pernas doloridas no fim do dia, hematoma fácil, desproporção entre tronco e pernas, dieta que afina em cima e não embaixo.</span></div>
+      <div class="wf-note">Autodiagnóstico é o que prende. Cada item que a pessoa marca mentalmente aumenta a chance de contato.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">O que a estética pode e o que não pode</span><span class="d">Honestidade explícita: manejo de sintomas, drenagem, conforto, aparência. Recomendação de acompanhamento médico.</span></div>
+      <div class="wf-note">Obrigatório por conformidade — e é o bloco que mais gera confiança, porque é o oposto do que a concorrência faz.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">O protocolo</span><span class="d">As 22 sessões listadas item a item: radiofrequência, ultrassom, drenagem local, crio, ILIB, bandagem. Duração e o que sentir em cada fase.</span></div>
+      <div class="wf-note">Detalhar o protocolo justifica o preço antes de mostrá-lo. Aqui o preço ajuda: 5× R$ 299 sem juros.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Quem conduz</span><span class="d">Fernanda, formação e os equipamentos HTM. Foto operando.</span></div>
+      <div class="wf-note">Em condição de saúde, quem aplica pesa mais que onde se aplica.</div>
+    </div>
+    <div class="wf-row">
+      <div class="wf-block"><span class="t">Dúvidas</span><span class="d">Dói? Quanto tempo até sentir diferença? Preciso de laudo? Posso fazer menstruada? Convênio cobre?</span></div>
+      <div class="wf-note">Marcar com dados estruturados de FAQ: rende trecho em destaque no Google, de graça.</div>
+    </div>
+    <div class="wf-row wf-cta">
+      <div class="wf-block"><span class="t">Avaliação sem custo</span><span class="d">Formulário curto + WhatsApp com mensagem já escrita: <span class="mono">"Oi Fernanda! Vim pelo site e queria saber do protocolo para lipedema."</span></span></div>
+      <div class="wf-note">A mensagem pré-escrita é o truque de atribuição mais barato que existe: ela sabe de qual página veio cada conversa, sem CRM nenhum.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELACIONAMENTO ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Relacionamento</span>
+    <h2>O pacote de 6 meses é a espinha dorsal</h2>
+    <p class="lead">Ela já vende pacotes com validade de seis meses e já exige confirmação de presença. Isso é um calendário de relacionamento pronto — só não está sendo usado como tal. Seis gatilhos, todos por WhatsApp, todos disparáveis de uma planilha antes de qualquer sistema caro.</p>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h4>24h antes · confirmação</h4><p class="small">Ela já pede confirmação. Automatizar reduz falta, que é o maior custo invisível de quem atende sozinha numa sala.</p></div>
+    <div class="card"><h4>D+2 · pós-atendimento</h4><p class="small">"Como está a pele?" Encerra com o pedido de avaliação no Google. É assim que se chega a 40 avaliações sem parecer forçado.</p></div>
+    <div class="card"><h4>Faltam 3 sessões</h4><p class="small">Convite para remarcar o restante de uma vez. Evita o pacote que morre pela metade e libera a agenda.</p></div>
+    <div class="card"><h4>Pacote vence em 30 dias</h4><p class="small">A validade de 6 meses cria a urgência sozinha. Recupera cliente que sumiu com sessões pagas em aberto.</p></div>
+    <div class="card"><h4>60 dias sem visita</h4><p class="small">Reativação com uma oferta pequena e específica — não desconto genérico. Escalda-pés custa R$ 40 e traz a pessoa para dentro.</p></div>
+    <div class="card"><h4>Aniversário e indicação</h4><p class="small">Quem indica ganha um detox; quem é indicada ganha a avaliação. Fecha o ciclo com o canal mais barato de todos.</p></div>
+  </div>
+  <div class="call">
+    <span class="lbl">Antes de qualquer sistema</span>
+    <p>Nada disso exige CRM. <strong>WhatsApp Business com etiquetas + uma planilha</strong> resolve os seis fluxos no volume atual dela. Comprar sistema antes de ter o processo rodando na mão é a forma mais comum de gastar dinheiro e não mudar nada.</p>
+  </div>
+</section>
+
+<!-- ============ GOOGLE ADS ============ -->
+<section class="wide">
+  <div class="shead" style="width:var(--col);max-width:100%">
+    <span class="eyebrow">Aquisição · Google</span>
+    <h2>Campanhas de busca, por problema</h2>
+    <p class="lead">Raio de 6 a 8 km do CEP 02961-070 — cobre Freguesia do Ó, Brasilândia, Casa Verde, Vila Nova Cachoeirinha, Limão e Santana. Cada campanha aponta para a sua própria landing; é isso que segura o custo por clique baixo.</p>
+  </div>
+
+  <div class="call" style="width:var(--col);max-width:100%">
+    <span class="lbl">O que R$ 450/mês compra, e o que não compra</span>
+    <p>R$ 15/dia sustentados por 90 dias é verba de teste legítima: dá para manter uma campanha viva, acumular histórico e tomar uma decisão de verdade no fim. O que <strong>não</strong> dá é para usar lances automáticos por conversão — o Lances Inteligentes precisa de algo como 15 a 30 conversões por mês para aprender, e aqui vão chegar 5 ou 10. Nas primeiras 6 a 8 semanas: <strong>maximizar cliques com teto de CPC</strong> por volta de R$ 4 a 5, correspondência de frase e exata, nada de ampla. Ampla queima verba pequena em busca irrelevante.</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>Campanha</th><th>Termos centrais</th><th>Landing</th><th>Entra quando</th><th>Verba/dia</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Lipedema</td>
+          <td><span class="kw">tratamento lipedema sp</span><span class="kw">quem trata lipedema</span><span class="kw">drenagem para lipedema</span></td>
+          <td class="mono">/lipedema</td>
+          <td>Mês 1, junto com pós-op</td>
+          <td class="n">R$ 6</td>
+        </tr>
+        <tr>
+          <td>Marca</td>
+          <td><span class="kw">fernanda lins estética</span></td>
+          <td class="mono">/</td>
+          <td>Sempre ativa</td>
+          <td class="n">R$ 2</td>
+        </tr>
+        <tr>
+          <td>Pós-operatório</td>
+          <td><span class="kw">drenagem pós operatório perto de mim</span><span class="kw">drenagem pós lipo zona norte</span></td>
+          <td class="mono">/drenagem-pos-operatorio</td>
+          <td>Mês 1 — leva a maior fatia</td>
+          <td class="n">R$ 7</td>
+        </tr>
+        <tr>
+          <td>Papada</td>
+          <td><span class="kw">tratamento para papada</span><span class="kw">enzima para papada sp</span></td>
+          <td class="mono">/papada</td>
+          <td>Mês 2, se sobrar verba</td>
+          <td class="n">R$ 12</td>
+        </tr>
+        <tr>
+          <td>Gordura localizada</td>
+          <td><span class="kw">criolipólise zona norte</span><span class="kw">enzimas sem agulha sp</span></td>
+          <td class="mono">/gordura-localizada</td>
+          <td>Só com R$ 1.500/mês</td>
+          <td class="n">R$ 15</td>
+        </tr>
+        <tr>
+          <td>Facial</td>
+          <td><span class="kw">limpeza de pele perto de mim</span><span class="kw">dermaplaning zona norte</span></td>
+          <td class="mono">/limpeza-de-pele</td>
+          <td>Por último</td>
+          <td class="n">R$ 10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="width:var(--col);max-width:100%">
+    <h4>A conta que os R$ 450/mês precisam fechar</h4>
+    <p class="small">Premissas a validar, não promessas: R$ 450 a um CPC de R$ 3 a 4 compram <strong>110 a 150 cliques por mês</strong>. Uma landing local boa converte de 8% a 12% em conversa de WhatsApp — <strong>9 a 18 conversas</strong>. Dessas, perto de um terço agenda avaliação e comparece: <strong>3 a 6 avaliações mensais</strong>. Fechando uma em três, são <strong>1 a 2 clientes por mês</strong>. Uma única cliente de pós-operatório que faça 20 sessões a R$ 110 vale mais de R$ 2.000 — cobre quase cinco meses de verba.</p>
+    <p class="small"><strong>Critério de corte, definido antes de ligar:</strong> se após 60 cliques não houver nenhuma conversa, o problema é a landing, não a verba — corrigir a página antes de gastar o resto do mês. Se houver conversas mas nenhuma avaliação agendada, o problema é o atendimento no WhatsApp. Saber qual dos dois é o que esses três meses estão comprando.</p>
+  </div>
+
+  <div class="grid g2" style="width:var(--col);max-width:100%">
+    <div class="card">
+      <h4>Negativar desde o primeiro dia</h4>
+      <p class="small">"Lipedema" atrai muita busca informativa que nunca vira cliente e, com R$ 15/dia, cada clique desperdiçado dói. Entram na lista de negativas antes de ligar: <span class="mono">o que é · sintomas · cid · fotos · grau 1 · exercícios · dieta · remédio · cirurgia · sus · convênio · curso · faculdade · apostila · vaga</span>. Revisar o relatório de termos de pesquisa toda semana no primeiro mês.</p>
+    </div>
+    <div class="card">
+      <h4>Anúncio no horário em que ela responde</h4>
+      <p class="small">O perfil dela abre segunda às 14h. Clique às 3 da manhã que cai num WhatsApp sem resposta até o dia seguinte é verba perdida — em pós-operatório, onde a pessoa precisa começar em dias, ela já contratou outra. Programar os anúncios para o horário de atendimento, com uma folga de uma hora antes e depois.</p>
+    </div>
+  </div>
+
+  <div class="call" style="width:var(--col);max-width:100%">
+    <span class="lbl">A métrica que importa</span>
+    <p>Não é clique nem impressão: é <strong>custo por conversa iniciada</strong>, e depois custo por avaliação comparecida. Para um protocolo de R$ 1.495, pagar R$ 40 por uma conversa qualificada é excelente — e mesmo R$ 100 por avaliação comparecida ainda fecha a conta. Esse é o número a acompanhar toda semana, numa planilha de cinco colunas.</p>
+  </div>
+  <div class="call" style="width:var(--col);max-width:100%">
+    <span class="lbl">Vale mais que os R$ 400 · e custa zero</span>
+    <p>O perfil dela está em <strong>5,0 com 8 avaliações</strong> — nota perfeita, volume irrelevante. Oito avaliações não sustentam posição no mapa; trinta sustentam. E o painel mostra <strong>"É proprietário desta empresa?"</strong>, o que indica um perfil <strong>não reivindicado</strong>: sem isso ela não publica, não responde avaliação como dona, não recebe mensagem — e qualquer pessoa pode sugerir alteração no endereço e no horário dela. A categoria também está fraca: "Profissional da beleza" é genérica, e categoria é um dos fatores mais fortes de posicionamento local. Reivindicar o perfil, trocar a categoria e sair de 8 para 30 avaliações rende mais nos próximos 90 dias do que a verba inteira de anúncio.</p>
+  </div>
+</section>
+
+<!-- ============ META ADS ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Aquisição · Meta</span>
+    <h2>Instagram e Facebook, com uma regra que não pode ser quebrada</h2>
+  </div>
+  <div class="call warn">
+    <span class="lbl">O erro que derruba conta de estética</span>
+    <p>A política de saúde e bem-estar do Meta <strong>proíbe antes-e-depois, closes em partes do corpo e qualquer texto que sugira que a pessoa deveria mudar o próprio corpo</strong> — "perca 10 cm", "elimine a gordura", foto de barriga com seta. Reprovações repetidas escalam para restrição da conta de anúncios, e recuperar conta restrita é lento e incerto. Nas artes que ela já publica, o padrão está correto: ela aparece, o equipamento aparece, o corpo de ninguém está sendo julgado. É esse padrão que vai para o anúncio.</p>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h4>Topo · vídeo educativo</h4><p class="small">Ela falando 40 segundos sobre lipedema, em Reels. Educação performa muito acima de oferta em público frio, é aprovada sem atrito na política e ainda constrói o público para o remarketing.</p></div>
+    <div class="card"><h4>Topo · SPA com preço</h4><p class="small">O único lugar onde o preço vai na arte. É produto, não corpo — passa na política e converte por impulso. Sobe em Dia das Mães, Namorados, Natal e alta de casamento.</p></div>
+    <div class="card"><h4>Fundo · remarketing</h4><p class="small">Quem visitou /lipedema ou /drenagem-pos-operatorio e não chamou. Público pequeno, custo baixo, a melhor taxa de retorno da conta inteira. Depende do pixel estar instalado desde o dia 1.</p></div>
+    <div class="card"><h4>Segmentação</h4><p class="small">Raio de 8 km, mulheres, 25–55. Sem afunilar por interesse: interesse de saúde é restrito no Meta e o público local já é pequeno o bastante. Deixe o algoritmo achar dentro do raio.</p></div>
+  </div>
+</section>
+
+<!-- ============ RASTREAMENTO ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Medição</span>
+    <h2>Sem isto, o resto é aposta</h2>
+    <p class="lead">É a parte que ninguém vê e a que decide se a verba rende. Precisa estar pronta antes do primeiro anúncio, não depois.</p>
+  </div>
+  <ul class="plain">
+    <li><strong>GA4, tag do Google Ads e Pixel do Meta</strong> instalados no site inteiro, com a API de Conversões do Meta configurada no servidor — sem ela, boa parte das conversões de iPhone simplesmente desaparece do relatório.</li>
+    <li><strong>Eventos nomeados:</strong> <span class="mono">clique_whatsapp</span>, <span class="mono">envio_formulario</span>, <span class="mono">clique_telefone</span>, <span class="mono">clique_mapa</span> — cada um marcado com a página de origem.</li>
+    <li><strong>Mensagem pré-escrita por página</strong> no link do WhatsApp. É o que permite atribuir a conversa à campanha sem nenhum sistema: o texto que chega já diz de onde a pessoa veio.</li>
+    <li><strong>UTM em tudo</strong>, inclusive no link da bio do Instagram — hoje aponta para um Canva, e todo o tráfego que vem de lá é invisível.</li>
+    <li><strong>Uma planilha semanal</strong> com conversas recebidas, avaliações agendadas, comparecidas e protocolos fechados. Sem o número do fim do funil, otimizar o começo é chute.</li>
+  </ul>
+</section>
+
+<!-- ============ STACK ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Construção</span>
+    <h2>Como eu construiria</h2>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h4>Astro + Tailwind</h4><p class="small">Gera HTML estático puro. Carrega instantâneo, o que melhora o Índice de Qualidade no Google Ads e derruba o custo por clique. Conteúdo em Markdown, para editar texto sem mexer em código.</p></div>
+    <div class="card"><h4>Deploy na Vercel</h4><p class="small">Grátis nesse porte, domínio próprio, HTTPS automático. Custo real do projeto: o domínio, cerca de R$ 40 por ano.</p></div>
+    <div class="card"><h4>Formulário serverless</h4><p class="small">Uma função que recebe o formulário, dispara e-mail e WhatsApp para ela e registra a origem. Sem banco de dados na fase 1.</p></div>
+  </div>
+  <div class="call">
+    <span class="lbl">Sobre agendamento online</span>
+    <p>Deixaria para a fase 3, e com convicção. Ela atende sozinha, numa sala, com sessões de durações muito diferentes — agenda aberta ao público tira dela o controle de encaixe, que é justamente o que faz o dia render. Na fase 1, <strong>"solicitar horário"</strong>: a cliente indica três preferências, ela confirma no WhatsApp. Converte igual, e não quebra a operação. Agenda de verdade só quando o volume tornar a confirmação manual o gargalo.</p>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Execução</span>
+    <h2>Em que ordem</h2>
+    <p class="lead">A ordem importa mais que o escopo: cada fase só começa quando a anterior está medindo alguma coisa.</p>
+  </div>
+  <div>
+    <div class="phase">
+      <div class="phase-mark"><span class="dot">1</span><span class="line"></span></div>
+      <div class="phase-body">
+        <span class="when">Semana 1 · sem escrever uma linha de código</span>
+        <h3>Fundação</h3>
+        <p class="small"><strong>Reivindicar o Perfil da Empresa no Google</strong> — é a tarefa nº 1, custa nada e provavelmente ainda não foi feita. Trocar a categoria de "Profissional da beleza" para algo específico, completar horários e subir fotos reais. Começar a pedir avaliação em todo atendimento, com a meta de sair de 8 para 30. Registrar o domínio. Migrar para WhatsApp Business com catálogo. E contar, na mão, quantas conversas chegam por semana hoje — sem esse número de partida, não há como saber se o site funcionou.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-mark"><span class="dot">2</span><span class="line"></span></div>
+      <div class="phase-body">
+        <span class="when">Semanas 2 a 4</span>
+        <h3>O site, sete páginas</h3>
+        <p class="small">Home, lipedema, pós-operatório, gordura localizada, SPA, sobre e contato. Rastreamento completo instalado junto, não depois. Sessão de fotos própria do estúdio e dela atendendo — as artes do Canva servem para o Instagram, não para o site.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-mark"><span class="dot">3</span><span class="line"></span></div>
+      <div class="phase-body">
+        <span class="when">Mês 2</span>
+        <h3>Ligar os anúncios</h3>
+        <p class="small">Duas campanhas de busca a R$ 15/dia no total: <strong>pós-operatório com R$ 7</strong>, porque tem volume para gastar e aprender rápido, e <strong>lipedema com R$ 6</strong>, porque tem a menor concorrência e traz o clique caro-de-valor. Mais R$ 2 na campanha de marca, que é barata e defende o nome dela de concorrente. Nada de Meta pago: o Instagram já tem 4.752 seguidores e alcance orgânico, e a verba não dá para dois canais. Os seis fluxos de relacionamento começam a rodar por WhatsApp.</p>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-mark"><span class="dot">4</span></div>
+      <div class="phase-body">
+        <span class="when">Mês 3 em diante</span>
+        <h3>Ampliar sobre o que provou</h3>
+        <p class="small">Abrir as campanhas restantes só onde o custo por conversa fechou a conta. Remarketing. Páginas de celulite, facial e SPA da noiva. Blog para busca orgânica. Parcerias com cirurgiões plásticos e com o mercado de casamento. Agendamento online, se o volume pedir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECISÕES ============ -->
+<section>
+  <div class="shead">
+    <span class="eyebrow">Situação</span>
+    <h2>O que já está decidido</h2>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h4>Pós-operatório liberado</h4><p class="small">Ela está habilitada. Isso destrava a campanha de maior valor por cliente do plano — e a via de indicação com cirurgiões plásticos.</p></div>
+    <div class="card"><h4>Perfil do Google em ajuste</h4><p class="small">Reivindicação, categoria e horários em andamento. Meta: sair de 8 para 30 avaliações em 90 dias.</p></div>
+    <div class="card"><h4>Conta de anúncios limpa</h4><p class="small">Nunca turbinou antes-e-depois, sem reprovação nem restrição. Começamos do zero, sem passivo — e agora com a regra clara para não criar um.</p></div>
+    <div class="card"><h4>Autorização de imagem existe</h4><p class="small">Os antes-e-depois podem ir para o site. É o ativo mais forte do projeto e está liberado.</p></div>
+    <div class="card"><h4>Você mantém o site</h4><p class="small">Astro com conteúdo em Markdown, sem painel de edição. Mais simples, mais rápido, sem custo mensal.</p></div>
+    <div class="card"><h4>R$ 400–500/mês por 3 meses</h4><p class="small">Verba de teste real. Duas campanhas de busca, lances por clique com teto, critério de corte definido antes de ligar.</p></div>
+  </div>
+
+  <div class="shead" style="margin-top:14px">
+    <span class="eyebrow">Ainda em aberto</span>
+    <h2>O que ainda falta</h2>
+  </div>
+  <div>
+    <div class="q">
+      <span class="ask">O Perfil da Empresa no Google está reivindicado?</span>
+      <span class="why">O painel mostra "É proprietário desta empresa?", o que normalmente só aparece em perfil não reivindicado. Se estiver solto, esta é a tarefa de hoje — sem ela não dá para publicar, responder avaliação como dona nem proteger os dados do perfil.</span>
+      <span class="rec">Dá para checar em dois minutos entrando em business.google.com com o e-mail dela.</span>
+    </div>
+    
+    <div class="q">
+      <span class="ask">Existe depoimento em vídeo de alguma cliente?</span>
+      <span class="why">É o que mais converte protocolo caro, e é o criativo de anúncio que passa na política do Meta sem atrito. Coletar leva semanas, então o pedido começa na fase 1, não quando a verba subir.</span>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
+<footer>
+  <div>
+    Proposta de arquitetura e captação · Fernanda Lins Estética Facial e Corporal · Rua Monjolo, 284 — São Paulo/SP.<br>
+    Preços, protocolos e regras de pacote extraídos do catálogo e do perfil <span class="mono">@fernandalinsestetica</span>. Verbas e custos por clique são estimativas a validar no primeiro mês de campanha.
+  </div>
+</footer>
