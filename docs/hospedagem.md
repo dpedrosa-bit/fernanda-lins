@@ -104,7 +104,8 @@ A partir daí, todo `git push` na `main` publica sozinho.
 
 ### 3. Apontar o domínio do registro.br para a Cloudflare
 
-O que muda aqui é só a **gestão do DNS**. O domínio continua registrado no
+O botão do painel se chama **"Begin DNS transfer"**, mas não há transferência de
+domínio nenhuma: o que muda aqui é só a **gestão do DNS**. O domínio continua registrado no
 registro.br, no CPF ou CNPJ dela, e a titularidade não se altera. Dá para
 reverter a qualquer momento.
 
@@ -113,6 +114,18 @@ reverter a qualquer momento.
 1. **Add a site**, digite o domínio, escolha o plano **Free**.
 2. Ela varre os registros existentes e mostra **dois servidores de nome**, algo
    como `xxx.ns.cloudflare.com` e `yyy.ns.cloudflare.com`. Anote os dois.
+
+**⚠️ Antes de mexer nos servidores: confira o DNSSEC**
+
+No registro.br, em **DNS → DNSSEC**, veja se está habilitado. Se estiver, **desabilite
+antes** de trocar os servidores de nome. O DNSSEC assina a zona com a chave dos
+servidores atuais; se os servidores mudam e a assinatura antiga continua publicada,
+os resolvedores passam a rejeitar o domínio — e o site fica **inacessível**, não
+lentamente propagando. É a causa mais comum de "mudei o DNS e o domínio sumiu".
+
+Depois que a Cloudflare estiver ativa, dá para religar o DNSSEC: ela fornece o
+registro DS em **DNS → Settings → DNSSEC**, e você cadastra esse valor no
+registro.br. Opcional, e melhor fazer só depois que o site estiver no ar.
 
 **No registro.br:**
 
