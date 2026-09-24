@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink } from '../data/site';
+
+const periodos = [
+  {
+    t: 'SPA matinal',
+    v: 'R$ 149',
+    d: 'Com chá, café, suco, bolachas e pão de queijo.',
+  },
+  {
+    t: 'SPA da tarde',
+    v: 'R$ 149',
+    d: 'Com chá, cappuccino, pão doce e salgado, bolachas.',
+  },
+  {
+    t: 'SPA noturno',
+    v: 'R$ 149',
+    d: 'Com queijos, vinho tinto e suave.',
+  },
+];
+
+const acompanhada = [
+  { t: 'SPA das amigas', v: 'R$ 199' },
+  { t: 'SPA das amigas com massagem relaxante', v: 'R$ 409' },
+  { t: 'SPA mãe e filha (ou filho)', v: 'R$ 199' },
+  { t: 'SPA mãe e filha com massagem relaxante', v: 'R$ 379' },
+];
+
+const ocasiao = [
+  { t: 'SPA da noiva', v: 'R$ 349', d: 'Para o dia antes do grande dia.' },
+  { t: 'SPA das madrinhas', v: 'R$ 349', d: 'Para quem vai estar ao lado dela.' },
+  { t: 'SPA day completo', v: 'R$ 439', d: 'O dia inteiro, do começo ao fim.' },
+];
+
+const outros = [
+  { t: 'SPA de todos os períodos com massagem relaxante', v: 'R$ 259' },
+  { t: 'SPA para tratamento estético', v: 'R$ 99' },
+  { t: 'Escalda-pés', v: 'R$ 40' },
+];
+
+const zap = 'Oi Fernanda! Vim pelo site e queria saber dos pacotes de SPA.';
+const zapPresente = 'Oi Fernanda! Vim pelo site e queria presentear alguém com um SPA.';
+---
+
+<Base
+  titulo="SPA day na Zona Norte de SP | Fernanda Lins Estética"
+  descricao="SPA das amigas, mãe e filha, da noiva e das madrinhas em Jardim Monjolo, São Paulo. Períodos matinal, tarde e noturno, a partir de R$ 149. Também para presentear."
+  caminho="/spa-day"
+  mensagemZap={zap}
+>
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">SPA · {site.regiao}</span>
+        <h1>Momento de rainha. Não dá para aceitar menos que isso.</h1>
+        <p class="lead">
+          Um dia só seu, ou dividido com quem você quiser. Escolha o período, a companhia e
+          a ocasião — os valores estão todos aqui, sem precisar perguntar.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-spa">
+          Reservar meu dia
+        </a>
+        <a class="btn btn--linha" href="#presente">Quero presentear</a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
+    </div>
+  </section>
+
+  <!-- Períodos -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Escolha o período</span>
+        <h2>Três horários, e cada um tem a sua mesa</h2>
+        <p class="lead">
+          A diferença não é só o relógio: cada período vem com o que combina com ele.
+        </p>
+      </div>
+      <div class="grade g3">
+        {
+          periodos.map((p) => (
+            <div class="cartao cartao--periodo">
+              <h3>{p.t}</h3>
+              <p class="valor tabular">{p.v}</p>
+              <p class="pequeno">{p.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Acompanhada -->
+  <section class="secao">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Com companhia</span>
+        <h2>Bom sozinha. Melhor acompanhada.</h2>
+      </div>
+      <div class="tabela">
+        {
+          acompanhada.map((a) => (
+            <div class="linha">
+              <span class="linha-nome">{a.t}</span>
+              <span class="linha-valor tabular">{a.v}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Ocasião -->
+  <section class="secao secao--ouro">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Para uma data</span>
+        <h2>Quando o dia já é especial por si</h2>
+      </div>
+      <div class="grade g3">
+        {
+          ocasiao.map((o) => (
+            <div class="cartao">
+              <h4>{o.t}</h4>
+              <p class="valor tabular">{o.v}</p>
+              <p class="pequeno">{o.d}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="ocasiao-spa">
+          Ver datas disponíveis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outros -->
+  <section class="secao">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Também disponível</span>
+        <h2>Outras opções</h2>
+      </div>
+      <div class="tabela">
+        {
+          outros.map((o) => (
+            <div class="linha">
+              <span class="linha-nome">{o.t}</span>
+              <span class="linha-valor tabular">{o.v}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Presente -->
+  <section class="secao secao--creme" id="presente">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Para presentear</span>
+        <h2>Um SPA é o presente de que ela vai lembrar</h2>
+      </div>
+      <div class="grade g2">
+        <div class="cartao">
+          <h4>Como funciona</h4>
+          <ul class="marcada">
+            <li>Você escolhe o pacote e acerta comigo.</li>
+            <li>Eu preparo o presente do jeito que você quer entregar.</li>
+            <li>Ela escolhe a data que ficar melhor.</li>
+            <li>Validade de 6 meses, como todos os pacotes.</li>
+          </ul>
+        </div>
+        <div class="cartao cartao--presente">
+          <p class="lead">
+            Nada melhor do que proporcionar felicidade e acolhimento.
+          </p>
+          <p class="pequeno">
+            Aniversário, Dia das Mães, noivado, ou só porque ela merece. Me chama que a
+            gente monta junto.
+          </p>
+          <a class="btn btn--zap" href={whatsappLink(zapPresente)} data-zap="presente-spa">
+            Quero presentear
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito fechamento">
+      <h2>Vamos marcar?</h2>
+      <p class="lead">
+        Me diz o período, quantas pessoas e a data que você tem em mente. Eu confirmo a
+        disponibilidade e já deixo tudo preparado.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento-spa">
+          Falar com a Fernanda
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .valor {
+    font-family: var(--display);
+    font-size: 28px;
+    line-height: 1.1;
+    color: var(--ouro);
+  }
+  .cartao--periodo { border-color: var(--ouro-claro); }
+
+  .tabela { display: flex; flex-direction: column; }
+  .linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--linha);
+  }
+  .linha:last-child { border-bottom: 0; }
+  .linha-nome { color: var(--tinta); }
+  .linha-valor { font-family: var(--display); font-size: 21px; color: var(--ouro); white-space: nowrap; }
+
+  .cartao--presente { justify-content: center; align-items: flex-start; gap: 14px; border-color: var(--ouro-claro); }
+  .cartao--presente .lead { font-family: var(--display); font-size: 24px; line-height: 1.3; color: var(--tinta); }
+
+  .fechamento { align-items: flex-start; }
+</style>

@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const especialidades = [
+  'Gordura localizada',
+  'Flacidez',
+  'Celulite',
+  'Lipo enzimática',
+  'Criolipólise',
+  'Radiofrequência',
+  'Limpeza de pele',
+  'Drenagem pós-operatória',
+];
+
+const principios = [
+  {
+    t: 'Quem atende sou eu, em todas as sessões',
+    d: 'Não é uma sala com equipe rotativa. Eu recebo, avalio, monto o protocolo e conduzo cada sessão. É o que me permite ajustar o que precisa ser ajustado de uma semana para a outra, em vez de repetir o mesmo pacote para todo mundo.',
+  },
+  {
+    t: 'A avaliação vem antes do pacote',
+    d: 'Toda cliente de protocolo começa igual: uma conversa sem custo, onde você me conta o que incomoda e o que já tentou. Eu digo o que é possível — inclusive quando a resposta não é a que você queria ouvir.',
+  },
+  {
+    t: 'Prefiro perder a venda a prometer demais',
+    d: 'Se o seu caso pede médico, eu falo. Se pede outro tipo de procedimento, eu falo. Se o resultado que você espera não vai vir com o que eu tenho, eu falo. Sai mais barato para nós duas do que descobrir isso na quinta sessão.',
+  },
+  {
+    t: 'Metade do resultado acontece em casa',
+    d: 'Eu oriento o que fazer entre uma sessão e outra, e cobro isso de um jeito cuidadoso. Os melhores resultados que eu tenho são de clientes que fizeram a parte delas.',
+  },
+];
+
+const zap = msg.avaliacao;
+---
+
+<Base
+  titulo="Sobre a Fernanda Lins | Estética avançada na Zona Norte de SP"
+  descricao="Quem é a Fernanda Lins: especialista em estética facial e corporal avançada em Jardim Monjolo, São Paulo. Atendimento individual, avaliação antes do protocolo."
+  caminho="/sobre"
+  mensagemZap={zap}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno abertura-grade">
+      <div class="abertura-texto">
+        <div class="cabeca">
+          <span class="olho">Sobre</span>
+          <h1>Fernanda Lins</h1>
+          <p class="lead">
+            Especialista em estética facial e corporal avançada, em {site.bairro},
+            {site.regiao}. Atendimento individual, com hora marcada, do começo ao fim
+            do protocolo.
+          </p>
+        </div>
+        <div class="btn-grupo">
+          <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-sobre">
+            Agendar avaliação sem custo
+          </a>
+        </div>
+      </div>
+      <div class="abertura-foto">
+        <div class="foto-reserva" aria-hidden="true">
+          <span class="marca-fl-grande">FL</span>
+          <span class="foto-nota">foto da Fernanda</span>
+        </div>
+        <img
+          src="/fernanda.jpeg"
+          alt="Fernanda Lins no estúdio, em Jardim Monjolo"
+          width="960"
+          height="1650"
+          loading="eager"
+          onerror="this.remove()"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- A frase -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito">
+      <blockquote class="citacao-grande">
+        <p>
+          Confesso que por muitas vezes achei que não conseguiria corresponder às suas
+          expectativas. Mas ela sempre focada, ouvindo o que era indicado, e assim
+          seguimos até chegar nesse resultado.
+        </p>
+      </blockquote>
+      <p class="pequeno suave">
+        Sobre uma cliente que concluiu o protocolo corporal completo.
+      </p>
+      <p>
+        Eu podia ter escrito aqui que entrego resultado garantido. Preferi deixar o que eu
+        realmente penso enquanto acompanho uma cliente: <strong>dúvida, cuidado e
+        responsabilidade pelo que prometi.</strong> É assim que eu trabalho.
+      </p>
+    </div>
+  </section>
+
+  <!-- Princípios -->
+  <section class="secao">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Como eu trabalho</span>
+        <h2>Quatro coisas que não mudam</h2>
+      </div>
+      <div class="grade g2">
+        {
+          principios.map((p) => (
+            <div class="cartao">
+              <h4>{p.t}</h4>
+              <p class="pequeno">{p.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Especialidades -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Especialidades</span>
+        <h2>O que eu atendo</h2>
+      </div>
+      <ul class="etiquetas">
+        {especialidades.map((e) => <li>{e}</li>)}
+      </ul>
+      <p class="pequeno suave">
+        Equipamentos HTM operados por mim. Procedimentos estéticos não substituem
+        acompanhamento médico.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--linha" href="/#tratamentos">Ver tratamentos</a>
+        <a class="btn btn--linha" href="/resultados">Ver resultados</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regras -->
+  <section class="secao">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Combinado é combinado</span>
+        <h2>As regras, ditas antes e não depois</h2>
+        <p class="lead">
+          Eu atendo sozinha, com hora marcada. Um horário vago é um horário que outra
+          cliente poderia ter usado — por isso estas regras existem, e por isso elas estão
+          aqui e não na letra miúda.
+        </p>
+      </div>
+      <ul class="marcada">
+        <li>Confirmação de presença antes de cada sessão.</li>
+        <li>Cancelamento com no mínimo 6 horas de antecedência.</li>
+        <li>Tolerância de 10 minutos de atraso.</li>
+        <li>Pacotes têm validade de 6 meses a partir da compra.</li>
+        <li>Avisar com antecedência em caso de impossibilidade de comparecer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito fechamento">
+      <h2>Aqui você é cuidada de verdade</h2>
+      <p class="lead">
+        Me conta o que está te incomodando. A avaliação de protocolo não custa nada e eu
+        respondo pessoalmente.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento-sobre">
+          Falar com a Fernanda
+        </a>
+        <a class="btn btn--linha" href="/contato">Onde fica</a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 6vw, 72px); padding-bottom: clamp(36px, 5vw, 60px); }
+  .abertura-grade {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: clamp(28px, 5vw, 56px);
+    align-items: center;
+  }
+  .abertura-texto { display: flex; flex-direction: column; gap: 26px; }
+  .abertura-foto {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    overflow: hidden;
+    background: linear-gradient(150deg, var(--ouro-lavado), var(--creme-2));
+  }
+  .foto-reserva {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+  }
+  .abertura-foto img {
+    position: relative;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 50% 12%;
+  }
+  .marca-fl-grande {
+    font-family: var(--display);
+    font-size: 34px; letter-spacing: .07em; color: var(--ouro);
+    border: 1px solid var(--ouro-claro); border-radius: 50%;
+    width: 92px; height: 92px; display: grid; place-items: center;
+  }
+  .foto-nota { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-3); }
+  @media (max-width: 860px) {
+    .abertura-grade { grid-template-columns: 1fr; }
+    .abertura-foto { aspect-ratio: 4 / 3; max-height: 380px; }
+    .abertura-foto img { object-position: 50% 10%; }
+  }
+
+  .citacao-grande { margin: 0; padding: 0 0 0 24px; border-left: 2px solid var(--ouro-claro); }
+  .citacao-grande p {
+    font-family: var(--display);
+    font-size: clamp(22px, 3.4vw, 31px);
+    line-height: 1.34;
+    color: var(--tinta);
+  }
+
+  .etiquetas {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .etiquetas li {
+    padding: 9px 17px;
+    border: 1px solid var(--linha);
+    border-radius: 999px;
+    background: var(--creme);
+    font-size: 15px;
+    color: var(--tinta-2);
+  }
+
+  .fechamento { align-items: flex-start; }
+</style>

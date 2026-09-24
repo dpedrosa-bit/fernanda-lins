@@ -1,0 +1,247 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const protocoloIntensivo = [
+  { n: 12, t: 'Enzimas sem agulha', d: 'Aplicadas por pressão, sobre a gordura localizada.' },
+  { n: 3, t: 'Criolipólise de placas', d: 'Congelamento controlado nas regiões de maior acúmulo.' },
+  { n: 6, t: 'Detox corporal', d: 'Ajuda o corpo a eliminar o que foi mobilizado.' },
+  { n: 6, t: 'Ultrassom com eletrolipólise', d: 'Trabalha a gordura em profundidade.' },
+  { n: 6, t: 'Massagem modeladora local', d: 'Fecha cada sessão trabalhando o contorno.' },
+];
+
+const avulsos = [
+  { t: 'Criolipólise de placas', v: 'R$ 149', obs: 'por região' },
+  { t: 'Enzimas sem agulha', v: 'a partir de R$ 99' },
+  { t: 'Ultrassom', v: 'a partir de R$ 60' },
+  { t: 'Radiofrequência', v: 'a partir de R$ 50' },
+  { t: 'Corrente russa', v: 'R$ 50' },
+  { t: 'Massagem modeladora', v: 'R$ 140' },
+  { t: 'Detox corporal', v: 'R$ 120' },
+  { t: 'Casadinha', v: 'R$ 110', obs: 'dois procedimentos na mesma sessão' },
+];
+
+const perguntas = [
+  {
+    p: 'Isso emagrece?',
+    r: 'Não. Tratamento de gordura localizada trabalha o contorno de uma região específica — aquela que não responde a dieta nem academia. Quem quer perder peso precisa de nutrição e atividade física; eu cuido do que sobra depois disso, e digo isso na avaliação.',
+  },
+  {
+    p: 'Em quantas sessões eu vejo diferença?',
+    r: 'Costuma aparecer a partir da terceira ou quarta sessão, e o resultado continua evoluindo semanas depois da última. Gordura localizada não sai em uma sessão, e quem promete isso está vendendo o que não entrega.',
+  },
+  {
+    p: 'A criolipólise dói?',
+    r: 'Os primeiros minutos incomodam, até a região dormecer com o frio. Depois disso a sessão é tranquila. Pode ficar vermelhidão e sensibilidade por alguns dias.',
+  },
+  {
+    p: 'A gordura volta?',
+    r: 'A célula de gordura tratada não volta, mas as que ficaram podem aumentar se houver ganho de peso. Por isso o acompanhamento inclui orientação para o que fazer depois — o resultado se mantém com o que você faz em casa.',
+  },
+  {
+    p: 'Posso fazer em qualquer região?',
+    r: 'As mais procuradas são abdômen, flancos, culote, costas e braços. Na avaliação eu vejo se a região tem gordura suficiente para o equipamento pegar — em algumas, o que incomoda é flacidez, e aí o protocolo é outro.',
+  },
+  {
+    p: 'Preciso fechar pacote?',
+    r: 'Não. Dá para fazer sessão avulsa. Mas em gordura localizada a constância é o que faz diferença, e o pacote sai bem mais em conta que a soma das avulsas.',
+  },
+];
+
+const schemaFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: perguntas.map((q) => ({
+    '@type': 'Question',
+    name: q.p,
+    acceptedAnswer: { '@type': 'Answer', text: q.r },
+  })),
+};
+
+const zap = 'Oi Fernanda! Vim pelo site e queria saber do tratamento para gordura localizada.';
+---
+
+<Base
+  titulo="Gordura localizada na Zona Norte de SP | Fernanda Lins Estética"
+  descricao="Criolipólise de placas, enzimas sem agulha e ultrassom para gordura localizada em Jardim Monjolo, São Paulo. Protocolo redutor intensivo em 10× sem juros."
+  caminho="/gordura-localizada"
+  mensagemZap={zap}
+  schemaExtra={schemaFaq}
+>
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Gordura localizada · {site.regiao}</span>
+        <h1>Aquela que não sai com dieta nem com academia.</h1>
+        <p class="lead">
+          Abdômen, flancos, culote, costas e braços. Criolipólise de placas, enzimas sem
+          agulha e ultrassom, em protocolo montado sobre a sua região — em {site.bairro}.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-gordura">
+          Agendar avaliação sem custo
+        </a>
+        <a class="btn btn--linha" href="#protocolo">Ver o protocolo</a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
+    </div>
+  </section>
+
+  <!-- Honestidade -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Antes de qualquer coisa</span>
+        <h2>Isto não é tratamento para emagrecer</h2>
+      </div>
+      <p>
+        Gordura localizada é a que fica numa região específica e não responde a dieta nem a
+        exercício — é por isso que existe gente magra com culote e gente que perdeu muito
+        peso e continuou com a barriga baixa.
+      </p>
+      <p>
+        Se o que você procura é perder peso, o caminho é nutrição e atividade física, e eu
+        vou te dizer isso na avaliação em vez de te vender um pacote. <strong>O que eu faço é
+        o contorno</strong> — o que sobra depois que você já fez a sua parte, ou aquilo que
+        nunca saiu por mais que você tentasse.
+      </p>
+    </div>
+  </section>
+
+  <!-- Protocolo intensivo -->
+  <section class="secao" id="protocolo">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Protocolo redutor intensivo</span>
+        <h2>33 sessões, quando o caso pede constância</h2>
+        <p class="lead">
+          É a estrutura completa, para quem quer tratar a região de verdade em vez de fazer
+          sessão solta. Na avaliação eu ajusto as regiões e o ritmo.
+        </p>
+      </div>
+      <div class="grade g3">
+        {
+          protocoloIntensivo.map((item) => (
+            <div class="cartao">
+              <span class="olho tabular">{item.n} sessões</span>
+              <h4>{item.t}</h4>
+              <p class="pequeno">{item.d}</p>
+            </div>
+          ))
+        }
+        <div class="cartao cartao--valor">
+          <span class="olho">Protocolo completo</span>
+          <p class="preco tabular">10× de R$ 229</p>
+          <p class="pequeno suave">sem juros · validade de 6 meses</p>
+        </div>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="protocolo-gordura">
+          Falar sobre o protocolo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avulsos -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Sessões avulsas</span>
+        <h2>Ou monte do seu jeito</h2>
+        <p class="lead">
+          Dá para começar por uma sessão e decidir depois. Fechando pacote, o valor por
+          sessão cai e entram os brindes.
+        </p>
+      </div>
+      <div class="tabela">
+        {
+          avulsos.map((a) => (
+            <div class="linha">
+              <span class="linha-nome">
+                {a.t}
+                {a.obs && <span class="linha-obs"> — {a.obs}</span>}
+              </span>
+              <span class="linha-valor tabular">{a.v}</span>
+            </div>
+          ))
+        }
+      </div>
+      <div class="cartao">
+        <h4>As regras de pacote, ditas antes</h4>
+        <ul class="marcada">
+          <li>Validade de 6 meses a partir da compra.</li>
+          <li>Confirmação de presença antes de cada sessão.</li>
+          <li>Cancelamento com no mínimo 6 horas de antecedência.</li>
+          <li>Tolerância de 10 minutos de atraso.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="secao">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Dúvidas frequentes</span>
+        <h2>O que chega no meu WhatsApp</h2>
+      </div>
+      <div>
+        {
+          perguntas.map((q) => (
+            <details class="faq">
+              <summary>{q.p}</summary>
+              <div class="resposta">{q.r}</div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito fechamento">
+      <h2>Me mostra a região que te incomoda</h2>
+      <p class="lead">
+        Na avaliação eu vejo se é gordura, se é flacidez ou se são as duas — e falo quantas
+        sessões fazem sentido para o seu caso, com honestidade.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento-gordura">
+          Agendar minha avaliação
+        </a>
+        <a class="btn btn--linha" href="/resultados">Ver resultados</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .preco {
+    font-family: var(--display);
+    font-size: clamp(26px, 3.6vw, 34px);
+    line-height: 1.1;
+    color: var(--ouro);
+  }
+  .cartao--valor { border-color: var(--ouro-claro); justify-content: center; gap: 6px; }
+
+  .tabela { display: flex; flex-direction: column; }
+  .linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--linha);
+  }
+  .linha:last-child { border-bottom: 0; }
+  .linha-nome { color: var(--tinta); }
+  .linha-obs { color: var(--tinta-3); font-size: 14px; }
+  .linha-valor { font-family: var(--display); font-size: 20px; color: var(--ouro); white-space: nowrap; }
+
+  .fechamento { align-items: flex-start; }
+</style>

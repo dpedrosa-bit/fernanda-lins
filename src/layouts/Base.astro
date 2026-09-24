@@ -44,10 +44,11 @@ const negocio = {
 
 const links = [
   { href: '/drenagem-pos-operatorio', texto: 'Pós-operatório' },
-  { href: '/lipedema', texto: 'Lipedema' },
-  { href: '/papada', texto: 'Papada' },
+  { href: '/gordura-localizada', texto: 'Corpo' },
+  { href: '/spa-day', texto: 'SPA' },
   { href: '/resultados', texto: 'Resultados' },
-  { href: '/#onde', texto: 'Onde fica' },
+  { href: '/sobre', texto: 'Sobre' },
+  { href: '/contato', texto: 'Contato' },
 ];
 ---
 
@@ -152,6 +153,14 @@ const links = [
       <p class="pequeno suave">Atendimento com hora marcada.</p>
     </div>
     <div class="rodape-bloco">
+      <h4>Tratamentos</h4>
+      <a class="pequeno" href="/drenagem-pos-operatorio">Drenagem pós-operatória</a>
+      <a class="pequeno" href="/lipedema">Lipedema</a>
+      <a class="pequeno" href="/gordura-localizada">Gordura localizada</a>
+      <a class="pequeno" href="/papada">Papada</a>
+      <a class="pequeno" href="/spa-day">SPA day</a>
+    </div>
+    <div class="rodape-bloco">
       <h4>Contato</h4>
       <a class="pequeno" href={whatsappLink(mensagemZap)} data-zap="rodape">{site.telefoneExibicao}</a>
       <a class="pequeno" href={site.instagramUrl} target="_blank" rel="noopener">@{site.instagram}</a>
@@ -246,10 +255,11 @@ const links = [
     margin: 0 auto;
     padding: clamp(40px, 6vw, 64px) var(--pad) 32px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 32px;
   }
-  @media (max-width: 860px) { .rodape-interno { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 1000px) { .rodape-interno { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 720px) { .rodape-interno { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 520px) { .rodape-interno { grid-template-columns: 1fr; } }
   .rodape-bloco { display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
   .rodape-bloco h4 { color: var(--tinta); margin-bottom: 3px; }

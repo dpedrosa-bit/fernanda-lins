@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const zap = msg.avaliacao;
+
+const mapaEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(
+  `${site.rua}, ${site.bairro}, ${site.cidade} ${site.uf}, ${site.cep}`
+)}&output=embed`;
+
+const canais = [
+  {
+    t: 'WhatsApp',
+    d: 'O jeito mais rápido. Eu respondo pessoalmente, dentro do horário de atendimento.',
+    acao: 'Abrir conversa',
+    href: whatsappLink(zap),
+    zap: 'contato-whatsapp',
+  },
+  {
+    t: 'Instagram',
+    d: `Resultados, novidades e os bastidores do estúdio. @${site.instagram}`,
+    acao: 'Ver o perfil',
+    href: site.instagramUrl,
+    externo: true,
+  },
+];
+---
+
+<Base
+  titulo="Onde fica e como agendar | Fernanda Lins Estética"
+  descricao={`Fernanda Lins Estética fica na ${site.rua}, ${site.bairro}, ${site.regiao}. Atendimento com hora marcada pelo WhatsApp ${site.telefoneExibicao}.`}
+  caminho="/contato"
+  mensagemZap={zap}
+>
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Contato</span>
+        <h1>{site.bairro}, {site.regiao}</h1>
+        <p class="lead">
+          Atendimento com hora marcada. Me chama no WhatsApp que eu confirmo o horário e já
+          deixo reservado.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-contato">
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn--linha" href={site.mapsUrl} data-mapa target="_blank" rel="noopener">
+          Traçar rota
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa e dados -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="grade g2 bloco-mapa">
+        <div class="mapa">
+          <iframe
+            src={mapaEmbed}
+            title={`Mapa — ${site.nomeCompleto}`}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="dados">
+          <div class="dado">
+            <h4>Endereço</h4>
+            <p>{site.rua}</p>
+            <p class="pequeno suave">
+              {site.bairro} · {site.cidade}/{site.uf} · CEP {site.cep}
+            </p>
+            <p class="pequeno">
+              <a href={site.mapsUrl} data-mapa target="_blank" rel="noopener">Abrir no Google Maps</a>
+            </p>
+          </div>
+          <div class="dado">
+            <h4>Horários</h4>
+            {site.horarios.map((h) => <p>{h.dias} · <span class="tabular">{h.horario}</span></p>)}
+            <p class="pequeno suave">Sempre com hora marcada — não há atendimento por ordem de chegada.</p>
+          </div>
+          <div class="dado">
+            <h4>Telefone e WhatsApp</h4>
+            <p>
+              <a href={whatsappLink(zap)} data-zap="dados-contato">{site.telefoneExibicao}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como chegar -->
+  <section class="secao">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Como chegar</span>
+        <h2>Detalhes que ajudam na primeira visita</h2>
+      </div>
+      <div class="grade g3">
+        <div class="cartao">
+          <h4>De carro</h4>
+          <p class="pequeno">
+            A rua é tranquila para estacionar, com vaga na via. Coloque o endereço no
+            aplicativo — a referência é o {site.bairro}, na {site.regiao}.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>De aplicativo</h4>
+          <p class="pequeno">
+            O acesso da calçada até a sala é curto e sem escada. Pensado para quem está em
+            pós-operatório recente e não pode fazer esforço.
+          </p>
+        </div>
+        <div class="cartao">
+          <h4>Chegou cedo?</h4>
+          <p class="pequeno">
+            Me avise pelo WhatsApp. Como o atendimento é individual, eu consigo te receber
+            antes se o horário anterior já tiver terminado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Canais -->
+  <section class="secao secao--ouro">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Por onde falar</span>
+        <h2>Onde eu respondo</h2>
+      </div>
+      <div class="grade g2">
+        {
+          canais.map((c) => (
+            <div class="cartao">
+              <h4>{c.t}</h4>
+              <p class="pequeno">{c.d}</p>
+              <a
+                class="btn btn--linha btn--pequeno"
+                href={c.href}
+                data-zap={c.zap}
+                target={c.externo ? '_blank' : undefined}
+                rel={c.externo ? 'noopener' : undefined}
+              >
+                {c.acao}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+      <p class="pequeno suave">
+        Fora do horário de atendimento eu respondo assim que voltar. Se for pós-operatório
+        recente, escreva mesmo assim — esses casos têm prioridade na agenda.
+      </p>
+    </div>
+  </section>
+
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito fechamento">
+      <h2>Vamos marcar?</h2>
+      <p class="lead">
+        Me conta o que está te incomodando e o melhor período para você. A avaliação de
+        protocolo não custa nada.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento-contato">
+          Agendar meu horário
+        </a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .bloco-mapa { align-items: stretch; }
+  .mapa {
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    overflow: hidden;
+    min-height: 340px;
+    background: var(--creme-3);
+  }
+  .mapa iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+
+  .dados { display: flex; flex-direction: column; gap: 24px; justify-content: center; }
+  .dado { display: flex; flex-direction: column; gap: 4px; }
+  .dado h4 { color: var(--tinta); margin-bottom: 4px; }
+
+  .btn--pequeno { padding: 10px 20px; font-size: 15px; align-self: flex-start; margin-top: 4px; }
+
+  .fechamento { align-items: flex-start; }
+</style>
