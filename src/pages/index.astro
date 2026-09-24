@@ -25,8 +25,8 @@ const problemas = [
   },
   {
     t: 'Papada',
-    d: 'Protocolo com enzimas pressurizadas, com resultado visível em poucas sessões.',
-    href: null,
+    d: 'Protocolo com enzimas pressurizadas, sem agulha. Gordura, flacidez ou as duas.',
+    href: '/papada',
   },
   {
     t: 'Pele do rosto',
@@ -315,9 +315,7 @@ const zap = msg.home;
         <a class="btn btn--zap" href={whatsappLink(msg.avaliacao)} data-zap="fechamento">
           Falar com a Fernanda
         </a>
-        <a class="btn btn--linha" href={site.instagramUrl} target="_blank" rel="noopener">
-          Ver o Instagram
-        </a>
+        <a class="btn btn--linha" href="/resultados">Ver resultados</a>
       </div>
     </div>
   </section>

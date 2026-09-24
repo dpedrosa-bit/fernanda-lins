@@ -45,4 +45,6 @@ export const msg = {
   posOp: 'Oi Fernanda! Vim pelo site. Fiz cirurgia e preciso de drenagem pós-operatória.',
   lipedema: 'Oi Fernanda! Vim pelo site e queria saber do protocolo para lipedema.',
   avaliacao: 'Oi Fernanda! Vim pelo site e queria agendar uma avaliação.',
+  papada: 'Oi Fernanda! Vim pelo site e queria saber do protocolo para papada.',
+  resultados: 'Oi Fernanda! Vi os resultados no site e queria saber se serve para o meu caso.',
 } as const;

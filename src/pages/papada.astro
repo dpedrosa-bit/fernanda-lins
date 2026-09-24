@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, enderecoLinha, whatsappLink, msg } from '../data/site';
+
+const causas = [
+  {
+    t: 'Genética',
+    d: 'Muita gente acumula gordura embaixo do queixo por herança, e não por peso. É o caso mais comum de quem emagrece e continua com papada.',
+  },
+  {
+    t: 'Perda de firmeza',
+    d: 'A partir dos trinta a pele do pescoço perde sustentação. A gordura pode ser pouca, mas sem firmeza ela aparece.',
+  },
+  {
+    t: 'Gordura localizada',
+    d: 'A região submentoniana é uma das que menos responde a dieta e academia — pelo mesmo motivo do culote e do flanco.',
+  },
+  {
+    t: 'Postura',
+    d: 'Horas de celular e de computador com o queixo baixo encurtam a musculatura da frente do pescoço e acentuam o contorno.',
+  },
+];
+
+const perguntas = [
+  {
+    p: 'Tem agulha?',
+    r: 'Não. As enzimas são aplicadas por pressão, sem agulha e sem injeção. É justamente por isso que muita gente que tinha medo do procedimento com agulha consegue fazer.',
+  },
+  {
+    p: 'Dói?',
+    r: 'A sensação é de pressão e de um leve ardor no momento da aplicação, que passa rápido. A maioria das clientes descreve como incômodo, não como dor.',
+  },
+  {
+    p: 'Quantas sessões vou precisar?',
+    r: 'Depende de quanto é gordura e quanto é flacidez, e isso só dá para dizer olhando. Na avaliação eu falo um número realista para o seu caso. Papada por flacidez responde melhor quando a gente associa radiofrequência.',
+  },
+  {
+    p: 'Posso trabalhar depois?',
+    r: 'Pode. Pode haver um leve inchaço ou vermelhidão na região por algumas horas. Se tiver compromisso importante, prefira não agendar para o mesmo dia.',
+  },
+  {
+    p: 'O resultado é definitivo?',
+    r: 'A gordura tratada sai, mas a região pode voltar a acumular se houver ganho de peso. Flacidez também volta a progredir com o tempo, porque envelhecer continua acontecendo. Manutenção espaçada segura o resultado.',
+  },
+  {
+    p: 'Emagrecer não resolveria?',
+    r: 'Às vezes sim, às vezes não. Se a papada é genética ou de flacidez, emagrecer afina o rosto e ela continua lá — é uma das queixas que mais escuto. Por isso a avaliação vem antes de qualquer protocolo.',
+  },
+];
+
+const schemaFaq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: perguntas.map((q) => ({
+    '@type': 'Question',
+    name: q.p,
+    acceptedAnswer: { '@type': 'Answer', text: q.r },
+  })),
+};
+
+const zap = msg.papada;
+---
+
+<Base
+  titulo="Tratamento para papada sem agulha na Zona Norte de SP | Fernanda Lins Estética"
+  descricao="Protocolo para papada com enzimas pressurizadas, sem agulha, em Jardim Monjolo, São Paulo. Avaliação sem custo para saber se o seu caso é gordura ou flacidez."
+  caminho="/papada"
+  mensagemZap={zap}
+  schemaExtra={schemaFaq}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Papada · {site.regiao}</span>
+        <h1>Emagrecer nem sempre resolve a papada.</h1>
+        <p class="lead">
+          Protocolo com enzimas pressurizadas, sem agulha, em {site.bairro}.
+          Antes de tratar, a gente descobre se o seu caso é gordura, flacidez ou os dois —
+          porque o tratamento muda.
+        </p>
+      </div>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="hero-papada">
+          Agendar avaliação sem custo
+        </a>
+        <a class="btn btn--linha" href="#protocolo">Como funciona</a>
+      </div>
+      <p class="pequeno suave">{enderecoLinha} · Atendimento com hora marcada</p>
+    </div>
+  </section>
+
+  <!-- Causas -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Por que ela aparece</span>
+        <h2>Papada quase nunca é só uma coisa</h2>
+        <p class="lead">
+          É por isso que existe gente magra com papada e gente que emagreceu muito e
+          continuou com ela.
+        </p>
+      </div>
+      <div class="grade g2">
+        {
+          causas.map((c) => (
+            <div class="cartao">
+              <h4>{c.t}</h4>
+              <p class="pequeno">{c.d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Protocolo -->
+  <section class="secao" id="protocolo">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">O protocolo</span>
+        <h2>Enzimas pressurizadas, sem agulha</h2>
+      </div>
+      <div class="grade g3">
+        <div class="cartao">
+          <span class="olho">Como é aplicado</span>
+          <h4>Por pressão, não por injeção</h4>
+          <p class="pequeno">
+            O ativo atravessa a pele por pressurização. Sem agulha, sem furo, sem os
+            hematomas que a versão injetável costuma deixar.
+          </p>
+        </div>
+        <div class="cartao">
+          <span class="olho">O que faz</span>
+          <h4>Trabalha a gordura localizada</h4>
+          <p class="pequeno">
+            A enzima atua sobre a gordura da região submentoniana, que é a parte que
+            dieta e academia costumam não alcançar.
+          </p>
+        </div>
+        <div class="cartao">
+          <span class="olho">Quando associo</span>
+          <h4>Radiofrequência, se houver flacidez</h4>
+          <p class="pequeno">
+            Se boa parte do contorno é falta de firmeza, tirar gordura sozinho não
+            resolve. A radiofrequência entra para trabalhar a sustentação da pele.
+          </p>
+        </div>
+      </div>
+      <div class="cartao cartao--valor">
+        <div>
+          <span class="olho">Sessão de enzimas</span>
+          <p class="preco tabular">a partir de R$ 99</p>
+          <p class="pequeno suave">
+            O número de sessões sai na avaliação. Pacote fechado tem validade de 6 meses.
+          </p>
+        </div>
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="protocolo-papada">
+          Falar sobre o protocolo
+        </a>
+      </div>
+      <p class="pequeno suave">
+        Procedimento estético, não cirúrgico, e não substitui avaliação médica. Casos com
+        excesso importante de pele costumam pedir outra abordagem — se for o seu, eu digo
+        na avaliação em vez de vender sessão que não vai resolver.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quem conduz -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Quem vai te atender</span>
+        <h2>Fernanda Lins</h2>
+      </div>
+      <p>
+        Especialista em estética facial e corporal avançada. Quem avalia, define o
+        protocolo e aplica sou eu, em todas as sessões.
+      </p>
+      <p>
+        Na papada isso pesa: é uma região pequena, com pouca margem de erro, onde a
+        diferença entre um bom resultado e um resultado mediano está em ler direito
+        quanto é gordura e quanto é flacidez.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--linha" href="/resultados">Ver resultados</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="secao">
+    <div class="interno interno--estreito">
+      <div class="cabeca">
+        <span class="olho">Dúvidas frequentes</span>
+        <h2>O que todo mundo pergunta</h2>
+      </div>
+      <div>
+        {
+          perguntas.map((q) => (
+            <details class="faq">
+              <summary>{q.p}</summary>
+              <div class="resposta">{q.r}</div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="secao secao--creme">
+    <div class="interno interno--estreito fechamento">
+      <h2>A avaliação não custa nada</h2>
+      <p class="lead">
+        Em dez minutos eu consigo te dizer se o seu caso é gordura, flacidez ou os dois,
+        e quantas sessões faz sentido fazer.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="fechamento-papada">
+          Agendar minha avaliação
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+  .abertura .interno { gap: 26px; }
+
+  .preco {
+    font-family: var(--display);
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.1;
+    color: var(--ouro);
+  }
+  .cartao--valor {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-color: var(--ouro-claro);
+  }
+
+  .fechamento { align-items: flex-start; }
+</style>

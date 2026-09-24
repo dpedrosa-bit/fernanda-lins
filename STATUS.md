@@ -5,8 +5,8 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
 ## Feito
 
 - Estratégia completa desenhada e **aprovada pela Fernanda** (`docs/plano-captacao.html`).
-- Projeto Astro no ar no repositório, buildando limpo, com três páginas prontas:
-  home, `/drenagem-pos-operatorio` e `/lipedema`.
+- Projeto Astro no ar no repositório, buildando limpo, com **cinco páginas**:
+  home, `/drenagem-pos-operatorio`, `/lipedema`, `/papada` e `/resultados`.
 - Foto do hero publicada (`public/fernanda.jpeg`), com recorte ancorado no topo
   para o rosto não ser cortado.
 - Rastreamento preparado (GA4, Google Ads, Meta Pixel) atrás de variáveis de
@@ -36,10 +36,10 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
    e não há confirmação de que foi. Trocar a categoria "Profissional da beleza"
    por uma específica, completar horários, e puxar de 8 para 30 avaliações.
    Rende mais nos primeiros 90 dias do que a verba inteira de anúncio.
-3. **Criar `/resultados`** com os antes-e-depois. É o ativo mais forte e está
-   parado. Precisa de 3–4 casos com protocolo, número de sessões e duração.
-4. Criar `/papada` — busca alta, concorrência baixa, já é serviço dela.
-5. Ligar as campanhas (ver `CLAUDE.md`), só depois de rastreamento validado.
+3. **Preencher os casos de `/resultados`.** A página está pronta e no ar, mas
+   nenhum caso está publicado ainda — ela mostra o estado vazio, que aponta para
+   o Instagram. Ver instruções no topo de `src/data/resultados.ts`.
+4. Ligar as campanhas (ver `CLAUDE.md`), só depois de rastreamento validado.
 
 ## Bloqueios
 
@@ -47,6 +47,7 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
   "seg a sex 14h–20h, sáb 9h–16h", inferidos do "abre seg às 14h" do perfil do
   Google. Aparecem no rodapé de todas as páginas. **Confirmar com a Fernanda.**
 - **Domínio não registrado.** Trava a publicação e a configuração de rastreamento.
-- **Antes-e-depois:** faltam os dados de cada caso (quantas sessões, de quê, em
-  quanto tempo) para montar `/resultados` com honestidade.
+- **Antes-e-depois:** faltam as fotos em `public/resultados/` e os dados de cada
+  caso (quantas sessões, em quanto tempo). Sem isso `/resultados` fica no estado
+  vazio. Um caso só vai ao ar com `publicado: true` **e** autorização assinada.
 - Falta confirmar se o Perfil da Empresa no Google foi reivindicado.

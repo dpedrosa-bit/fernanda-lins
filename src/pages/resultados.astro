@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, whatsappLink, msg } from '../data/site';
+import { resultadosPublicados } from '../data/resultados';
+
+const zap = msg.resultados;
+const temCasos = resultadosPublicados.length > 0;
+---
+
+<Base
+  titulo="Resultados reais | Fernanda Lins Estética"
+  descricao="Antes e depois de clientes da Fernanda Lins Estética, com o protocolo, o número de sessões e o tempo de cada caso. Zona Norte de São Paulo."
+  caminho="/resultados"
+  mensagemZap={zap}
+>
+  <!-- Abertura -->
+  <section class="secao abertura">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Resultados</span>
+        <h1>Foto sem protocolo do lado não prova nada.</h1>
+        <p class="lead">
+          Aqui cada caso vem com o que foi feito, quantas sessões, em quanto tempo e o que
+          a cliente manteve em casa. É a única forma de um antes-e-depois significar alguma coisa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como ler -->
+  <section class="secao secao--creme">
+    <div class="interno">
+      <div class="cabeca">
+        <span class="olho">Como ler estas fotos</span>
+        <h2>O que eu faço e o que eu não faço</h2>
+      </div>
+      <div class="grade g2">
+        <div class="cartao">
+          <h4>O que garanto em cada foto</h4>
+          <ul class="marcada">
+            <li>Mesma luz, mesmo ângulo, mesma pose e mesma distância.</li>
+            <li>Sem filtro, sem edição de contorno, sem pose que encolhe barriga.</li>
+            <li>O protocolo completo descrito, incluindo o que a cliente fez em casa.</li>
+            <li>Autorização de uso de imagem assinada por cada cliente.</li>
+          </ul>
+        </div>
+        <div class="cartao cartao--limite">
+          <h4>O que estas fotos não são</h4>
+          <ul class="marcada">
+            <li>Não são promessa. O seu corpo não é o corpo dela.</li>
+            <li>Não são média — são casos de quem completou o protocolo.</li>
+            <li>Não valem sem a parte de casa, que aparece descrita em cada um.</li>
+            <li>Não substituem uma avaliação olhando para o seu caso.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pequeno suave">
+        Resultados variam de pessoa para pessoa e dependem de fatores como idade, hábitos,
+        metabolismo e adesão ao protocolo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Casos -->
+  <section class="secao">
+    <div class="interno">
+      {
+        temCasos ? (
+          <>
+            <div class="cabeca">
+              <span class="olho">Casos</span>
+              <h2>Clientes que concluíram o protocolo</h2>
+            </div>
+            <div class="casos">
+              {resultadosPublicados.map((r) => (
+                <article class="caso">
+                  <img
+                    src={r.imagem}
+                    alt={`Antes e depois — ${r.titulo}, ${r.regiao.toLowerCase()}`}
+                    loading="lazy"
+                  />
+                  <div class="caso-texto">
+                    <span class="olho">{r.regiao}</span>
+                    <h3>{r.titulo}</h3>
+                    <dl class="ficha">
+                      <div>
+                        <dt>Protocolo</dt>
+                        <dd>{r.protocolo.join(' · ')}</dd>
+                      </div>
+                      {r.sessoes && (
+                        <div>
+                          <dt>Sessões</dt>
+                          <dd class="tabular">{r.sessoes}</dd>
+                        </div>
+                      )}
+                      {r.duracao && (
+                        <div>
+                          <dt>Tempo</dt>
+                          <dd>{r.duracao}</dd>
+                        </div>
+                      )}
+                      {r.emCasa && (
+                        <div>
+                          <dt>Em casa</dt>
+                          <dd>{r.emCasa}</dd>
+                        </div>
+                      )}
+                    </dl>
+                    {r.depoimento && <blockquote class="citacao"><p>{r.depoimento}</p></blockquote>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div class="interno--estreito vazio">
+            <div class="cabeca">
+              <span class="olho">Casos</span>
+              <h2>Os casos estão sendo organizados</h2>
+            </div>
+            <p>
+              Publicar um antes-e-depois aqui exige mais do que a foto: o protocolo, o
+              número de sessões, o tempo e a autorização assinada da cliente. Enquanto eu
+              termino de reunir isso caso a caso, os resultados estão no Instagram.
+            </p>
+            <div class="btn-grupo">
+              <a class="btn btn--ouro" href={site.instagramUrl} target="_blank" rel="noopener">
+                Ver resultados no Instagram
+              </a>
+              <a class="btn btn--zap" href={whatsappLink(zap)} data-zap="vazio-resultados">
+                Perguntar sobre o meu caso
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="secao secao--ouro">
+    <div class="interno interno--estreito fechamento">
+      <h2>O seu caso é diferente de todos esses</h2>
+      <p class="lead">
+        É por isso que tudo começa por uma avaliação, e não por um pacote. Me conta o que
+        te incomoda que eu digo, com honestidade, o que dá para esperar.
+      </p>
+      <div class="btn-grupo">
+        <a class="btn btn--zap" href={whatsappLink(msg.avaliacao)} data-zap="fechamento-resultados">
+          Agendar avaliação sem custo
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .abertura { padding-top: clamp(44px, 7vw, 76px); }
+
+  .cartao--limite { border-color: var(--linha); background: var(--creme-2); }
+
+  .casos { display: flex; flex-direction: column; gap: clamp(32px, 5vw, 52px); }
+  .caso {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(22px, 3.5vw, 40px);
+    align-items: start;
+    padding-bottom: clamp(32px, 5vw, 52px);
+    border-bottom: 1px solid var(--linha);
+  }
+  .caso:last-child { border-bottom: 0; padding-bottom: 0; }
+  @media (max-width: 800px) { .caso { grid-template-columns: 1fr; } }
+
+  .caso img {
+    width: 100%;
+    border-radius: var(--raio);
+    border: 1px solid var(--linha);
+  }
+  .caso-texto { display: flex; flex-direction: column; gap: 12px; }
+
+  .ficha { margin: 0; display: flex; flex-direction: column; gap: 11px; }
+  .ficha > div {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .ficha dt {
+    font-size: 11px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--tinta-3);
+  }
+  .ficha dd { margin: 0; font-size: 15.5px; color: var(--tinta-2); line-height: 1.55; }
+  @media (max-width: 460px) {
+    .ficha > div { grid-template-columns: 1fr; gap: 3px; }
+  }
+
+  .citacao { margin: 6px 0 0; padding: 14px 0 14px 20px; border-left: 2px solid var(--ouro-claro); }
+  .citacao p { font-family: var(--display); font-size: 19px; line-height: 1.4; color: var(--tinta); }
+
+  .vazio { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+
+  .fechamento { align-items: flex-start; }
+</style>
