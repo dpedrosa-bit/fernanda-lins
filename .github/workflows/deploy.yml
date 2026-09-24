@@ -1,0 +1,44 @@
+# Publica o site na Cloudflare Pages a cada push na main.
+#
+# Usa um token de API em vez da integracao GitHub<->Cloudflare. Serve como
+# alternativa quando aquela conexao nao completa, e funciona igual: todo push
+# na main publica sozinho.
+#
+# Antes do primeiro uso, configure em
+# Settings > Secrets and variables > Actions > New repository secret:
+#
+#   CLOUDFLARE_API_TOKEN   token com permissao "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  o ID da conta (aparece na URL do painel)
+#
+# E crie o projeto uma vez no painel da Cloudflare, com o nome fernanda-lins.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Publicar na Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=fernanda-lins --branch=main
