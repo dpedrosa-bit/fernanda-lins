@@ -22,6 +22,8 @@ npm run preview  # serve o dist/
 - **`STATUS.md`** — em que ponto o trabalho parou, o que vem a seguir, o que está travado.
 - **`docs/plano-captacao.html`** — a estratégia completa, aprovada. Abra no navegador.
 - **`docs/hospedagem.md`** — onde publicar e como. Recomendação: Cloudflare Pages.
+- **`docs/contas.md`** — e-mail, Perfil do Google, GA4, Ads e Pixel: o que criar,
+  em que ordem e **em nome de quem**.
 - **`docs/previa-navegavel.html`** — prévia estática das três páginas (não reflete o código atual).
 
 ## Estrutura
@@ -74,11 +76,11 @@ página: é o que permite saber de qual campanha veio cada conversa sem precisar
 
 - [x] Foto da Fernanda no hero (`public/fernanda.jpeg`)
 - [x] Nove páginas da fase 1 no ar
-- [ ] **Horários reais** em `src/data/site.ts` — os atuais são uma suposição e
-      aparecem no rodapé de todas as páginas e no JSON-LD que o Google lê
-- [ ] **Domínio** em `astro.config.mjs` (`site:`) e em `public/robots.txt` (`Sitemap:`)
-- [ ] **Variáveis de rastreamento** no painel da Cloudflare — criar antes as contas
-      no GA4, no Google Ads e no Meta Business
+- [x] **Horários** confirmados em `src/data/site.ts`
+- [x] **Domínio** `fernandalinsestetica.com.br` em `astro.config.mjs` e `public/robots.txt`
+- [x] **Sitemap** gerado (`@astrojs/sitemap`) — o `robots.txt` apontava para um arquivo inexistente
+- [ ] **Variáveis de rastreamento** no painel da Cloudflare — ver `docs/contas.md`
+      para a ordem de criação das contas
 - [ ] Preencher os casos de `/resultados` (ver `src/data/resultados.ts`)
 
 ## Regra de conteúdo

@@ -22,7 +22,8 @@ export const site = {
   regiao: 'Zona Norte de São Paulo',
   mapsUrl: 'https://maps.google.com/?q=Rua+Monjolo,+284,+Jardim+Monjolo,+São+Paulo',
 
-  // Horário — ajustar conforme a agenda real
+  // Horário confirmado com a Fernanda em out/2026.
+  // Alimenta o rodapé de todas as páginas e o JSON-LD que o Google lê.
   horarios: [
     { dias: 'Segunda a sexta', horario: '14h às 20h' },
     { dias: 'Sábado', horario: '9h às 16h' },
