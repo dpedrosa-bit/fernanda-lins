@@ -44,9 +44,14 @@ todas as páginas, para o rodapé e para o JSON-LD.
 | `/` | Bifurca entre tratamento corporal e SPA |
 | `/drenagem-pos-operatorio` | Campanha principal do Google Ads — maior valor por cliente |
 | `/lipedema` | Segunda campanha — menor concorrência, alta intenção |
+| `/gordura-localizada` | Criolipólise, enzimas, protocolo redutor intensivo |
+| `/papada` | Enzimas pressurizadas, sem agulha |
+| `/spa-day` | A porta 2: SPA e presente, com preço aberto |
+| `/resultados` | Antes-e-depois. Sem caso publicado ainda — mostra estado vazio |
+| `/sobre` | A Fernanda. É ela o ativo da marca |
+| `/contato` | Mapa, horários, como chegar |
 
-Faltam `/resultados` (antes-e-depois — prioridade), `/papada`, `/celulite-flacidez`,
-`/limpeza-de-pele` e `/vale-presente`.
+Fase 2: `/celulite-flacidez`, `/limpeza-de-pele` e `/vale-presente`.
 
 ## Rastreamento
 
@@ -67,10 +72,14 @@ página: é o que permite saber de qual campanha veio cada conversa sem precisar
 
 ## Antes de publicar
 
-- [ ] Trocar o espaço reservado da foto na home por um retrato real da Fernanda (`public/fernanda.jpg`)
-- [ ] Conferir os horários em `src/data/site.ts` (os atuais são uma suposição)
-- [ ] Configurar as variáveis de ambiente de rastreamento
-- [ ] Apontar o domínio e atualizar `site` em `astro.config.mjs`
+- [x] Foto da Fernanda no hero (`public/fernanda.jpeg`)
+- [x] Nove páginas da fase 1 no ar
+- [ ] **Horários reais** em `src/data/site.ts` — os atuais são uma suposição e
+      aparecem no rodapé de todas as páginas e no JSON-LD que o Google lê
+- [ ] **Domínio** em `astro.config.mjs` (`site:`) e em `public/robots.txt` (`Sitemap:`)
+- [ ] **Variáveis de rastreamento** no painel da Cloudflare — criar antes as contas
+      no GA4, no Google Ads e no Meta Business
+- [ ] Preencher os casos de `/resultados` (ver `src/data/resultados.ts`)
 
 ## Regra de conteúdo
 

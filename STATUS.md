@@ -1,12 +1,13 @@
 # STATUS
 
-Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 27/10/2026. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
 - Estratégia completa desenhada e **aprovada pela Fernanda** (`docs/plano-captacao.html`).
-- Projeto Astro no ar no repositório, buildando limpo, com **cinco páginas**:
-  home, `/drenagem-pos-operatorio`, `/lipedema`, `/papada` e `/resultados`.
+- **Fase 1 completa: nove páginas** buildando limpo — home, pós-operatório,
+  lipedema, gordura localizada, papada, SPA day, resultados, sobre e contato.
+- Domínio registrado no registro.br.
 - Foto do hero publicada (`public/fernanda.jpeg`), com recorte ancorado no topo
   para o rosto não ser cortado.
 - Rastreamento preparado (GA4, Google Ads, Meta Pixel) atrás de variáveis de
@@ -14,6 +15,11 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
 - Mensagens de WhatsApp pré-escritas por página, para atribuir campanha sem CRM.
 
 ## Decisões
+
+- **Hospedagem: Cloudflare Pages, não Vercel.** O plano gratuito da Vercel é para
+  uso pessoal, e isto é um negócio. A Cloudflare é gratuita com uso comercial
+  liberado, banda sem limite, PoP em São Paulo, função serverless (100 mil
+  req/dia) e Turnstile grátis para o formulário.
 
 - **Astro estático, sem painel de edição.** Quem mantém o site é o irmão dela, que
   é técnico. HTML puro carrega rápido, o que baixa o CPC no Google Ads.
@@ -30,8 +36,9 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Próximos passos
 
-1. **Publicar o site.** Recomendação: **Cloudflare Pages** — ver `docs/hospedagem.md`.
-   Registrar o domínio no Registro.br (~R$ 40/ano).
+1. **Publicar na Cloudflare Pages** e apontar o domínio — passo a passo completo
+   em `docs/hospedagem.md`. Antes do push final, corrigir `site:` no
+   `astro.config.mjs` e o `Sitemap:` em `public/robots.txt`.
 2. **Reivindicar e ajustar o Perfil da Empresa no Google.** Estava para ser feito
    e não há confirmação de que foi. Trocar a categoria "Profissional da beleza"
    por uma específica, completar horários, e puxar de 8 para 30 avaliações.
@@ -46,7 +53,11 @@ Atualizado em 24/09/2026. Leia o `CLAUDE.md` antes deste arquivo.
 - **Horários de atendimento ainda são um chute.** Estão em `src/data/site.ts` como
   "seg a sex 14h–20h, sáb 9h–16h", inferidos do "abre seg às 14h" do perfil do
   Google. Aparecem no rodapé de todas as páginas. **Confirmar com a Fernanda.**
-- **Domínio não registrado.** Trava a publicação e a configuração de rastreamento.
+- **Qual domínio foi registrado** ainda não está refletido no código. O
+  `astro.config.mjs` está com `fernandalinsestetica.com.br`, que era só a sugestão.
+- **IDs de GA4, Google Ads e Meta Pixel** ainda não existem — as contas precisam
+  ser criadas antes de virarem variáveis de ambiente. Sem eles o site funciona,
+  só não mede; e campanha sem medição é aposta.
 - **Antes-e-depois:** faltam as fotos em `public/resultados/` e os dados de cada
   caso (quantas sessões, em quanto tempo). Sem isso `/resultados` fica no estado
   vazio. Um caso só vai ao ar com `publicado: true` **e** autorização assinada.

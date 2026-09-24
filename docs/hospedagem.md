@@ -12,6 +12,32 @@ negócio — usar o Hobby fica fora da política, e o plano pago sai por volta d
 US$ 20/mês. Não vale para este porte quando há alternativa gratuita que permite
 uso comercial.
 
+### E o formulário serverless?
+
+Os dois suportam. A diferença está no limite e no que vem junto:
+
+- **Cloudflare Pages Functions** (Workers por baixo): **100 mil requisições por
+  dia** no plano gratuito. Para um site que recebe dezenas de contatos por mês,
+  isso é ordens de grandeza a mais do que o necessário. Basta criar
+  `functions/api/contato.ts` no repositório — a rota `/api/contato` passa a
+  existir, sem configuração.
+- **Vercel Functions**: também funciona, mas herda a restrição de uso comercial
+  do plano Hobby.
+
+Dois pontos práticos a favor da Cloudflare aqui:
+
+1. **Turnstile** — o captcha dela é gratuito e integra em minutos. Formulário
+   público sem proteção vira alvo de robô em semanas, e aí a Fernanda passa a
+   receber lixo no lugar de cliente.
+2. **Envio de e-mail**: Workers não fazem SMTP, então o envio sai por API HTTP.
+   O mais simples é o **Resend** (gratuito até 3.000 e-mails/mês), com a chave
+   guardada como secret no painel da Cloudflare — nunca no repositório.
+
+**Observação honesta sobre o formulário:** no Brasil, WhatsApp converte bem mais
+que formulário, e é por isso que o site inteiro foi construído em torno dele. O
+formulário vale como segunda via — para quem não quer chamar no WhatsApp naquele
+momento, ou está no trabalho. Não inverta a prioridade.
+
 ### Comparativo
 
 | | Cloudflare Pages | Netlify | GitHub Pages | Vercel |
@@ -21,6 +47,8 @@ uso comercial.
 | Banda | Sem limite | ~100 GB/mês | ~100 GB/mês (limite brando) | Limitada no Hobby |
 | Domínio + SSL | Grátis | Grátis | Grátis | Grátis |
 | Deploy por push | Sim | Sim | Precisa de Actions | Sim |
+| Função serverless | 100 mil req/dia | 125 mil req/mês | Não tem | Só no plano pago |
+| Captcha gratuito | Turnstile | Não | Não | Não |
 | Latência no Brasil | Melhor (PoP em SP) | Boa | Razoável | Boa |
 
 Confira os valores antes de decidir — planos mudam.
@@ -35,20 +63,15 @@ Ads e derruba o custo por clique — então velocidade aqui é dinheiro, não va
 
 ## Passo a passo
 
-### 1. Registrar o domínio
+### 1. Domínio — já registrado no registro.br
 
-No **[registro.br](https://registro.br)** — é o registrador oficial do `.com.br`,
-sem intermediário e sem renovação inflada. Cerca de **R$ 40/ano**.
+Ajuste o domínio em dois lugares do repositório:
 
-Sugestões, da melhor para a menos boa:
+- `astro.config.mjs` → campo `site:`
+- `public/robots.txt` → linha `Sitemap:`
 
-- `fernandalinsestetica.com.br` — bate com o @ do Instagram, que é o que as
-  clientes já conhecem. **Preferir esta.**
-- `fernandalins.com.br`
-- `esteticafernandalins.com.br`
-
-Depois de registrar, altere `site:` em `astro.config.mjs` para o domínio escolhido
-e ajuste a linha `Sitemap:` em `public/robots.txt`.
+É daí que saem as URLs canônicas e o JSON-LD que o Google lê, então o valor
+precisa bater exatamente com o domínio real, com `https://` e sem barra no fim.
 
 ### 2. Publicar na Cloudflare Pages
 
@@ -63,19 +86,40 @@ e ajuste a linha `Sitemap:` em `public/robots.txt`.
 
 A partir daí, todo `git push` na `main` publica sozinho.
 
-### 3. Apontar o domínio
+### 3. Apontar o domínio do registro.br para a Cloudflare
 
-Na Cloudflare, o caminho mais simples é transferir a **gestão de DNS** (não o
-registro) para ela:
+O que muda aqui é só a **gestão do DNS**. O domínio continua registrado no
+registro.br, no CPF ou CNPJ dela, e a titularidade não se altera. Dá para
+reverter a qualquer momento.
 
-1. No painel da Cloudflare: **Add a site**, digite o domínio, plano **Free**.
-2. A Cloudflare mostra dois servidores de nome (`algo.ns.cloudflare.com`).
-3. No registro.br, em **Alterar servidores DNS**, troque pelos dois da Cloudflare.
-4. Propaga em algumas horas. Depois: **Pages → seu projeto → Custom domains →
-   Set up a domain** e informe o domínio. O certificado sai automático.
+**Na Cloudflare:**
 
-O domínio continua registrado no registro.br e no nome dela; só o DNS passa a ser
-gerido pela Cloudflare.
+1. **Add a site**, digite o domínio, escolha o plano **Free**.
+2. Ela varre os registros existentes e mostra **dois servidores de nome**, algo
+   como `xxx.ns.cloudflare.com` e `yyy.ns.cloudflare.com`. Anote os dois.
+
+**No registro.br:**
+
+3. Entre em [registro.br](https://registro.br), **Painel → Meus domínios**, e
+   clique no domínio.
+4. Abra **DNS → Alterar servidores DNS** (em algumas telas aparece como
+   "Configurar endereçamento" → "Usar servidores DNS próprios").
+5. Apague o que estiver lá e informe os **dois servidores da Cloudflare**.
+   Salve. O registro.br valida a configuração antes de aceitar; se acusar erro,
+   é porque a zona ainda não existe na Cloudflare — confirme o passo 1 e repita.
+6. A propagação leva de minutos a algumas horas. O painel da Cloudflare mostra
+   "Active" quando reconhecer.
+
+**De volta na Cloudflare, para ligar o domínio ao site:**
+
+7. **Workers & Pages → seu projeto → Custom domains → Set up a domain**.
+8. Informe o domínio raiz (sem `www`). A Cloudflare cria o registro sozinha.
+9. Repita para `www.<seu domínio>` e configure o redirecionamento de `www` para
+   a raiz, para não existirem duas versões do site aos olhos do Google.
+10. O certificado HTTPS é emitido automaticamente, em geral em poucos minutos.
+
+**Só depois que o domínio estiver ativo:** faça um push com o `site:` correto no
+`astro.config.mjs`, para as URLs canônicas saírem certas na build publicada.
 
 ### 4. Variáveis de ambiente
 
