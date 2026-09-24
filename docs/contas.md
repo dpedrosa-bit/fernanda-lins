@@ -109,6 +109,9 @@ qualquer forma — o e-mail é para cadastro de serviço e contato formal.
 
 ## 2. Perfil da Empresa no Google (faça antes de tudo que custa dinheiro)
 
+> Roteiro detalhado, incluindo a verificação por vídeo e o plano de avaliações:
+> **`docs/perfil-google.md`**.
+
 Hoje: **5,0 com apenas 8 avaliações**, e o painel indica perfil **não
 reivindicado**. Enquanto estiver assim ela não publica, não responde avaliação
 como dona, não recebe mensagem, e qualquer pessoa pode sugerir alteração no

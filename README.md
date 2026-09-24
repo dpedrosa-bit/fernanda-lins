@@ -24,6 +24,8 @@ npm run preview  # serve o dist/
 - **`docs/hospedagem.md`** — onde publicar e como. Recomendação: Cloudflare Pages.
 - **`docs/contas.md`** — e-mail, Perfil do Google, GA4, Ads e Pixel: o que criar,
   em que ordem e **em nome de quem**.
+- **`docs/perfil-google.md`** — roteiro da reivindicação do Perfil da Empresa,
+  da verificação por vídeo ao plano de sair de 8 para 30 avaliações.
 - **`docs/previa-navegavel.html`** — prévia estática das três páginas (não reflete o código atual).
 
 ## Estrutura
