@@ -82,7 +82,14 @@ precisa bater exatamente com o domínio real, com `https://` e sem barra no fim.
    - Framework preset: **Astro**
    - Build command: `npm run build`
    - Output directory: `dist`
+   - Em **Environment variables**, acrescente `NODE_VERSION` = `22`
 4. **Save and Deploy.** Sai um endereço `fernanda-lins.pages.dev` em 1–2 minutos.
+
+> **O `NODE_VERSION` não é opcional.** A Cloudflare Pages ainda usa uma versão
+> antiga de Node por padrão em projetos novos, e o Astro 5 exige 18.20+, 20.3+ ou
+> 22+. Sem essa variável a build falha com erro de sintaxe ou de engine, e o
+> motivo não é óbvio na leitura do log. O `.nvmrc` no repositório cobre o mesmo
+> caso, mas definir a variável evita depender de qual delas a plataforma lê.
 
 A partir daí, todo `git push` na `main` publica sozinho.
 
