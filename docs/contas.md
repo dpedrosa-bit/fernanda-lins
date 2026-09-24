@@ -73,6 +73,20 @@ adiante, e junto com ela iria o seu e-mail de sempre.
 Agora que o domínio é dela, vale ter o endereço próprio para site, cartão e bio
 do Instagram. Duas formas, as duas baratas:
 
+> **Antes de configurar qualquer e-mail, leia isto.** O registro.br criou no
+> domínio três registros que declaram *"este domínio não envia nem recebe
+> e-mail"*: um **MX nulo** (aponta para `.` com prioridade 0), um **SPF**
+> `v=spf1 -all` e uma política **DMARC**. Eles protegem contra falsificação e
+> devem ficar enquanto não houver e-mail.
+>
+> Só que eles **bloqueiam o Email Routing**: com o MX nulo no lugar, nenhuma
+> mensagem chega. Ao ativar o `contato@`, será preciso **substituir o MX nulo
+> pelos MX da Cloudflare** e **rever o SPF** — o `-all` sozinho barra qualquer
+> envio legítimo futuro. A Cloudflare costuma oferecer a troca automática dos MX
+> ao ativar o Email Routing; aceite, mas confira o SPF depois.
+>
+> Enquanto o e-mail não for configurado, **não mexa nesses três registros**.
+
 **Opção A — Cloudflare Email Routing (grátis, 5 minutos, só recebe)**
 
 No mesmo painel da Cloudflare onde o site vai ficar: **Email → Email Routing**,
