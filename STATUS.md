@@ -1,6 +1,6 @@
 # STATUS
 
-Atualizado em 27/10/2026. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 27/10/2026 — site no ar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
@@ -15,6 +15,8 @@ Atualizado em 27/10/2026. Leia o `CLAUDE.md` antes deste arquivo.
 - Rastreamento preparado (GA4, Google Ads, Meta Pixel) atrás de variáveis de
   ambiente, com eventos de clique de WhatsApp e mapa.
 - Mensagens de WhatsApp pré-escritas por página, para atribuir campanha sem CRM.
+- **Site publicado na Cloudflare Pages: https://fernanda-lins.pages.dev** —
+  projeto `fernanda-lins`, conectado ao repositório, publica a cada push na `main`.
 
 ## Decisões
 
@@ -38,9 +40,8 @@ Atualizado em 27/10/2026. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Próximos passos
 
-1. **Publicar na Cloudflare Pages** e apontar o domínio — passo a passo completo
-   em `docs/hospedagem.md`. Antes do push final, corrigir `site:` no
-   `astro.config.mjs` e o `Sitemap:` em `public/robots.txt`.
+1. **Apontar o domínio** `fernandalinsestetica.com.br` para o projeto — passo a
+   passo em `docs/hospedagem.md`. O site já está no ar em `pages.dev`.
 2. **Reivindicar e ajustar o Perfil da Empresa no Google.** Estava para ser feito
    e não há confirmação de que foi. Trocar a categoria "Profissional da beleza"
    por uma específica, completar horários, e puxar de 8 para 30 avaliações.

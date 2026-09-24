@@ -61,6 +61,15 @@ Ads e derruba o custo por clique — então velocidade aqui é dinheiro, não va
 
 ---
 
+> **Estado atual:** publicado em https://fernanda-lins.pages.dev pela integração
+> Git do Pages (fluxo *Continue to Pages*, não o assistente novo de Workers).
+> Falta apontar o domínio — passo 3.
+>
+> Na tela de criação, o assistente novo do Cloudflare leva para um projeto
+> Workers. O link discreto **"Continue to Pages"**, no rodapé, é o que cria um
+> projeto Pages — que é o que este repositório espera, por causa do `_headers` e
+> das Pages Functions do formulário.
+
 ## Passo a passo
 
 ### 1. Domínio — já registrado no registro.br
