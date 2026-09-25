@@ -121,13 +121,32 @@ const links = [
         <span>Estética facial e corporal</span>
       </span>
     </a>
-    <nav aria-label="Principal">
+    <nav class="nav-desk" aria-label="Principal">
       {links.map((l) => <a href={l.href}>{l.texto}</a>)}
     </nav>
     <a class="btn btn--zap topo-zap" href={whatsappLink(mensagemZap)} data-zap="topo">
       WhatsApp
     </a>
+    <button
+      class="menu-btn"
+      type="button"
+      id="menu-btn"
+      aria-expanded="false"
+      aria-controls="menu-movel"
+      aria-label="Abrir menu"
+    >
+      <span class="barrinhas" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
   </div>
+
+  <nav class="menu-movel" id="menu-movel" aria-label="Menu" hidden>
+    <ul>
+      {links.map((l) => <li><a href={l.href}>{l.texto}</a></li>)}
+    </ul>
+    <a class="btn btn--zap" href={whatsappLink(mensagemZap)} data-zap="menu-movel">
+      Falar no WhatsApp
+    </a>
+  </nav>
 </header>
 
 <main id="conteudo">
@@ -189,6 +208,42 @@ const links = [
       if (window.gtag) window.gtag('event', nome, dados);
       if (window.fbq) window.fbq('trackCustom', nome, dados);
     }
+    // Menu do celular. A navegacao horizontal nao cabe abaixo de 900px, e sem
+    // isto o site ficava sem menu nenhum no telefone — que e de onde vem a
+    // maioria das clientes.
+    var botao = document.getElementById('menu-btn');
+    var painel = document.getElementById('menu-movel');
+    if (botao && painel) {
+      var fechar = function () {
+        painel.hidden = true;
+        botao.setAttribute('aria-expanded', 'false');
+        botao.setAttribute('aria-label', 'Abrir menu');
+        document.documentElement.classList.remove('menu-aberto');
+      };
+      botao.addEventListener('click', function () {
+        if (botao.getAttribute('aria-expanded') === 'true') { fechar(); return; }
+        painel.hidden = false;
+        botao.setAttribute('aria-expanded', 'true');
+        botao.setAttribute('aria-label', 'Fechar menu');
+        document.documentElement.classList.add('menu-aberto');
+      });
+      painel.addEventListener('click', function (e) {
+        if (e.target.closest('a')) fechar();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !painel.hidden) { fechar(); botao.focus(); }
+      });
+      document.addEventListener('click', function (e) {
+        if (painel.hidden) return;
+        if (e.target.closest('#menu-movel, #menu-btn')) return;
+        fechar();
+      });
+      // Voltando para desktop o painel deixa de existir: normaliza o estado.
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 900 && !painel.hidden) fechar();
+      });
+    }
+
     document.addEventListener('click', function (e) {
       var alvo = e.target.closest('[data-zap], [data-mapa], [data-form]');
       if (!alvo) return;
@@ -237,17 +292,69 @@ const links = [
   .marca-nome b { font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: .03em; }
   .marca-nome span { font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--tinta-3); }
 
-  .topo nav { display: flex; gap: 22px; margin-left: auto; }
-  .topo nav a {
-    color: var(--tinta-2);
-    text-decoration: none;
-    font-size: 15px;
-  }
-  .topo nav a:hover { color: var(--ouro); }
+  .nav-desk { display: flex; gap: 22px; margin-left: auto; }
+  .nav-desk a { color: var(--tinta-2); text-decoration: none; font-size: 15px; }
+  .nav-desk a:hover { color: var(--ouro); }
   .topo-zap { padding: 10px 20px; font-size: 15px; }
 
-  @media (max-width: 900px) { .topo nav { display: none; } .topo-zap { margin-left: auto; } }
+  /* Botao do menu — so existe onde a navegacao horizontal nao cabe */
+  .menu-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--linha);
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    place-items: center;
+    cursor: pointer;
+    flex: none;
+    padding: 0;
+  }
+  .barrinhas { position: relative; width: 20px; height: 14px; display: block; }
+  .barrinhas i {
+    position: absolute; left: 0; right: 0; height: 1.5px;
+    background: var(--tinta); border-radius: 2px;
+    transition: transform .2s ease, opacity .15s ease;
+  }
+  .barrinhas i:nth-child(1) { top: 0; }
+  .barrinhas i:nth-child(2) { top: 50%; margin-top: -.75px; }
+  .barrinhas i:nth-child(3) { bottom: 0; }
+  .menu-btn[aria-expanded="true"] .barrinhas i:nth-child(1) { transform: translateY(6.25px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] .barrinhas i:nth-child(2) { opacity: 0; }
+  .menu-btn[aria-expanded="true"] .barrinhas i:nth-child(3) { transform: translateY(-6.25px) rotate(-45deg); }
+
+  .menu-movel {
+    border-top: 1px solid var(--linha);
+    background: var(--creme);
+    padding: 10px var(--pad) 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: calc(100dvh - 68px);
+    overflow-y: auto;
+    animation: abrir-menu .18s ease-out;
+  }
+  .menu-movel[hidden] { display: none; }
+  .menu-movel ul { list-style: none; margin: 0; padding: 0; }
+  .menu-movel li + li { border-top: 1px solid var(--linha-suave); }
+  .menu-movel a:not(.btn) {
+    display: block;
+    padding: 15px 2px;
+    font-size: 18px;
+    color: var(--tinta);
+    text-decoration: none;
+  }
+  .menu-movel a:not(.btn):hover { color: var(--ouro); }
+  .menu-movel .btn { width: 100%; }
+  @keyframes abrir-menu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .menu-movel { animation: none; } }
+
+  @media (max-width: 900px) {
+    .nav-desk { display: none; }
+    .menu-btn { display: grid; margin-left: auto; }
+  }
   @media (max-width: 760px) { .topo-zap { display: none; } .marca-nome span { display: none; } }
+  /* Acima de 900px o painel nunca aparece, mesmo se ficar aberto ao redimensionar */
+  @media (min-width: 901px) { .menu-movel { display: none; } }
 
   .rodape { background: var(--creme-2); border-top: 1px solid var(--linha); }
   .rodape-interno {

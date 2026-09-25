@@ -188,6 +188,8 @@ details.faq .resposta { padding: 0 34px 20px 0; color: var(--tinta-2); font-size
 }
 .zap-fixo .btn { width: 100%; }
 @media (max-width: 760px) { .zap-fixo { display: block; } }
+/* Com o menu aberto o painel ja traz o botao — evita dois iguais na tela */
+.menu-aberto .zap-fixo { display: none; }
 
 /* ---------- utilitários ---------- */
 .tabular { font-variant-numeric: tabular-nums; }
