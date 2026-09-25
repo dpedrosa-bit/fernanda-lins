@@ -15,11 +15,12 @@ export const site = {
 
   // Endereço
   rua: 'Rua Monjolo, 284',
-  bairro: 'Jardim Monjolo',
+  bairro: 'Freguesia do Ó',
   cidade: 'São Paulo',
   uf: 'SP',
   cep: '02961-070',
   regiao: 'Zona Norte de São Paulo',
+  // O mapa usa o bairro oficial dos Correios: e o que o Google casa com o CEP.
   mapsUrl: 'https://maps.google.com/?q=Rua+Monjolo,+284,+Jardim+Monjolo,+São+Paulo',
 
   // Horário confirmado com a Fernanda em out/2026.
