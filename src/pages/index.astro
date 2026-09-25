@@ -56,7 +56,12 @@ const zap = msg.home;
     <div class="interno abertura-grade">
       <div class="abertura-texto">
         <div class="cabeca">
-          <span class="olho">{site.regiao} · {site.bairro}</span>
+          {/*
+            Espacos nao-quebraveis de proposito: sem eles o "O" de Freguesia
+            cai sozinho na linha de baixo no celular. Se nao couber, a quebra
+            acontece antes de "Freguesia", que e onde faz sentido.
+          */}
+          <span class="olho" set:html="São&nbsp;Paulo, Zona&nbsp;Norte &middot; Freguesia&nbsp;do&nbsp;Ó"></span>
           <h1>Aqui você é cuidada de verdade.</h1>
           <p class="lead">
             Estética avançada facial e corporal, com atendimento individual do começo ao fim.
