@@ -24,8 +24,10 @@ npm run preview  # serve o dist/
 - **`docs/hospedagem.md`** — onde publicar e como. Recomendação: Cloudflare Pages.
 - **`docs/contas.md`** — e-mail, Perfil do Google, GA4, Ads e Pixel: o que criar,
   em que ordem e **em nome de quem**.
-- **`docs/perfil-google.md`** — roteiro da reivindicação do Perfil da Empresa,
-  da verificação por vídeo ao plano de sair de 8 para 30 avaliações.
+- **`docs/perfil-google.md`** — Perfil da Empresa: estado, ajustes pendentes e o
+  plano de sair de 9 para 30 avaliações.
+- **`docs/campanhas-google-ads.md`** — brief de execução das três campanhas:
+  IDs, pré-requisitos, palavras-chave, negativas, textos validados, critério de corte.
 - **`docs/previa-navegavel.html`** — prévia estática das três páginas (não reflete o código atual).
 
 ## Estrutura
@@ -81,8 +83,8 @@ página: é o que permite saber de qual campanha veio cada conversa sem precisar
 - [x] **Horários** confirmados em `src/data/site.ts`
 - [x] **Domínio** `fernandalinsestetica.com.br` em `astro.config.mjs` e `public/robots.txt`
 - [x] **Sitemap** gerado (`@astrojs/sitemap`) — o `robots.txt` apontava para um arquivo inexistente
-- [ ] **Variáveis de rastreamento** no painel da Cloudflare — ver `docs/contas.md`
-      para a ordem de criação das contas
+- [ ] **Variáveis de rastreamento** na Cloudflare: `PUBLIC_GA4_ID=G-M29PKGDGG2`,
+      `PUBLIC_GOOGLE_ADS_ID=AW-3557185707` — depois Retry deployment
 - [ ] Preencher os casos de `/resultados` (ver `src/data/resultados.ts`)
 
 ## Regra de conteúdo
