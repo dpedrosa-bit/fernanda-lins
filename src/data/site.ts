@@ -4,6 +4,7 @@ export const site = {
   nome: 'Fernanda Lins Estética',
   nomeCompleto: 'Fernanda Lins Estética Facial e Corporal',
   tagline: 'Estética avançada facial e corporal',
+  desde: 2015, // data de abertura no Perfil da Empresa: 5 de novembro de 2015
   descricao:
     'Estética avançada na Zona Norte de São Paulo. Drenagem pós-operatória, protocolo para lipedema, gordura localizada e cuidados faciais com a Fernanda Lins.',
 

@@ -63,6 +63,9 @@ Atualizado em 27/10/2026 — site no ar. Leia o `CLAUDE.md` antes deste arquivo.
 - **Antes-e-depois:** faltam as fotos em `public/resultados/` e os dados de cada
   caso (quantas sessões, em quanto tempo). Sem isso `/resultados` fica no estado
   vazio. Um caso só vai ao ar com `publicado: true` **e** autorização assinada.
-- ~~Falta confirmar se o Perfil foi reivindicado.~~ **Já está**, por um e-mail
-  antigo dela. Pendente: adicionar a conta nova como proprietária e corrigir
-  horário, site e categoria. Sem vídeo.
+- **Perfil do Google:** já verificado; `fernandalinsestetica@gmail.com` adicionada
+  como proprietária em 30/09 (convite aceito). Pendente: transferir a principal
+  quando o Google liberar, corrigir horário (exibia "abre qui. 10:00"), adicionar
+  site, categorias secundárias "Clínica de estética" e "Spa de dia" (manter
+  "Esteticista" + "Terapeuta de drenagem linfática"), e nova descrição sem o
+  Instituto Chloé. Sem vídeo.
