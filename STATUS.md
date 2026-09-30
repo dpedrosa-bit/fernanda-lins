@@ -55,11 +55,14 @@ Atualizado em 27/10/2026 — site no ar. Leia o `CLAUDE.md` antes deste arquivo.
 ## Bloqueios
 
 
-- **Contas de serviço ainda não existem.** O caminho está em `docs/contas.md`:
-  primeiro uma conta Google do negócio **em nome da Fernanda** (não numa conta
-  pessoal), depois reivindicar o Perfil do Google, depois GA4, Ads e Pixel.
-  Sem os IDs o site funciona, só não mede — e campanha sem medição é aposta.
+- **Contas criadas em 30/09:** `fernandalinsestetica@gmail.com`, GA4
+  (`G-M29PKGDGG2`) e Google Ads (`AW-3557185707`, conta 355-718-5707, sem
+  campanha). Falta: colocar os dois IDs na Cloudflare e republicar, vincular
+  GA4↔Ads, marcar `clique_whatsapp` como evento principal e importar no Ads.
+  Meta Pixel ainda não criado.
 - **Antes-e-depois:** faltam as fotos em `public/resultados/` e os dados de cada
   caso (quantas sessões, em quanto tempo). Sem isso `/resultados` fica no estado
   vazio. Um caso só vai ao ar com `publicado: true` **e** autorização assinada.
-- Falta confirmar se o Perfil da Empresa no Google foi reivindicado.
+- ~~Falta confirmar se o Perfil foi reivindicado.~~ **Já está**, por um e-mail
+  antigo dela. Pendente: adicionar a conta nova como proprietária e corrigir
+  horário, site e categoria. Sem vídeo.

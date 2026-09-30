@@ -1,7 +1,15 @@
 # Perfil da Empresa no Google — roteiro de reivindicação
 
-Estado inicial: **5,0 com 8 avaliações**, perfil **não reivindicado**, categoria
-genérica "Profissional da beleza".
+> **Atualização de 30/09/2026.** O perfil **já estava reivindicado e verificado**,
+> por um e-mail antigo da própria Fernanda (`fe…@gmail.com`). Não há verificação
+> por vídeo a fazer. O que resta é adicionar `fernandalinsestetica@gmail.com` como
+> proprietária pelo e-mail antigo (Pessoas e acesso → Adicionar → Proprietário) e
+> depois torná-la principal. Manter o e-mail antigo como proprietário de reserva.
+> O Passo 2 abaixo fica só como referência caso um dia o Google peça
+> reverificação — o que acontece se nome, endereço ou telefone forem alterados.
+
+Estado em 30/09/2026: **5,0 com 9 avaliações**, verificado, categoria genérica
+"Profissional da beleza", horário exibido errado ("abre qui. às 10:00").
 
 Por que isto vem antes de gastar com anúncio: um perfil completo com 30+
 avaliações aparece no mapa acima de quem paga por clique, e custa zero. Nos
@@ -36,7 +44,7 @@ duplicado divide as avaliações e é difícil de desfazer.
 
 ---
 
-## Passo 2 — Verificação (planeje, é a parte que trava)
+## Passo 2 — Verificação (só se o Google pedir; hoje não pede)
 
 O Google escolhe o método. Hoje, para serviços no Brasil, quase sempre é **vídeo
 gravado no local**, sem corte, mostrando três coisas:
