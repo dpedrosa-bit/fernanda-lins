@@ -1,7 +1,7 @@
 # STATUS
 
-Atualizado em 01/10/2026 — três campanhas criadas e **pausadas**; faltam a
-verificação do anunciante e a medição antes de ligar. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 01/10/2026 — três campanhas criadas e **pausadas**; tags no ar;
+falta marcar/importar a conversão antes de ligar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
@@ -28,6 +28,10 @@ verificação do anunciante e a medição antes de ligar. Leia o `CLAUDE.md` ant
   - Lista **"Negativas compartilhadas"** (15 termos do brief) aplicada às três.
 - Rastreamento no código (GA4 + Ads + Pixel atrás de variáveis; eventos
   `clique_whatsapp` e `clique_mapa`; mensagem de WhatsApp diferente por página).
+- **Tags no ar (01/10):** variáveis `PUBLIC_GA4_ID` e `PUBLIC_GOOGLE_ADS_ID` em
+  Production na Cloudflare (Preview sem elas, de propósito), redeploy feito;
+  `clique_whatsapp` confirmado no Tempo real do GA4.
+- **Verificação do anunciante** no Ads concluída pela Fernanda (01/10).
 
 ## Decisões
 
@@ -36,6 +40,8 @@ verificação do anunciante e a medição antes de ligar. Leia o `CLAUDE.md` ant
 - **Cloudflare e GitHub ficam na conta do irmão**; **Perfil do Google, GA4, Ads e
   domínio** são da Fernanda.
 - **Campanhas ficam pausadas até `clique_whatsapp` estar importado como conversão.**
+- Testar rastreamento em outro navegador: no Chrome do irmão os envios ao Google
+  voltam 503 (bloqueio local); a máquina em si alcança o GA4 normalmente.
 - **Lipedema: pedir exceção ao Google** para as palavras-chave barradas (ver Bloqueios).
 - Meta da campanha = "Contato". O Google criou sozinho uma conversão "Contato"
   por visita a `/contato` — não é a certa; vira secundária quando
@@ -50,28 +56,25 @@ verificação do anunciante e a medição antes de ligar. Leia o `CLAUDE.md` ant
 
 ## Próximos passos
 
-1. **Verificação do anunciante** (Ads → banner "Conta pausada" → Comece aqui):
-   a Fernanda conclui com os documentos dela. Sem isso nenhum anúncio roda.
-2. **Fechar a medição:** login na Cloudflare → `PUBLIC_GA4_ID=G-M29PKGDGG2` e
-   `PUBLIC_GOOGLE_ADS_ID=AW-18485662450` → redeploy → `clique_whatsapp` no Tempo
-   real do GA4 → evento principal → importar no Ads como conversão principal
-   (e rebaixar a "Contato" automática para secundária).
-3. **Ligar as campanhas** só depois do passo 2. Primeira semana sem otimizar.
-4. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
+1. **Fechar a medição** (a partir de 02/10, quando o GA4 listar o evento):
+   GA4 → Admin → Eventos → estrela em `clique_whatsapp` (evento principal) →
+   Ads → Metas → Conversões → Importar → GA4 → `clique_whatsapp` como principal;
+   rebaixar a "Contato" automática para secundária.
+2. **Ligar as campanhas** só depois do passo 1. Primeira semana sem otimizar.
+3. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
-5. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
-6. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
+4. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
+5. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
    `/vale-presente`, Meta Pixel).
 
 ## Bloqueios
 
-- **Conta pausada pelo Google até a verificação do anunciante** — depende de
-  documentos da Fernanda.
+- **GA4 só lista `clique_whatsapp` em Admin → Eventos até 24h depois do primeiro
+  disparo** — por isso a marcação como evento principal fica para 02/10.
 - **Lipedema:** a política "Health in personalized advertising" barrou as
   palavras-chave de lipedema. Exceção solicitada em 01/10; se for negada, a
   alternativa é rodar só com as que passarem.
 - **O Google Ads pede "Confirme sua identidade"** de tempos em tempos; enquanto não
   confirmado, o assistente não salva e perde o que foi preenchido. Só a dona da
   conta confirma.
-- **Cloudflare** exige o login do irmão no navegador para configurar as variáveis.
 - **`/resultados`** depende de fotos e autorização assinada da Fernanda.

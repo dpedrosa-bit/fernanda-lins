@@ -21,8 +21,8 @@ arquivo.
 
 Sem estes, campanha é aposta. Ordem:
 
-1. [ ] Cloudflare → `fernanda-lins` → Settings → Variables and Secrets → `PUBLIC_GA4_ID` = `G-M29PKGDGG2` e `PUBLIC_GOOGLE_ADS_ID` = `AW-18485662450` (Text, Production + Preview) → Deployments → Retry deployment
-2. [ ] Abrir o site, clicar no WhatsApp; no GA4 → Tempo real aparece `clique_whatsapp`
+1. [x] (01/10, só Production) Cloudflare → `fernanda-lins` → Settings → Variables and Secrets → `PUBLIC_GA4_ID` = `G-M29PKGDGG2` e `PUBLIC_GOOGLE_ADS_ID` = `AW-18485662450` (Text, Production + Preview) → Deployments → Retry deployment
+2. [x] (01/10) Abrir o site, clicar no WhatsApp; no GA4 → Tempo real aparece `clique_whatsapp`
 3. [ ] GA4 → Admin → Eventos → `clique_whatsapp` → **Marcar como evento principal**
 4. [x] Ads → Ferramentas → Central de dados → Produtos conectados → GA4 vinculado com importação de métricas (30/09)
 5. [ ] Ads → Metas → Conversões → Nova → **Importar → GA4 → Web** → `clique_whatsapp` (pode levar horas para listar após o passo 3)
