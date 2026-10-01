@@ -84,7 +84,7 @@ página: é o que permite saber de qual campanha veio cada conversa sem precisar
 - [x] **Domínio** `fernandalinsestetica.com.br` em `astro.config.mjs` e `public/robots.txt`
 - [x] **Sitemap** gerado (`@astrojs/sitemap`) — o `robots.txt` apontava para um arquivo inexistente
 - [ ] **Variáveis de rastreamento** na Cloudflare: `PUBLIC_GA4_ID=G-M29PKGDGG2`,
-      `PUBLIC_GOOGLE_ADS_ID=AW-3557185707` — depois Retry deployment
+      `PUBLIC_GOOGLE_ADS_ID=AW-18485662450` — depois Retry deployment
 - [ ] Preencher os casos de `/resultados` (ver `src/data/resultados.ts`)
 
 ## Regra de conteúdo

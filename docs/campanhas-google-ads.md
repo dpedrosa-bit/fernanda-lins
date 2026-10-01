@@ -11,7 +11,7 @@ arquivo.
 | --- | --- |
 | Conta Google do negócio | `fernandalinsestetica@gmail.com` (dona de tudo abaixo) |
 | Google Ads | conta **355-718-5707**, criada 30/09/2026 em modo especialista, **sem campanha** |
-| ID de conversão do Ads | `AW-3557185707` |
+| ID de conversão do Ads | `AW-18485662450` |
 | GA4 | propriedade `Site fernandalinsestetica.com.br`, ID `G-M29PKGDGG2` |
 | Site | `https://fernandalinsestetica.com.br` (Cloudflare Pages, projeto `fernanda-lins`) |
 | Perfil da Empresa | verificado; conta nova é proprietária; categorias Esteticista + Terapeuta de drenagem linfática |
@@ -21,13 +21,13 @@ arquivo.
 
 Sem estes, campanha é aposta. Ordem:
 
-1. [ ] Cloudflare → `fernanda-lins` → Settings → Variables and Secrets → `PUBLIC_GA4_ID` = `G-M29PKGDGG2` e `PUBLIC_GOOGLE_ADS_ID` = `AW-3557185707` (Text, Production + Preview) → Deployments → Retry deployment
+1. [ ] Cloudflare → `fernanda-lins` → Settings → Variables and Secrets → `PUBLIC_GA4_ID` = `G-M29PKGDGG2` e `PUBLIC_GOOGLE_ADS_ID` = `AW-18485662450` (Text, Production + Preview) → Deployments → Retry deployment
 2. [ ] Abrir o site, clicar no WhatsApp; no GA4 → Tempo real aparece `clique_whatsapp`
 3. [ ] GA4 → Admin → Eventos → `clique_whatsapp` → **Marcar como evento principal**
-4. [ ] Ads → Ferramentas → Gerenciamento de dados → Contas vinculadas → GA4 → vincular a propriedade, importar métricas
+4. [x] Ads → Ferramentas → Central de dados → Produtos conectados → GA4 vinculado com importação de métricas (30/09)
 5. [ ] Ads → Metas → Conversões → Nova → **Importar → GA4 → Web** → `clique_whatsapp` (pode levar horas para listar após o passo 3)
-6. [ ] Ads → Ferramentas → Contas vinculadas → **Perfil da Empresa** → vincular (habilita extensão de local)
-7. [ ] Ads → Faturamento → confirmar cartão cadastrado (nada é cobrado sem campanha ativa)
+6. [x] Ads → Ferramentas → Central de dados → **Perfil da Empresa** vinculado (30/09)
+7. [x] Ads → Faturamento: pagamento manual via Pix, R$ 350 de saldo (30/09). Campanha ativa gasta desse saldo.
 
 ## Configurações comuns a todas as campanhas
 
