@@ -105,8 +105,10 @@ frequente de suspensão.
 
 Os mesmos do site, para não haver contradição:
 
-- Segunda a sexta: 14h às 20h
-- Sábado: 9h às 16h
+- Segunda: 14h às 19h
+- Terça a quinta: 10h às 20h
+- Sexta: 10h às 19h
+- Sábado: somente com hora marcada (no Google, marcar como aberto e usar a faixa que ela atende, ou "Horário de funcionamento: com hora marcada" se a opção existir)
 
 ### Site e contato
 

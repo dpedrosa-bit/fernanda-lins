@@ -35,7 +35,7 @@ Sem estes, campanha é aposta. Ordem:
 - **Local:** raio de **8 km** em torno de `Rua Monjolo, 284, São Paulo`. Em "Opções de local": *Presença: pessoas que estão em ou visitam regularmente*. Nunca "interesse".
 - **Idioma:** Português.
 - **Lances:** *Maximizar cliques* com **limite de CPC de R$ 5,00**. Não usar "Maximizar conversões" antes de 30 conversões acumuladas — o algoritmo não aprende com menos.
-- **Programação:** seg–sex **13:00–21:00**, sáb **08:00–17:00**, domingo desligado. Uma hora de folga em torno do atendimento (14–20 / 9–16). Clique com WhatsApp sem resposta é verba perdida.
+- **Programação:** seg **13:00–20:00**, ter–qui **09:00–21:00**, sex **09:00–20:00**, sáb **09:00–16:00**, domingo desligado. Uma hora de folga em torno do atendimento (seg 14–19, ter–qui 10–20, sex 10–19; sábado só com hora marcada, por isso a janela é conservadora). Clique com WhatsApp sem resposta é verba perdida.
 - **Rotação de anúncios:** otimizar.
 - **Correspondência:** frase e exata. **Nunca ampla.** Ampla com verba pequena vira busca irrelevante.
 - **URL final:** sempre a página do problema, nunca a home (exceto Marca).

@@ -128,7 +128,7 @@ endereço e no horário dela.
 4. Depois de verificada:
    - **Troque a categoria** de "Profissional da beleza" para algo específico —
      categoria é um dos fatores mais fortes de posicionamento local.
-   - Complete os **horários** (os mesmos do site: seg a sex 14h–20h, sáb 9h–16h).
+   - Complete os **horários** (os mesmos do site: seg 14h–19h, ter–qui 10h–20h, sex 10h–19h, sáb com hora marcada).
    - Suba **fotos reais** do estúdio, dela atendendo e dos equipamentos.
    - Adicione o **site** e o **WhatsApp**.
 5. **Meta: sair de 8 para 30 avaliações.** Pedir em todo atendimento, dois dias

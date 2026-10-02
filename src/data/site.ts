@@ -24,11 +24,13 @@ export const site = {
   // O mapa usa o bairro oficial dos Correios: e o que o Google casa com o CEP.
   mapsUrl: 'https://maps.google.com/?q=Rua+Monjolo,+284,+Jardim+Monjolo,+São+Paulo',
 
-  // Horário confirmado com a Fernanda em out/2026.
-  // Alimenta o rodapé de todas as páginas e o JSON-LD que o Google lê.
+  // Horário confirmado com a Fernanda em 02/10/2026.
+  // Alimenta o rodapé de todas as páginas, /contato e a home.
   horarios: [
-    { dias: 'Segunda a sexta', horario: '14h às 20h' },
-    { dias: 'Sábado', horario: '9h às 16h' },
+    { dias: 'Segunda', horario: '14h às 19h' },
+    { dias: 'Terça a quinta', horario: '10h às 20h' },
+    { dias: 'Sexta', horario: '10h às 19h' },
+    { dias: 'Sábado', horario: 'somente com hora marcada' },
   ],
 } as const;
 

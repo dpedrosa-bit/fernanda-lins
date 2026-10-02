@@ -5,6 +5,9 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
+- Horários corrigidos em 02/10 em `site.ts` (seg 14–19, ter–qui 10–20, sex 10–19,
+  sáb só com hora marcada) — propaga para rodapé, `/contato` e home.
+
 - Estratégia aprovada pela Fernanda (`docs/plano-captacao.html`).
 - **Site no ar em https://fernandalinsestetica.com.br** — nove páginas, Cloudflare
   Pages (projeto `fernanda-lins`, deploy a cada push na `main`), domínio no CPF
@@ -15,7 +18,7 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 - **Ads ↔ GA4 e Ads ↔ Perfil da Empresa vinculados** (30/09).
 - **Campanhas no Ads, as três ATIVAS** (Pós-op e Marca em 01/10, Lipedema em 02/10; R$ 350 pré-pagos via Pix):
   - `Busca — Pós-operatório` (ID 24307184810) — conferida na campanha salva:
-    raio 8 km da Rua Monjolo 284, só "Presença", seg–sex 13–21 / sáb 8–17,
+    raio 8 km da Rua Monjolo 284, só "Presença", seg–sex 13–21 / sáb 8–17 (**desatualizado — ver Próximos passos**),
     Cliques com teto R$ 5, R$ 7/dia, só rede de pesquisa, AI Max desligado,
     11 palavras-chave, 15 títulos (1 e 2 fixados), 4 descrições, 4 sitelinks,
     4 frases de destaque, chamada. Grupo "Drenagem pós-op".
@@ -58,10 +61,15 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 1. **Acompanhar a primeira semana** sem otimizar: termos de pesquisa e negativar lixo.
    Se Pós-op seguir sem impressões depois de alguns dias úteis no horário, tirar a
    fixação do título 2 (o Google marca o anúncio como "qualidade baixa" e limita a veiculação).
-2. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
+2. **Programação das campanhas no Ads está com o horário antigo.** Corrigir para
+   seg 13–20, ter–qui 09–21, sex 09–20, sáb 09–16, dom off (uma hora de folga em
+   torno do atendimento real). Hoje perde as manhãs de ter–sex e gasta até 21h em
+   dias que ela fecha às 19h.
+3. **Perfil do Google:** conferir o horário **novo** (seg 14–19, ter–qui 10–20,
+   sex 10–19, sáb com hora marcada), site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
-3. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
-4. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
+4. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
+5. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
    `/vale-presente`, Meta Pixel).
 
 ## Bloqueios
