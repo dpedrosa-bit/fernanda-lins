@@ -1,7 +1,7 @@
 # STATUS
 
-Atualizado em 01/10/2026 — três campanhas criadas e **pausadas**; tags no ar;
-falta marcar/importar a conversão antes de ligar. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 02/10/2026 — três campanhas criadas e **pausadas**; medição
+fechada; falta só ligar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
@@ -32,6 +32,9 @@ falta marcar/importar a conversão antes de ligar. Leia o `CLAUDE.md` antes dest
   Production na Cloudflare (Preview sem elas, de propósito), redeploy feito;
   `clique_whatsapp` confirmado no Tempo real do GA4.
 - **Verificação do anunciante** no Ads concluída pela Fernanda (01/10).
+- **Medição fechada (02/10):** `clique_whatsapp` é evento principal no GA4 e foi
+  importado no Ads como conversão **principal** da meta "Contato" (3 de 3
+  campanhas). A automática "Fale conosco" (visita a `/contato`) virou secundária.
 
 ## Decisões
 
@@ -39,13 +42,9 @@ falta marcar/importar a conversão antes de ligar. Leia o `CLAUDE.md` antes dest
   das redes. O irmão faz o site, configura contas e campanhas e a orienta.
 - **Cloudflare e GitHub ficam na conta do irmão**; **Perfil do Google, GA4, Ads e
   domínio** são da Fernanda.
-- **Campanhas ficam pausadas até `clique_whatsapp` estar importado como conversão.**
 - Testar rastreamento em outro navegador: no Chrome do irmão os envios ao Google
   voltam 503 (bloqueio local); a máquina em si alcança o GA4 normalmente.
 - **Lipedema: pedir exceção ao Google** para as palavras-chave barradas (ver Bloqueios).
-- Meta da campanha = "Contato". O Google criou sozinho uma conversão "Contato"
-  por visita a `/contato` — não é a certa; vira secundária quando
-  `clique_whatsapp` for importado.
 - "Conversões otimizadas" desligadas (o site não coleta e-mail).
 - O resumo do assistente de campanha mostra "Todos os países" e "Personalização
   de texto ativada" mesmo quando não é verdade — confira sempre na campanha salva
@@ -56,21 +55,16 @@ falta marcar/importar a conversão antes de ligar. Leia o `CLAUDE.md` antes dest
 
 ## Próximos passos
 
-1. **Fechar a medição** (a partir de 02/10, quando o GA4 listar o evento):
-   GA4 → Admin → Eventos → estrela em `clique_whatsapp` (evento principal) →
-   Ads → Metas → Conversões → Importar → GA4 → `clique_whatsapp` como principal;
-   rebaixar a "Contato" automática para secundária.
-2. **Ligar as campanhas** só depois do passo 1. Primeira semana sem otimizar.
-3. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
+1. **Ligar as campanhas** (aguardando ok do irmão/Fernanda). Primeira semana sem otimizar;
+   só coletar termos de pesquisa e negativar lixo.
+2. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
-4. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
-5. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
+3. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
+4. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
    `/vale-presente`, Meta Pixel).
 
 ## Bloqueios
 
-- **GA4 só lista `clique_whatsapp` em Admin → Eventos até 24h depois do primeiro
-  disparo** — por isso a marcação como evento principal fica para 02/10.
 - **Lipedema:** a política "Health in personalized advertising" barrou as
   palavras-chave de lipedema. Exceção solicitada em 01/10; se for negada, a
   alternativa é rodar só com as que passarem.
