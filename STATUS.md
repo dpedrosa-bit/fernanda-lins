@@ -1,7 +1,7 @@
 # STATUS
 
-Atualizado em 02/10/2026 — três campanhas criadas e **pausadas**; medição
-fechada; falta só ligar. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 02/10/2026 — três campanhas **ativas** desde 01–02/10; medição
+fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Feito
 
@@ -13,7 +13,7 @@ fechada; falta só ligar. Leia o `CLAUDE.md` antes deste arquivo.
   conta 355-718-5707, **ID de conversão `AW-18485662450`** (o `AW-3557185707`
   anotado antes era só o número da conta sem traços — errado).
 - **Ads ↔ GA4 e Ads ↔ Perfil da Empresa vinculados** (30/09).
-- **Campanhas no Ads, todas PAUSADAS** (R$ 350 pré-pagos via Pix na conta):
+- **Campanhas no Ads, as três ATIVAS** (Pós-op e Marca em 01/10, Lipedema em 02/10; R$ 350 pré-pagos via Pix):
   - `Busca — Pós-operatório` (ID 24307184810) — conferida na campanha salva:
     raio 8 km da Rua Monjolo 284, só "Presença", seg–sex 13–21 / sáb 8–17,
     Cliques com teto R$ 5, R$ 7/dia, só rede de pesquisa, AI Max desligado,
@@ -55,8 +55,9 @@ fechada; falta só ligar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Próximos passos
 
-1. **Ligar as campanhas** (aguardando ok do irmão/Fernanda). Primeira semana sem otimizar;
-   só coletar termos de pesquisa e negativar lixo.
+1. **Acompanhar a primeira semana** sem otimizar: termos de pesquisa e negativar lixo.
+   Se Pós-op seguir sem impressões depois de alguns dias úteis no horário, tirar a
+   fixação do título 2 (o Google marca o anúncio como "qualidade baixa" e limita a veiculação).
 2. **Perfil do Google:** conferir horário, site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
 3. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
@@ -65,9 +66,9 @@ fechada; falta só ligar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Bloqueios
 
-- **Lipedema:** a política "Health in personalized advertising" barrou as
-  palavras-chave de lipedema. Exceção solicitada em 01/10; se for negada, a
-  alternativa é rodar só com as que passarem.
+- Lipedema: exceção de política aprovada — palavras-chave "Qualificada" em 02/10.
+- Pós-op e Marca têm uma palavra-chave cada com "Baixo volume de pesquisas"
+  (as que citam "freguesia"); o Google só ativa se o volume subir.
 - **O Google Ads pede "Confirme sua identidade"** de tempos em tempos; enquanto não
   confirmado, o assistente não salva e perde o que foi preenchido. Só a dona da
   conta confirma.
