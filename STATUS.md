@@ -61,10 +61,10 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 1. **Acompanhar a primeira semana** sem otimizar: termos de pesquisa e negativar lixo.
    Se Pós-op seguir sem impressões depois de alguns dias úteis no horário, tirar a
    fixação do título 2 (o Google marca o anúncio como "qualidade baixa" e limita a veiculação).
-2. **Programação das campanhas no Ads está com o horário antigo.** Corrigir para
-   seg 13–20, ter–qui 09–21, sex 09–20, sáb 09–16, dom off (uma hora de folga em
-   torno do atendimento real). Hoje perde as manhãs de ter–sex e gasta até 21h em
-   dias que ela fecha às 19h.
+2. **Programação de anúncios — falta só a Marca.** Pós-operatório e Lipedema já estão
+   em seg 13–20, ter–qui 09–21, sex 09–20, sáb 09–16, dom off (02/10). A
+   `Busca — Marca` ainda está seg–sex 13–21 / sáb 08–17 (o editor do Ads travou o
+   navegador no meio; nada foi salvo nela).
 3. **Perfil do Google:** conferir o horário **novo** (seg 14–19, ter–qui 10–20,
    sex 10–19, sáb com hora marcada), site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
