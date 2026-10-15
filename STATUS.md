@@ -1,7 +1,8 @@
 # STATUS
 
-Atualizado em 02/10/2026 — três campanhas **ativas** desde 01–02/10; medição
-fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
+Atualizado em 15/10/2026 — três campanhas **ativas** desde 01–02/10; medição
+fechada; primeira rodada de otimização aplicada em 15/10. Leia o `CLAUDE.md`
+antes deste arquivo.
 
 ## Feito
 
@@ -18,13 +19,13 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 - **Ads ↔ GA4 e Ads ↔ Perfil da Empresa vinculados** (30/09).
 - **Campanhas no Ads, as três ATIVAS** (Pós-op e Marca em 01/10, Lipedema em 02/10; R$ 350 pré-pagos via Pix):
   - `Busca — Pós-operatório` (ID 24307184810) — conferida na campanha salva:
-    raio 8 km da Rua Monjolo 284, só "Presença", seg–sex 13–21 / sáb 8–17 (**desatualizado — ver Próximos passos**),
-    Cliques com teto R$ 5, R$ 7/dia, só rede de pesquisa, AI Max desligado,
+    raio 8 km da Rua Monjolo 284, só "Presença",
+    Cliques com teto R$ 5, só rede de pesquisa, AI Max desligado,
     11 palavras-chave, 15 títulos (1 e 2 fixados), 4 descrições, 4 sitelinks,
     4 frases de destaque, chamada. Grupo "Drenagem pós-op".
   - `Busca — Marca` — mesmas configurações, R$ 2/dia, 4 palavras-chave, 7 títulos,
     2 descrições, 4 sitelinks, chamada.
-  - `Busca — Lipedema` — mesmas configurações, R$ 6/dia, 10 palavras-chave,
+  - `Busca — Lipedema` — mesmas configurações, 10 palavras-chave,
     15 títulos (1 fixado), 4 descrições, 4 sitelinks, 4 frases, chamada, 29
     negativas de campanha do brief. **Exceção de política solicitada** para as
     palavras-chave (ver Bloqueios).
@@ -35,6 +36,21 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
   Production na Cloudflare (Preview sem elas, de propósito), redeploy feito;
   `clique_whatsapp` confirmado no Tempo real do GA4.
 - **Verificação do anunciante** no Ads concluída pela Fernanda (01/10).
+- **Otimização de 15/10** (após ~R$ 130 gastos, 30 cliques, 4 conversas):
+  - Verba: **Pós-op R$ 9/dia** (estava limitada por orçamento), **Lipedema R$ 4/dia**
+    (limitada por qualidade), Marca R$ 2 — total segue R$ 15.
+  - Pós-op: só o título 1 fixado; entraram "Drenagem Pós Operatório" (grafia da
+    busca) e "Drenagem Linfática Zona Norte". Qualidade do anúncio Ruim → Médio.
+    +6 palavras de frase: drenagem linfática tucuruvi/santana/pirituba/casa
+    verde/limão e "drenagem pós mamoplastia". Negativas: domicílio, domicilio,
+    manobras, "para que serve", "como é".
+  - Lipedema: título fixado virou "Tratamento p/ Lipedema"; entraram "Tratamento
+    Estético Lipedema" e "Tratamento na Zona Norte SP" (sem promessa de cura).
+    Negativas: cura, mounjaro, metformina, oxandrolona, velaryan, chá, cha, creme,
+    massageador, plataforma, bandagem, escovação, tomar, nutricionista.
+    O indicador segue "Ruim" por causa da fixação — aceitável.
+  - Programação das três campanhas agora igual: seg 13–20, ter–qui 09–21,
+    sex 09–20, sáb 09–16, dom desligado.
 - **Medição fechada (02/10):** `clique_whatsapp` é evento principal no GA4 e foi
   importado no Ads como conversão **principal** da meta "Contato" (3 de 3
   campanhas). A automática "Fale conosco" (visita a `/contato`) virou secundária.
@@ -58,18 +74,19 @@ fechada. Primeira semana: não otimizar. Leia o `CLAUDE.md` antes deste arquivo.
 
 ## Próximos passos
 
-1. **Acompanhar a primeira semana** sem otimizar: termos de pesquisa e negativar lixo.
-   Se Pós-op seguir sem impressões depois de alguns dias úteis no horário, tirar a
-   fixação do título 2 (o Google marca o anúncio como "qualidade baixa" e limita a veiculação).
-2. **Programação de anúncios — falta só a Marca.** Pós-operatório e Lipedema já estão
-   em seg 13–20, ter–qui 09–21, sex 09–20, sáb 09–16, dom off (02/10). A
-   `Busca — Marca` ainda está seg–sex 13–21 / sáb 08–17 (o editor do Ads travou o
-   navegador no meio; nada foi salvo nela).
-3. **Perfil do Google:** conferir o horário **novo** (seg 14–19, ter–qui 10–20,
+1. **Reavaliar por volta de 22–29/10** (uma a duas semanas depois da otimização):
+   custo por conversa por campanha, termos de pesquisa (negativar lixo), se o
+   Lipedema volta a aparecer em "tratamento lipedema" e se Pós-op gasta os R$ 9.
+   61% do gasto cai em termos ocultos pelo Google — olhar o que aparecer.
+2. **Perguntar à Fernanda:** (a) ela faz drenagem pós-op **facial** (rinoplastia,
+   harmonização)? Se sim, vale um grupo próprio; (b) as 4 conversas de WhatsApp
+   viraram avaliação/agendamento? Sem isso não dá para saber o custo real.
+3. **Marca** segue com 0 impressões — normal enquanto ninguém busca o nome; não mexer.
+4. **Perfil do Google:** conferir o horário **novo** (seg 14–19, ter–qui 10–20,
    sex 10–19, sáb com hora marcada), site, categorias e descrição; tornar a
    conta nova proprietária principal quando o Google liberar.
-4. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
-5. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
+5. **`/resultados`:** preencher os casos (fotos + sessões + tempo).
+6. Formulário com Turnstile; Fase 2 (`/celulite-flacidez`, `/limpeza-de-pele`,
    `/vale-presente`, Meta Pixel).
 
 ## Bloqueios
